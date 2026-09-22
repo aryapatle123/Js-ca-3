@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Sandbox Provisioning Studio — NexusProcure AI</title>
+  <meta name="description" content="Deploy an instant, self-service enterprise procurement sandbox pre-loaded with mock SAP S/4HANA data and autonomous AI negotiation agents.">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2fe' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
+</head>
+<body>
+
+  <div class="bg-ambient-orb ambient-orb-1"></div>
+  <div class="bg-ambient-orb ambient-orb-2"></div>
+  <div class="bg-ambient-orb ambient-orb-3"></div>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" id="site-nav">
+    <div class="container nav-content">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <span>Nexus<span class="text-gradient">Procure</span> AI</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="simulator.html" class="nav-link">Live Simulator</a></li>
+        <li><a href="capabilities.html" class="nav-link">Capabilities</a></li>
+        <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
+        <li><a href="calculator.html" class="nav-link">ROI Calculator</a></li>
+        <li><a href="integrations.html" class="nav-link">Integrations</a></li>
+        <li><a href="security.html" class="nav-link">Security & Trust</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="status-pill">
+          <div class="radar-dot"></div>
+          <span>Sandbox Engine: Active</span>
+        </div>
+        <a href="simulator.html" class="btn btn-secondary btn-sm">
+          <span>Direct Console</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="container page-hero-inner">
+      <div class="page-badge cyan">
+        <span>🚀 Instant Tenant Provisioning</span>
+      </div>
+      <h1 class="page-hero-title">
+        Deploy Your Enterprise <span class="text-gradient">AI Sandbox</span>
+      </h1>
+      <p class="page-hero-subtitle">
+        Spin up a dedicated, isolated sandbox environment pre-seeded with synthetic ERP procurement catalogs, live supplier negotiation threads, and autonomous agents.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Provisioning Studio Section -->
+  <main class="subpage-section" style="padding-top: 0;">
+    <div class="container" style="max-width: 960px;">
+      
+      <!-- Provisioning Config Card -->
+      <div class="data-table-card" id="provisioning-config-card" style="padding: 36px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px;">
+          <div>
+            <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 4px;">Tenant Configuration Profile</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Select your technology environment to tailor the mock data and autonomous models.</p>
+          </div>
+          <span class="badge badge-cyan">Single-Tenant VPC Isolation</span>
+        </div>
+
+        <form id="sandbox-setup-form">
+          <div class="form-row" style="margin-bottom: 18px;">
+            <div class="form-group">
+              <label class="form-label" for="org-name">Enterprise Organization Name</label>
+              <input type="text" id="org-name" class="form-control" required value="Titan Aero Systems Corp" placeholder="Acme Global Corporation">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="org-email">Enterprise Work Email</label>
+              <input type="email" id="org-email" class="form-control" required value="procurement.lead@titanaero.com" placeholder="jane@enterprise.com">
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-bottom: 18px;">
+            <div class="form-group">
+              <label class="form-label" for="org-erp">Primary ERP / Core Ledger</label>
+              <select id="org-erp" class="form-control" style="background: #0f172a; color: #fff;">
+                <option value="sap" selected>SAP S/4HANA (BAPI & OData v4)</option>
+                <option value="coupa">Coupa Procurement (REST & cXML)</option>
+                <option value="oracle">Oracle Cloud SCM / NetSuite</option>
+                <option value="dynamics">Microsoft Dynamics 365 Supply Chain</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="org-category">Primary Direct Spend Category</label>
+              <select id="org-category" class="form-control" style="background: #0f172a; color: #fff;">
+                <option value="metals" selected>Machined Alloys, CNC & Raw Metals</option>
+                <option value="electronics">Semiconductors, PCBs & Sensor Modules</option>
+                <option value="chemicals">Industrial Polymers, Resins & Bulk Chemicals</option>
+                <option value="packaging">Corrugated Packaging & Global Freight</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-bottom: 24px;">
+            <div class="form-group">
+              <label class="form-label" for="org-spend">Annual Direct Spend Tier</label>
+              <select id="org-spend" class="form-control" style="background: #0f172a; color: #fff;">
+                <option value="mid">$25M – $100M / year</option>
+                <option value="large" selected>$100M – $500M / year</option>
+                <option value="enterprise">$500M+ / year</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="org-persona">Autonomous Agent Persona Mode</label>
+              <select id="org-persona" class="form-control" style="background: #0f172a; color: #fff;">
+                <option value="aggressive" selected>Value Optimizer (Strict BATNA, Aggressive Concession Curve)</option>
+                <option value="collaborative">Strategic Partnership (Balanced Terms, Supplier Relationship Focus)</option>
+                <option value="audit_strict">Discrepancy Auditor (Zero-Tolerance 3-Way Match & Compliance)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="btn-deploy-sandbox" style="width: 100%; padding: 16px; font-size: 1rem;">
+            <span>Provision Dedicated Autonomous Sandbox</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Live Terminal Provisioning Progress Window (Hidden initially) -->
+      <div id="provisioning-terminal-window" class="terminal-window" style="display: none;">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <span style="font-size: 0.8rem; color: var(--text-dim); font-family: var(--font-mono);">
+            nexusprocure-deploy-agent ~ tenant: <span id="terminal-tenant-id" style="color: var(--cyan-400);">titan-aero-sandbox</span>
+          </span>
+          <span class="badge badge-cyan" id="terminal-progress-badge">PROVISIONING...</span>
+        </div>
+
+        <div class="terminal-body" id="terminal-log-output">
+          <!-- Populated by typewriter script -->
+        </div>
+
+        <div id="terminal-launch-footer" style="display: none; padding: 20px; background: #070c18; border-top: 1px solid var(--border-subtle); text-align: center;">
+          <div style="font-size: 1rem; color: var(--emerald-400); font-weight: 700; margin-bottom: 8px;">
+            ✓ Dedicated Enterprise Sandbox Ready
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px;">
+            Synthetic SAP S/4HANA PO records, BATNA solvers, and active agent threads are primed.
+          </p>
+          <div style="display: flex; gap: 14px; justify-content: center;">
+            <a href="simulator.html" class="btn btn-primary" id="btn-launch-console">
+              <span>Launch Live Agent Console</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="portal.html" class="btn btn-secondary">
+              <span>Open Linked Supplier Portal</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Engineering Consultation Section -->
+      <div class="bento-card" style="margin-top: 48px; padding: 32px; background: rgba(15, 23, 42, 0.6);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <h4 style="color: #fff; font-size: 1.15rem; margin-bottom: 6px;">Prefer a Guided Architecture Review?</h4>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0; max-width: 540px;">
+              Our procurement systems engineering team will review your ERP architecture, custom EDI specifications, and compliance requirements in a 30-minute private briefing.
+            </p>
+          </div>
+          <button class="btn btn-glow-purple" onclick="alert('Briefing booked! A calendar invite with an enterprise systems architect has been dispatched.')">
+            <span>Schedule Guided Executive Briefing</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <div class="brand-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+            </div>
+            <span>Nexus<span class="text-gradient">Procure</span> AI</span>
+          </a>
+          <p>Autonomous intelligence platform for enterprise supplier communications, algorithmic negotiation, and continuous supply risk mitigation.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul class="footer-links">
+            <li><a href="simulator.html">Agent Simulator</a></li>
+            <li><a href="capabilities.html">Architecture & Capabilities</a></li>
+            <li><a href="portal.html">Supplier Experience Portal</a></li>
+            <li><a href="calculator.html">ROI & Savings Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Integrations</h5>
+          <ul class="footer-links">
+            <li><a href="integrations.html#sap">SAP S/4HANA</a></li>
+            <li><a href="integrations.html#coupa">Coupa Procurement</a></li>
+            <li><a href="integrations.html#oracle">Oracle Cloud SCM</a></li>
+            <li><a href="integrations.html#edi">ANSI X12 EDI Gateway</a></li>
+            <li><a href="integrations.html#whatsapp">WhatsApp Enterprise</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Security & Trust</h5>
+          <ul class="footer-links">
+            <li><a href="security.html#soc2">SOC 2 Type II Report</a></li>
+            <li><a href="security.html#iso27001">ISO 27001 Certified</a></li>
+            <li><a href="security.html#gdpr">GDPR Data Privacy</a></li>
+            <li><a href="security.html#audit-logs">Audit-Grade Logging</a></li>
+            <li><a href="security.html#guardrails">Responsible AI Guardrails</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 NexusProcure AI Inc. All rights reserved. Built for autonomous enterprise procurement.</div>
+        <div class="security-cert-badges">
+          <span class="cert-badge">SOC2 TYPE II</span>
+          <span class="cert-badge">ISO 27001</span>
+          <span class="cert-badge">GDPR COMPLIANT</span>
+          <span class="cert-badge">SAP CERTIFIED</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('sandbox-setup-form');
+      const terminalWindow = document.getElementById('provisioning-terminal-window');
+      const configCard = document.getElementById('provisioning-config-card');
+      const terminalLog = document.getElementById('terminal-log-output');
+      const terminalBadge = document.getElementById('terminal-progress-badge');
+      const launchFooter = document.getElementById('terminal-launch-footer');
+      const tenantLabel = document.getElementById('terminal-tenant-id');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const orgName = document.getElementById('org-name').value || "Enterprise";
+        const erp = document.getElementById('org-erp').value;
+        const category = document.getElementById('org-category').value;
+        const persona = document.getElementById('org-persona').value;
+
+        const slug = orgName.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-') + '-sandbox';
+        tenantLabel.textContent = slug;
+
+        // Hide form, show terminal
+        configCard.style.display = 'none';
+        terminalWindow.style.display = 'block';
+        terminalWindow.scrollIntoView({ behavior: 'smooth' });
+
+        const lines = [
+          { time: "[0.12s]", text: `Initializing isolated VPC sandbox container for '${orgName}' in us-east-1...` },
+          { time: "[0.45s]", text: `Generating tenant security identity token: np_live_sec_` + Math.random().toString(36).substring(2, 10) + `...` },
+          { time: "[0.85s]", text: `Configuring ERP bridge connector for [${erp.toUpperCase()}] OData / BAPI interface...` },
+          { time: "[1.20s]", text: `Seeding synthetic catalog: 2,400 direct spend SKUs for category: ${category}...` },
+          { time: "[1.65s]", text: `Calibrating BATNA bargaining solver with '${persona}' parameters...` },
+          { time: "[2.10s]", text: `Deploying dedicated NexusProcure Agent cluster v3.4 (Zero-Retention Mode)...` },
+          { time: "[2.50s]", text: `Binding automated webhook endpoints and multi-lingual translator (40+ languages)...` },
+          { time: "[2.90s]", text: `✓ Health check 200 OK. All systems nominal. Sandbox deployment complete!` }
+        ];
+
+        let index = 0;
+        function printNextLine() {
+          if (index < lines.length) {
+            const item = lines[index];
+            const lineEl = document.createElement('div');
+            lineEl.className = 'terminal-line';
+            lineEl.innerHTML = `<span class="terminal-prompt">${item.time}</span> <span>${item.text}</span>`;
+            terminalLog.appendChild(lineEl);
+            terminalLog.scrollTop = terminalLog.scrollHeight;
+            index++;
+            setTimeout(printNextLine, 360);
+          } else {
+            terminalBadge.textContent = "ACTIVE & READY";
+            terminalBadge.className = "badge badge-emerald";
+            launchFooter.style.display = 'block';
+          }
+        }
+
+        printNextLine();
+      });
+    });
+  </script>
+
+  <!-- Gemini AI Integration -->
+  <script src="js/gemini-service.js"></script>
+  <script src="js/gemini-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Security, Trust & Compliance — NexusProcure AI</title>
+  <meta name="description" content="SOC 2 Type II, ISO 27001, and GDPR compliant autonomous procurement. Explore our zero-retention AI architecture, immutable audit logs, and cryptographic guardrails.">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2fe' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
+</head>
+<body>
+
+  <div class="bg-ambient-orb ambient-orb-1"></div>
+  <div class="bg-ambient-orb ambient-orb-2"></div>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" id="site-nav">
+    <div class="container nav-content">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <span>Nexus<span class="text-gradient">Procure</span> AI</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="simulator.html" class="nav-link">Live Simulator</a></li>
+        <li><a href="capabilities.html" class="nav-link">Capabilities</a></li>
+        <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
+        <li><a href="calculator.html" class="nav-link">ROI Calculator</a></li>
+        <li><a href="integrations.html" class="nav-link">Integrations</a></li>
+        <li><a href="security.html" class="nav-link active-page">Security & Trust</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="status-pill">
+          <div class="radar-dot"></div>
+          <span>Trust Center: Verified</span>
+        </div>
+        <a href="demo.html" class="btn btn-primary btn-sm">
+          <span>Enterprise Review</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="container page-hero-inner">
+      <div class="page-badge emerald">
+        <span>🛡️ Enterprise Trust & Governance</span>
+      </div>
+      <h1 class="page-hero-title">
+        Enterprise Security, Privacy & <span class="text-gradient">Audit Integrity</span>
+      </h1>
+      <p class="page-hero-subtitle">
+        Deploying autonomous agents into enterprise financial operations demands zero-trust architecture, cryptographic immutability, and deterministic human-in-the-loop guardrails.
+      </p>
+
+      <!-- Certifications strip -->
+      <div class="security-cert-badges" style="justify-content: center; gap: 12px; margin-top: 10px;">
+        <span class="cert-badge" id="soc2">SOC 2 TYPE II AUDITED</span>
+        <span class="cert-badge" id="iso27001">ISO 27001 CERTIFIED</span>
+        <span class="cert-badge" id="gdpr">GDPR / CCPA COMPLIANT</span>
+        <span class="cert-badge">HIPAA / ITAR READY</span>
+        <span class="cert-badge">SAP INTEGRATION CERTIFIED</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Security Pillars Bento -->
+  <main class="subpage-section" style="padding-top: 0;">
+    <div class="container">
+      
+      <div class="bento-grid" style="margin-bottom: 60px;">
+        
+        <div class="bento-card">
+          <div class="bento-icon-box cyan">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3 class="bento-title">Zero-Training AI Architecture</h3>
+          <p class="bento-desc">
+            Your supplier pricing, BOM cost structures, and contractual clauses are strictly isolated in single-tenant VPCs. Customer data is NEVER used to train foundational AI models.
+          </p>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-icon-box purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="bento-title">Cryptographic Key Management (CMEK)</h3>
+          <p class="bento-desc">
+            All database tables and communications are encrypted with AES-256 using Customer-Managed Encryption Keys (AWS KMS / Azure Key Vault / HashiCorp Vault).
+          </p>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-icon-box emerald">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <polyline points="17 11 19 13 23 9"></polyline>
+            </svg>
+          </div>
+          <h3 class="bento-title">Enterprise SSO & SCIM 2.0</h3>
+          <p class="bento-desc">
+            Seamless integration with Okta, Microsoft Entra ID (Azure AD), and Ping Identity with granular RBAC permissions (CPO, Category Manager, AP Clerk, Auditor).
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Interactive Immutable Audit Log Explorer -->
+      <div class="section-heading text-center" style="margin-bottom: 30px;" id="audit-logs">
+        <div class="page-badge cyan"><span>Immutable Ledger</span></div>
+        <h2 class="section-title">Cryptographic <span class="text-gradient">Audit Log Explorer</span></h2>
+        <p class="section-subtitle">Inspect every autonomous agent decision, prompt trace, ERP write, and human override with SHA-256 block verification.</p>
+      </div>
+
+      <div class="data-table-card" style="margin-bottom: 60px;">
+        <!-- Filter Toolbar -->
+        <div style="padding: 20px 24px; border-bottom: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <input type="text" id="audit-search-input" class="form-control" placeholder="Search PO #, Vendor, or Event..." style="width: 260px; padding: 8px 14px;">
+            <select id="audit-filter-type" class="form-control" style="width: 180px; padding: 8px 14px; background: #0f172a; color: #fff;">
+              <option value="all">All Event Types</option>
+              <option value="NEGOTIATION">Negotiation Decisions</option>
+              <option value="ERP_WRITE">ERP Writeback Commits</option>
+              <option value="POLICY_CHECK">Policy Guardrails</option>
+              <option value="DISCREPANCY">Dispute Resolutions</option>
+            </select>
+          </div>
+
+          <button class="btn btn-secondary btn-sm" id="btn-verify-chain">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span id="verify-btn-label">Verify SHA-256 Chain Integrity</span>
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Timestamp (UTC)</th>
+                <th>Event Type</th>
+                <th>Entity / PO</th>
+                <th>Agent Actor</th>
+                <th>Autonomous Action Details</th>
+                <th>Cryptographic Block Hash</th>
+                <th>Audit Status</th>
+              </tr>
+            </thead>
+            <tbody id="audit-log-rows">
+              <tr data-type="NEGOTIATION">
+                <td><code style="font-size: 0.8rem; color: var(--text-dim);">2026-09-22 08:34:11</code></td>
+                <td><span class="badge badge-purple">NEGOTIATION</span></td>
+                <td><strong>PO-2026-94821</strong></td>
+                <td>agent-direct-042</td>
+                <td>Counter-offer accepted at $16.20/pc (11.9% discount vs $18.40)</td>
+                <td><code style="font-size: 0.75rem; color: var(--cyan-400);">e3b0c442...991b7852</code></td>
+                <td><span class="badge badge-emerald">VERIFIED</span></td>
+              </tr>
+              <tr data-type="ERP_WRITE">
+                <td><code style="font-size: 0.8rem; color: var(--text-dim);">2026-09-22 08:34:13</code></td>
+                <td><span class="badge badge-emerald">ERP_WRITE</span></td>
+                <td><strong>SAP-PO-94821</strong></td>
+                <td>sap-gateway-service</td>
+                <td>Executed BAPI_PO_CHANGE: Updated item price to $16.20; status COMMITTED</td>
+                <td><code style="font-size: 0.75rem; color: var(--cyan-400);">f821ac90...214b8a10</code></td>
+                <td><span class="badge badge-emerald">VERIFIED</span></td>
+              </tr>
+              <tr data-type="DISCREPANCY">
+                <td><code style="font-size: 0.8rem; color: var(--text-dim);">2026-09-22 08:12:04</code></td>
+                <td><span class="badge badge-amber">DISCREPANCY</span></td>
+                <td><strong>INV-2026-8819</strong></td>
+                <td>agent-ap-matcher-09</td>
+                <td>Detected +$4,500 unapproved price delta; issued Debit Memo DM-7712</td>
+                <td><code style="font-size: 0.75rem; color: var(--cyan-400);">19d0ef34...66a1bc40</code></td>
+                <td><span class="badge badge-emerald">VERIFIED</span></td>
+              </tr>
+              <tr data-type="POLICY_CHECK">
+                <td><code style="font-size: 0.8rem; color: var(--text-dim);">2026-09-22 07:55:40</code></td>
+                <td><span class="badge badge-cyan">POLICY_CHECK</span></td>
+                <td><strong>RFQ-2026-104</strong></td>
+                <td>guardrail-engine-v3</td>
+                <td>Checked spend ceiling ($250k limit). Proposed PO value $182k &lt; ceiling. Approved.</td>
+                <td><code style="font-size: 0.75rem; color: var(--cyan-400);">a4128f11...0981e4da</code></td>
+                <td><span class="badge badge-emerald">VERIFIED</span></td>
+              </tr>
+              <tr data-type="ERP_WRITE">
+                <td><code style="font-size: 0.8rem; color: var(--text-dim);">2026-09-22 07:41:22</code></td>
+                <td><span class="badge badge-emerald">ERP_WRITE</span></td>
+                <td><strong>GR-9844</strong></td>
+                <td>coupa-connector-svc</td>
+                <td>Synchronized Goods Receipt note for 420 units received at Dock 4</td>
+                <td><code style="font-size: 0.75rem; color: var(--cyan-400);">55bca981...112e4f09</code></td>
+                <td><span class="badge badge-emerald">VERIFIED</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Human-in-the-Loop Threshold Guardrails Configurator -->
+      <div class="section-heading text-center" style="margin-bottom: 30px;" id="guardrails">
+        <div class="page-badge purple"><span>Governance Studio</span></div>
+        <h2 class="section-title">Human-in-the-Loop <span class="text-gradient">Policy Guardrails</span></h2>
+        <p class="section-subtitle">Configure the exact governance boundaries within which your AI agents operate autonomously.</p>
+      </div>
+
+      <div class="roi-card-wrapper" style="max-width: 900px; margin: 0 auto 60px;">
+        <div class="roi-calculator-form" style="width: 100%;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <h4 style="color: #fff; margin: 0;">Autonomous Authorization Boundary</h4>
+            <span class="badge badge-emerald" id="guardrail-status-pill">POLICY ENFORCED</span>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">Autonomous Spend Approval Limit</span>
+              <span class="slider-value" id="val-guardrail-limit">$50,000</span>
+            </div>
+            <input type="range" class="custom-range" id="input-guardrail-limit" min="5000" max="250000" step="5000" value="50000">
+            <div class="slider-hints">
+              <span>$5,000 (Conservative)</span>
+              <span>$50,000 (Recommended)</span>
+              <span>$250,000 (High Autonomy)</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 24px;">
+            <div style="font-size: 0.85rem; color: #fff; font-weight: 600; margin-bottom: 12px;">Mandatory Human Escalation Triggers:</div>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <label style="display: flex; align-items: center; gap: 12px; font-size: 0.88rem; color: #cbd5e1; cursor: pointer;">
+                <input type="checkbox" checked style="width: 18px; height: 18px;">
+                <span>Require Category Manager sign-off if price concession exceeds 8.0%</span>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 12px; font-size: 0.88rem; color: #cbd5e1; cursor: pointer;">
+                <input type="checkbox" checked style="width: 18px; height: 18px;">
+                <span>Block autonomous commitment on single-source suppliers with elevated ESG risk score</span>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 12px; font-size: 0.88rem; color: #cbd5e1; cursor: pointer;">
+                <input type="checkbox" checked style="width: 18px; height: 18px;">
+                <span>Trigger immediate Legal review if supplier proposes changes to Indemnification or IP clauses</span>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 12px; font-size: 0.88rem; color: #cbd5e1; cursor: pointer;">
+                <input type="checkbox" checked style="width: 18px; height: 18px;">
+                <span>Auto-halt transaction and notify CPO if supplier tax ID fails OFAC / international sanctions screening</span>
+              </label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" style="margin-top: 28px; width: 100%;" onclick="alert('Governance policies cryptographically signed and pushed to active agent cluster.')">
+            <span>Commit Policy Configuration to Agent Cluster</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <div class="brand-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+            </div>
+            <span>Nexus<span class="text-gradient">Procure</span> AI</span>
+          </a>
+          <p>Autonomous intelligence platform for enterprise supplier communications, algorithmic negotiation, and continuous supply risk mitigation.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul class="footer-links">
+            <li><a href="simulator.html">Agent Simulator</a></li>
+            <li><a href="capabilities.html">Architecture & Capabilities</a></li>
+            <li><a href="portal.html">Supplier Experience Portal</a></li>
+            <li><a href="calculator.html">ROI & Savings Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Integrations</h5>
+          <ul class="footer-links">
+            <li><a href="integrations.html#sap">SAP S/4HANA</a></li>
+            <li><a href="integrations.html#coupa">Coupa Procurement</a></li>
+            <li><a href="integrations.html#oracle">Oracle Cloud SCM</a></li>
+            <li><a href="integrations.html#edi">ANSI X12 EDI Gateway</a></li>
+            <li><a href="integrations.html#whatsapp">WhatsApp Enterprise</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Security & Trust</h5>
+          <ul class="footer-links">
+            <li><a href="security.html#soc2">SOC 2 Type II Report</a></li>
+            <li><a href="security.html#iso27001">ISO 27001 Certified</a></li>
+            <li><a href="security.html#gdpr">GDPR Data Privacy</a></li>
+            <li><a href="security.html#audit-logs">Audit-Grade Logging</a></li>
+            <li><a href="security.html#guardrails">Responsible AI Guardrails</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 NexusProcure AI Inc. All rights reserved. Built for autonomous enterprise procurement.</div>
+        <div class="security-cert-badges">
+          <span class="cert-badge">SOC2 TYPE II</span>
+          <span class="cert-badge">ISO 27001</span>
+          <span class="cert-badge">GDPR COMPLIANT</span>
+          <span class="cert-badge">SAP CERTIFIED</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Search and Filter in Audit Log
+      const searchInput = document.getElementById('audit-search-input');
+      const filterType = document.getElementById('audit-filter-type');
+      const rows = document.querySelectorAll('#audit-log-rows tr');
+      const verifyBtn = document.getElementById('btn-verify-chain');
+      const verifyLabel = document.getElementById('verify-btn-label');
+
+      function filterRows() {
+        const query = searchInput.value.toLowerCase();
+        const type = filterType.value;
+
+        rows.forEach(row => {
+          const rowText = row.textContent.toLowerCase();
+          const rowType = row.dataset.type;
+          const matchQuery = rowText.includes(query);
+          const matchType = (type === 'all' || rowType === type);
+
+          row.style.display = (matchQuery && matchType) ? '' : 'none';
+        });
+      }
+
+      searchInput.addEventListener('input', filterRows);
+      filterType.addEventListener('change', filterRows);
+
+      // Verify SHA-256 chain integrity
+      verifyBtn.addEventListener('click', () => {
+        verifyLabel.textContent = "Verifying cryptographic hashes...";
+        setTimeout(() => {
+          verifyLabel.textContent = "✓ All 5 Blocks Cryptographically Validated (Zero Tampering)";
+          verifyBtn.classList.remove('btn-secondary');
+          verifyBtn.classList.add('btn-primary');
+          setTimeout(() => {
+            verifyLabel.textContent = "Verify SHA-256 Chain Integrity";
+            verifyBtn.classList.remove('btn-primary');
+            verifyBtn.classList.add('btn-secondary');
+          }, 3500);
+        }, 600);
+      });
+
+      // Spend slider
+      const limitInput = document.getElementById('input-guardrail-limit');
+      const limitVal = document.getElementById('val-guardrail-limit');
+      limitInput.addEventListener('input', () => {
+        limitVal.textContent = '$' + parseInt(limitInput.value).toLocaleString('en-US');
+      });
+    });
+  </script>
+
+  <!-- Gemini AI Integration -->
+  <script src="js/gemini-service.js"></script>
+  <script src="js/gemini-ui.js"></script>
+</body>
+</html>
