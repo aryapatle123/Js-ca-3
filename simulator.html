@@ -1,851 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autonomous Agent Simulator Console — NexusProcure AI</title>
-  <meta name="description" content="Test live autonomous procurement negotiations. Experience real-time multi-variable bargaining, BATNA calculations, and ERP synchronization.">
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2fe' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Autonomous Negotiation Simulator - NexusProcure AI</title>
+ <meta name="description" content="Test live autonomous procurement negotiations powered by Groq AI. Experience multi-round bargaining in plain English.">
+ <link rel="stylesheet" href="styles/main.css">
+ <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
 </head>
 <body>
 
-  <!-- Background Orbs -->
-  <div class="bg-ambient-orb ambient-orb-1"></div>
-  <div class="bg-ambient-orb ambient-orb-2"></div>
-  <div class="bg-grid-overlay"></div>
-
-  <!-- Navigation -->
-  <nav class="site-nav" id="site-nav">
-    <div class="container nav-content">
-      <a href="index.html" class="nav-brand">
-        <div class="brand-icon-wrapper">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-        </div>
-        <span>Nexus<span class="text-gradient">Procure</span> AI</span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="simulator.html" class="nav-link active-page">Live Simulator <span class="nav-badge-live">Live</span></a></li>
-        <li><a href="capabilities.html" class="nav-link">Capabilities</a></li>
-        <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
-        <li><a href="calculator.html" class="nav-link">ROI Calculator</a></li>
-        <li><a href="integrations.html" class="nav-link">Integrations</a></li>
-        <li><a href="security.html" class="nav-link">Security & Trust</a></li>
-      </ul>
-
-      <div class="nav-right">
-        <div class="status-pill">
-          <div class="radar-dot"></div>
-          <span>Console: Online (v3.4)</span>
-        </div>
-        <a href="demo.html" class="btn btn-primary btn-sm">
-          <span>Get Sandbox</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Subpage Hero Banner -->
-  <header class="page-hero">
-    <div class="container page-hero-inner">
-      <div class="page-badge">
-        <span>⚡ Interactive Autonomous Environment</span>
-      </div>
-      <h1 class="page-hero-title">
-        Enterprise Autonomous <span class="text-gradient">Agent Console</span>
-      </h1>
-      <p class="page-hero-subtitle">
-        Observe NexusProcure AI conduct high-stakes supplier communications, multi-variable RFQ negotiations, and automated invoice dispute resolutions in real time.
-      </p>
-
-      <!-- Scenario Selector Pills -->
-      <div class="filter-tabs" style="justify-content: center;" id="scenario-tabs">
-        <button class="filter-tab-btn active" data-scenario="rfq_negotiation">
-          💰 RFQ Price & Volume Discount
-        </button>
-        <button class="filter-tab-btn" data-scenario="delay_expedite">
-          🚢 Logistics Disruption & Expedite
-        </button>
-        <button class="filter-tab-btn" data-scenario="invoice_dispute">
-          🧾 3-Way Match Invoice Discrepancy
-        </button>
-        <button class="filter-tab-btn" data-scenario="esg_risk">
-          🛡️ Tier-2 ESG & Geopolitical Risk
-        </button>
-        <button class="filter-tab-btn" data-scenario="custom_roleplay">
-          🎮 Interactive Counter-Offer Sandbox
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Simulator Main Console -->
-  <main class="subpage-section" style="padding-top: 0;">
-    <div class="container">
-      <div class="simulator-wrapper" id="sim-main-container">
-        
-        <!-- Header Bar -->
-        <div class="sim-header">
-          <div class="sim-header-left">
-            <div class="sim-status-indicator">
-              <span class="pulse-dot"></span>
-              <span id="console-status-text">Autonomous Thread Active: PO #94821-C</span>
-            </div>
-            <div class="sim-badge" id="sim-scenario-badge">RFQ Price Negotiation</div>
-          </div>
-          <div class="sim-header-right">
-            <button class="btn btn-secondary btn-sm" id="btn-export-log" title="Download thread telemetry">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-              <span>Export Audit JSON</span>
-            </button>
-            <button class="btn btn-secondary btn-sm" id="btn-sound-toggle" title="Toggle audio feedback">
-              🔊 Audio: ON
-            </button>
-            <button class="btn btn-primary btn-sm" id="sim-restart-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M23 4v6h-6M1 20v-6h6"></path>
-                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-              </svg>
-              <span>Replay Scenario</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Viewport Grid -->
-        <div class="sim-viewport">
-          
-          <!-- Left Pane: AI Cognitive Reasoning & Telemetry -->
-          <div class="sim-cognitive-pane">
-            <div class="sim-pane-title">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 16v-4M12 8h.01"></path>
-              </svg>
-              <span>Agent Cognitive Trace (v3.4)</span>
-            </div>
-
-            <!-- BATNA & Target Gauge -->
-            <div class="cognitive-metric-card">
-              <div class="cog-metric-row">
-                <span class="cog-metric-label">Negotiation Target</span>
-                <span class="cog-metric-val" id="cog-target-val">$16.20 / unit</span>
-              </div>
-              <div class="cog-metric-row">
-                <span class="cog-metric-label">BATNA Threshold</span>
-                <span class="cog-metric-val" id="cog-batna-val">$17.10 / unit (Alt: Supplier #4)</span>
-              </div>
-              <div class="cog-progress-bar">
-                <div class="cog-progress-fill" id="cog-progress-fill" style="width: 78%;"></div>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-dim); margin-top: 4px;">
-                <span>Supplier Quote: $18.40</span>
-                <span id="cog-spread-label">Spread: $2.20</span>
-                <span>Target: $16.20</span>
-              </div>
-            </div>
-
-            <!-- Real-time Live Log -->
-            <div class="cognitive-stream" id="cognitive-stream">
-              <!-- Dynamically populated -->
-            </div>
-
-            <!-- ERP Integration Ledger State -->
-            <div class="erp-sync-card">
-              <div class="erp-sync-header">
-                <div style="display:flex; align-items:center; gap: 8px;">
-                  <span class="erp-dot"></span>
-                  <span style="font-weight: 600; font-size: 0.8rem; color: #fff;">SAP S/4HANA PO Sync</span>
-                </div>
-                <span class="badge badge-emerald" id="erp-sync-status">STAGED</span>
-              </div>
-              <div class="erp-sync-details" id="erp-sync-details">
-                <div>Document: <strong>PO-2026-94821</strong></div>
-                <div>Vendor: <strong>Shenzhen Precision Alloy Tech</strong></div>
-                <div>Category: <strong>CNC Aerospace Titanium Brackets</strong></div>
-                <div>Target Savings: <strong class="text-gradient-cyan">$26,400.00</strong></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Pane: Negotiation Communication Stream -->
-          <div class="sim-chat-pane">
-            <div class="chat-participant-bar">
-              <div class="participant-info">
-                <div class="agent-avatar">AI</div>
-                <div>
-                  <div class="participant-name">NexusProcure Agent #042</div>
-                  <div class="participant-sub">Direct Materials Specialist • Policy Guardrails: Strict</div>
-                </div>
-              </div>
-
-              <div class="participant-divider">⇄</div>
-
-              <div class="participant-info" style="text-align: right;">
-                <div>
-                  <div class="participant-name" id="sim-supplier-name">Shenzhen Precision Alloy Tech</div>
-                  <div class="participant-sub" id="sim-supplier-channel">Channel: Encrypted Vendor EDI / Email</div>
-                </div>
-                <div class="supplier-avatar" id="sim-supplier-avatar">SP</div>
-              </div>
-            </div>
-
-            <!-- Messages Stream -->
-            <div class="chat-messages-scroll" id="chat-messages-stream">
-              <!-- Populated by JS -->
-            </div>
-
-            <!-- Typing Indicator -->
-            <div class="sim-typing-bar" id="sim-typing-indicator" style="display: none;">
-              <div class="typing-bubble">
-                <span class="typing-dot"></span>
-                <span class="typing-dot"></span>
-                <span class="typing-dot"></span>
-              </div>
-              <span id="typing-actor-label" style="font-size: 0.78rem; color: var(--text-dim);">Agent is calculating counter-proposal...</span>
-            </div>
-
-            <!-- Interactive Reply & Counter-Offer Bar -->
-            <div class="sim-input-bar" id="sim-interactive-bar">
-              <div style="display: flex; gap: 10px; width: 100%;">
-                <input type="text" class="sim-input" id="user-counter-input" placeholder="Type a counter-offer or custom supplier prompt (e.g., 'We can only offer $16.90 if net terms are 15 days')...">
-                <button class="btn btn-primary" id="btn-send-counter">
-                  <span>Send Offer</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-              <div class="quick-chips">
-                <span class="quick-chip-label">Quick Suggestions:</span>
-                <button class="chip-btn" data-text="We accept $16.50/unit if MOQ is increased to 15,000 units.">Accept $16.50 w/ Higher MOQ</button>
-                <button class="chip-btn" data-text="Cannot discount unit price, but we will waive expedited air freight ($4,200 value).">Waive Air Freight</button>
-                <button class="chip-btn" data-text="Firm on $17.00. Raw titanium spot market costs increased 8% this week.">Raw Material Spike Notice</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Live Metrics Footer Strip -->
-        <div class="sim-metrics-strip">
-          <div class="metric-strip-item">
-            <span class="label">Simulated Spend:</span>
-            <span class="val text-gradient-cyan" id="metric-spend">$220,800</span>
-          </div>
-          <div class="metric-strip-item">
-            <span class="label">Settled Price:</span>
-            <span class="val text-gradient-purple" id="metric-settled">$16.20 / unit</span>
-          </div>
-          <div class="metric-strip-item">
-            <span class="label">Discount Achieved:</span>
-            <span class="val text-gradient-emerald" id="metric-discount">11.9% ($26,400)</span>
-          </div>
-          <div class="metric-strip-item">
-            <span class="label">Negotiation Time:</span>
-            <span class="val" id="metric-time">3m 42s (Autonomous)</span>
-          </div>
-          <div class="metric-strip-item">
-            <span class="label">ERP Sync State:</span>
-            <span class="val badge badge-emerald" id="metric-erp-badge">✓ SAP PO Updated</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Feature Highlight Bento below Console -->
-      <div style="margin-top: 60px;">
-        <div class="section-heading text-center" style="margin-bottom: 36px;">
-          <h2 class="section-title">What Makes the <span class="text-gradient">Negotiation Engine</span> Unique?</h2>
-          <p class="section-subtitle">Trained on over 12 million enterprise procurement transactions, contracts, and commercial dispute archives.</p>
-        </div>
-
-        <div class="bento-grid">
-          <div class="bento-card">
-            <div class="bento-icon-box cyan">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="20" x2="18" y2="10"></line>
-                <line x1="12" y1="20" x2="12" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="14"></line>
-              </svg>
-            </div>
-            <h3 class="bento-title">Game-Theoretic BATNA Optimization</h3>
-            <p class="bento-desc">Dynamically values alternative suppliers, current inventory runway, and market spot indexes before conceding on any terms.</p>
-          </div>
-
-          <div class="bento-card">
-            <div class="bento-icon-box purple">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-            </div>
-            <h3 class="bento-title">Cryptographic Human Guardrails</h3>
-            <p class="bento-desc">Configure spending limits, approval thresholds, and non-negotiable legal clauses that agents can never bypass without CPO signoff.</p>
-          </div>
-
-          <div class="bento-card">
-            <div class="bento-icon-box emerald">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-              </svg>
-            </div>
-            <h3 class="bento-title">Instant ERP Bidirectional Sync</h3>
-            <p class="bento-desc">Once terms are agreed, the agent writes directly to SAP, Coupa, or Oracle SCM, generating updated PO lines and audit receipts.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-brand">
-            <div class="brand-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <span>Nexus<span class="text-gradient">Procure</span> AI</span>
-          </a>
-          <p>
-            Autonomous intelligence platform for enterprise supplier communications, algorithmic negotiation, and continuous supply risk mitigation.
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h5>Platform</h5>
-          <ul class="footer-links">
-            <li><a href="simulator.html">Agent Simulator</a></li>
-            <li><a href="capabilities.html">Architecture & Capabilities</a></li>
-            <li><a href="portal.html">Supplier Experience Portal</a></li>
-            <li><a href="calculator.html">ROI & Savings Calculator</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Integrations</h5>
-          <ul class="footer-links">
-            <li><a href="integrations.html#sap">SAP S/4HANA</a></li>
-            <li><a href="integrations.html#coupa">Coupa Procurement</a></li>
-            <li><a href="integrations.html#oracle">Oracle Cloud SCM</a></li>
-            <li><a href="integrations.html#edi">ANSI X12 EDI Gateway</a></li>
-            <li><a href="integrations.html#whatsapp">WhatsApp Enterprise</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Security & Trust</h5>
-          <ul class="footer-links">
-            <li><a href="security.html#soc2">SOC 2 Type II Report</a></li>
-            <li><a href="security.html#iso27001">ISO 27001 Certified</a></li>
-            <li><a href="security.html#gdpr">GDPR Data Privacy</a></li>
-            <li><a href="security.html#audit-logs">Audit-Grade Logging</a></li>
-            <li><a href="security.html#guardrails">Responsible AI Guardrails</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>© 2026 NexusProcure AI Inc. All rights reserved. Built for enterprise autonomous procurement.</div>
-        <div class="security-cert-badges">
-          <span class="cert-badge">SOC2 TYPE II</span>
-          <span class="cert-badge">ISO 27001</span>
-          <span class="cert-badge">GDPR COMPLIANT</span>
-          <span class="cert-badge">SAP CERTIFIED</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="js/agent-simulator.js"></script>
-  <script src="js/app.js"></script>
-  <script>
-    // Comprehensive Self-Powered Simulator Engine for simulator.html
-    document.addEventListener('DOMContentLoaded', () => {
-      const scenarios = {
-        rfq_negotiation: {
-          title: "RFQ Price & Volume Discount",
-          po: "PO-2026-94821-C",
-          vendorName: "Shenzhen Precision Alloy Tech",
-          vendorAvatar: "SP",
-          channel: "Channel: Encrypted Vendor EDI / Email",
-          targetVal: "$16.20 / unit",
-          batnaVal: "$17.10 / unit (Alt: Supplier #4)",
-          progressPct: "78%",
-          spread: "Spread: $2.20",
-          spend: "$220,800",
-          settled: "$16.20 / unit",
-          discount: "11.9% ($26,400)",
-          time: "3m 42s (Autonomous)",
-          erpDoc: "PO-2026-94821",
-          erpCategory: "CNC Aerospace Titanium Brackets",
-          erpSavings: "$26,400.00",
-          cognitive: [
-            { tag: "INGEST", text: "Received supplier quotation of $18.40/unit for 12,000 units titanium brackets." },
-            { tag: "BENCHMARK", text: "Polled LME Titanium Index and SAP historical purchases. Target: $16.20." },
-            { tag: "BATNA SOLVER", text: "Secondary qualified vendor (Apex Alloy) available at $17.10 with 3-week lead." },
-            { tag: "TACTIC", text: "Offered volume consolidation (12k units) + accelerated Net-15 term in exchange for $16.20." },
-            { tag: "ERP COMMIT", text: "Written to SAP S/4HANA PO-94821 via BAPI_PO_CHANGE. Audit signed." }
-          ],
-          dialogue: [
-            { sender: "supplier", time: "10:14:02", text: "Dear Procurement Team, following your RFQ for 12,000 titanium structural brackets, our official quote is $18.40 per unit with 25 days lead time due to aerospace tooling requirements." },
-            { sender: "ai", time: "10:14:06", text: "Dear Shenzhen Precision team, thank you for the quotation. We cross-referenced spot raw titanium market rates and our multi-year volume commitments. We can commit to the full 12,000-unit lot immediately if we can align on $16.20 per unit. In return, we are authorized to offer early payment discounting (Net-15 via automated ACH). Can you confirm production slot allocation at $16.20?", badge: "SAP PO-94821 Drafted • Target Discount: 11.9%" },
-            { sender: "supplier", time: "10:14:24", text: "$16.20 is very aggressive given our current CNC machine utilization. However, with the Net-15 cash flow guarantee and full 12,000 volume lock, we can compromise at $16.20/unit if delivery is FOB Shenzhen Port." },
-            { sender: "ai", time: "10:14:31", text: "Agreed. $16.20/unit FOB Shenzhen, Net-15 terms accepted. Binding Purchase Order #PO-2026-94821 has been generated and dispatched to your vendor EDI portal. Total contracted savings: $26,400.", badge: "✓ SAP S/4HANA PO Executed • 100% BATNA Yield" }
-          ],
-          chips: [
-            "We accept $16.50/unit if MOQ is increased to 15,000 units.",
-            "Cannot discount unit price, but we will waive expedited air freight ($4,200 value).",
-            "Firm on $17.00. Raw titanium spot market costs increased 8% this week."
-          ]
-        },
-        delay_expedite: {
-          title: "Logistics Disruption & Expedite",
-          po: "PO-2026-88102-L",
-          vendorName: "Rotterdam Marine Logistics BV",
-          vendorAvatar: "RM",
-          channel: "Channel: Maritime AIS / Direct EDI",
-          targetVal: "0 Days Production Halt",
-          batnaVal: "Emergency Air Freight Buffer",
-          progressPct: "92%",
-          spread: "Delay: 6 Days",
-          spend: "$412,000",
-          settled: "Split Freight Reroute",
-          discount: "$18,500 Saved in Downtime",
-          time: "1m 18s (Autonomous)",
-          erpDoc: "PO-2026-88102",
-          erpCategory: "High-Capacity EV Battery Modules",
-          erpSavings: "$18,500.00",
-          cognitive: [
-            { tag: "TELEMETRY", text: "AIS tracker flagged 6-day storm dwell at Port of Antwerp on Vessel MV-Neptune." },
-            { tag: "RUNWAY CHECK", text: "Factory inventory model calculates assembly line shutdown in 48 hours without cell buffer." },
-            { tag: "CARRIER BROKER", text: "Dispatched automated request to Frankfurt Air Freight cargo hub for 20% critical batch." },
-            { tag: "COMMERCIAL", text: "Negotiated 50/50 logistics surcharge split with maritime vendor under SLA Clause 19." },
-            { tag: "ERP SYNC", text: "Updated Goods Receipt expected arrival date in SAP Logistics SCM module." }
-          ],
-          dialogue: [
-            { sender: "ai", time: "09:02:11", text: "URGENT LOGISTICS NOTICE: Telemetry indicates container #MSKU-9941 on MV-Neptune is delayed 6 days at Antwerp. Plant #2 battery buffer expires in 48 hours. Pursuant to Master SLA Section 9.2 (Carrier Delay Mitigation), we require an immediate contingency plan.", badge: "Risk Alert: Level 4 Assembly Delay" },
-            { sender: "supplier", time: "09:02:44", text: "We confirm the Antwerp weather congestion. Standard vessel clearance is delayed until Friday. Alternative overland trucking is fully booked across Belgium." },
-            { sender: "ai", time: "09:03:02", text: "We have pre-reserved air cargo capacity for a 2,000-unit critical bridge lot departing Brussels to Chicago tonight. We propose splitting the $8,400 expedited air surcharge 50/50, with remainder shipping sea freight. Can your dispatch team hand off pallets to DHL Cargo by 14:00 CET?", badge: "Logistics Optimization Solver Triggered" },
-            { sender: "supplier", time: "09:03:28", text: "Agreed. 50/50 air surcharge split approved ($4,200/party). Pallets are tagged and transferring to Brussels cargo terminal right now. Line stoppage avoided." }
-          ],
-          chips: [
-            "We agree to 50/50 air split; dispatching pallets now.",
-            "Can we reroute via truck to Hamburg instead of air cargo?",
-            "Air freight carrier confirmed. ETA Chicago tomorrow 08:00."
-          ]
-        },
-        invoice_dispute: {
-          title: "3-Way Match Invoice Discrepancy",
-          po: "INV-2026-8819",
-          vendorName: "Bavaria Mechatronics GmbH",
-          vendorAvatar: "BM",
-          channel: "Channel: Coupa Invoicing / EDI 810",
-          targetVal: "$38,000 Net Approved",
-          batnaVal: "Disallowed $4,500 Overcharge",
-          progressPct: "100%",
-          spread: "Variance: +$4,500.00",
-          spend: "$42,500",
-          settled: "$38,000.00 Payable",
-          discount: "$4,500 Cash Leakage Stopped",
-          time: "48s (Autonomous)",
-          erpDoc: "INV-2026-8819 / DM-7712",
-          erpCategory: "Industrial Sensor Controllers",
-          erpSavings: "$4,500.00",
-          cognitive: [
-            { tag: "OCR PARSE", text: "Invoice #INV-8819 ingested: Billed $42,500.00 for 1,000 units ($42.50/unit)." },
-            { tag: "PO MATCH", text: "Queried SAP PO-4500912: Agreed contract rate is $38.00/unit ($38,000.00 total)." },
-            { tag: "GR VERIFY", text: "Warehouse GR-9812 confirmed 1,000 units received in good order." },
-            { tag: "DISCREPANCY", text: "Identified unapproved +$4.50/unit price increase without 60-day contractual notice." },
-            { tag: "DEBIT MEMO", text: "Generated Debit Memo DM-7712 for $4,500. Approved net $38,000 for Net-30 payment." }
-          ],
-          dialogue: [
-            { sender: "supplier", time: "11:20:05", text: "Invoice #INV-2026-8819 ($42,500.00) was submitted for PO-4500912. Our AP records show it is pending past due status. Please expedite disbursement." },
-            { sender: "ai", time: "11:20:12", text: "Dear Bavaria Mechatronics AP Desk, our automated 3-way match audit completed. Goods Receipt GR-9812 confirms receipt of 1,000 units. However, the invoice bills at $42.50/unit ($42,500 total) whereas Contract PO-4500912 specifies $38.00/unit ($38,000 total). Per MSA Section 14.3, price revisions require 60-day written notice. We have issued Debit Memo #DM-7712 for the $4,500 delta and approved the net $38,000.00 for immediate Net-30 electronic remittance.", badge: "Debit Memo DM-7712 Generated ($4,500)" },
-            { sender: "supplier", time: "11:20:39", text: "Thank you for the detailed reconciliation. Our billing software applied standard catalog pricing instead of your contracted tier rate. We accept Debit Memo #DM-7712. Please process the $38,000.00 net payment." },
-            { sender: "ai", time: "11:20:44", text: "Payment of $38,000.00 has been scheduled in SAP S/4HANA for disbursement on Friday, October 2nd. Dispute resolved and audit logged.", badge: "✓ SAP AP Ledger Reconciled" }
-          ],
-          chips: [
-            "Accept $4,500 Debit Memo and release $38,000.",
-            "Can we apply the $4,500 variance as a credit on next month's PO?",
-            "Re-issue corrected invoice #INV-8819-R1 for $38,000."
-          ]
-        },
-        esg_risk: {
-          title: "Tier-2 ESG & Geopolitical Risk",
-          po: "PO-2026-77314-E",
-          vendorName: "Kyoto Advanced Polymers Corp",
-          vendorAvatar: "KP",
-          channel: "Channel: Global Sanctions & ESG API",
-          targetVal: "100% Supply Chain Compliance",
-          batnaVal: "Secondary Domestic Supplier",
-          progressPct: "85%",
-          spread: "Audit Gap: 1 Factory",
-          spend: "$680,000",
-          settled: "Audit Remediated",
-          discount: "Zero Regulatory Fines",
-          time: "2m 04s (Autonomous)",
-          erpDoc: "PO-2026-77314",
-          erpCategory: "Medical Grade Fluoro-Polymers",
-          erpSavings: "Full Compliance",
-          cognitive: [
-            { tag: "MONITOR", text: "Automated scan of Tier-2 precursor suppliers flagged uncertified facility in sub-tier chain." },
-            { tag: "EU CSDDD CHECK", text: "Evaluated liability under EU Corporate Sustainability Due Diligence Directive." },
-            { tag: "ENGAGEMENT", text: "Autonomously engaged Kyoto Polymers VP of Compliance requesting ISO 14001 certification." },
-            { tag: "VALIDATION", text: "Verified audited third-party environmental inspection report within 120 minutes." },
-            { tag: "LEGAL CLEAR", text: "Cleared compliance flag on PO-77314; updated supplier trust tier to Verified." }
-          ],
-          dialogue: [
-            { sender: "ai", time: "14:10:02", text: "Notice of Tier-2 Compliance Verification: Routine ESG screening flagged missing environmental certification for chemical precursor lot #CH-882 in PO-77314. To comply with EU CSDDD standards, please provide the ISO 14001 certification or third-party audit for the subcontracted synthesis facility.", badge: "ESG Compliance Guardrail Triggered" },
-            { sender: "supplier", time: "14:10:45", text: "We have the updated Bureau Veritas ISO 14001 certificate on file for that facility (Audit completed August 2026). Uploading encrypted PDF certificate to your vendor verification portal now." },
-            { sender: "ai", time: "14:10:58", text: "Certificate received and cryptographically verified against Bureau Veritas public registry (Cert #BV-JP-99412). Compliance score updated to AAA. Hold on Purchase Order #PO-77314 has been released.", badge: "✓ Regulatory Clearance Granted" }
-          ],
-          chips: [
-            "Certificate verified against Bureau Veritas registry.",
-            "Can we obtain the carbon footprint assessment for this lot?",
-            "Confirm compliance release on PO-77314."
-          ]
-        },
-        custom_roleplay: {
-          title: "Interactive Counter-Offer Sandbox",
-          po: "PO-CUSTOM-SANDBOX",
-          vendorName: "You (Acting as Supplier / Buyer)",
-          vendorAvatar: "ME",
-          channel: "Channel: Real-Time Interactive Console",
-          targetVal: "Flexible BATNA Solver",
-          batnaVal: "Dynamic AI Responses",
-          progressPct: "50%",
-          spread: "Live Session Active",
-          spend: "$150,000",
-          settled: "Awaiting Your Input",
-          discount: "Negotiating Live",
-          time: "Live Session",
-          erpDoc: "PO-CUSTOM-001",
-          erpCategory: "Custom Procurement Sandbox",
-          erpSavings: "Interactive",
-          cognitive: [
-            { tag: "SESSION", text: "Interactive sandbox initialized. Type custom counter-offers below to test agent intelligence." },
-            { tag: "READY", text: "Agent stands ready to trade payment terms, MOQs, freight concessions, and warranty periods." }
-          ],
-          dialogue: [
-            { sender: "ai", time: "Live", text: "Welcome to the interactive sandbox! I am NexusProcure Agent #042. You can test my bargaining behavior by typing any proposal or counter-offer below (e.g. asking for higher prices, trading payment terms, or proposing volume discounts). How would you like to begin?", badge: "Interactive Sandbox Live" }
-          ],
-          chips: [
-            "We can accept $15.80 if payment is made in 7 days.",
-            "Raw material prices spiked 15%. We must increase quote by $2.00.",
-            "Can you double the order quantity if we drop price by 8%?"
-          ]
-        }
-      };
-
-      let activeScenarioKey = 'rfq_negotiation';
-      let isTyping = false;
-
-      const streamEl = document.getElementById('chat-messages-stream');
-      const cogStreamEl = document.getElementById('cognitive-stream');
-      const typingEl = document.getElementById('sim-typing-indicator');
-      const inputEl = document.getElementById('user-counter-input');
-      const sendBtn = document.getElementById('btn-send-counter');
-      const restartBtn = document.getElementById('sim-restart-btn');
-      const scenarioBadge = document.getElementById('sim-scenario-badge');
-      const statusText = document.getElementById('console-status-text');
-
-      function loadScenario(key) {
-        activeScenarioKey = key;
-        const sc = scenarios[key];
-        if (!sc) return;
-
-        scenarioBadge.textContent = sc.title;
-        statusText.textContent = `Autonomous Thread Active: ${sc.po}`;
-        document.getElementById('sim-supplier-name').textContent = sc.vendorName;
-        document.getElementById('sim-supplier-avatar').textContent = sc.vendorAvatar;
-        document.getElementById('sim-supplier-channel').textContent = sc.channel;
-        document.getElementById('cog-target-val').textContent = sc.targetVal;
-        document.getElementById('cog-batna-val').textContent = sc.batnaVal;
-        document.getElementById('cog-progress-fill').style.width = sc.progressPct;
-        document.getElementById('cog-spread-label').textContent = sc.spread;
-        document.getElementById('metric-spend').textContent = sc.spend;
-        document.getElementById('metric-settled').textContent = sc.settled;
-        document.getElementById('metric-discount').textContent = sc.discount;
-        document.getElementById('metric-time').textContent = sc.time;
-
-        const erpDetails = document.getElementById('erp-sync-details');
-        if (erpDetails) {
-          erpDetails.innerHTML = `
-            <div>Document: <strong>${sc.erpDoc}</strong></div>
-            <div>Vendor: <strong>${sc.vendorName}</strong></div>
-            <div>Category: <strong>${sc.erpCategory}</strong></div>
-            <div>Impact: <strong class="text-gradient-cyan">${sc.erpSavings}</strong></div>
-          `;
-        }
-
-        // Render Quick Chips
-        const chipsContainer = document.querySelector('.quick-chips');
-        if (chipsContainer && sc.chips) {
-          chipsContainer.innerHTML = `<span class="quick-chip-label">Quick Suggestions:</span>` +
-            sc.chips.map(c => `<button class="chip-btn" data-text="${c}">${c}</button>`).join('');
-          
-          chipsContainer.querySelectorAll('.chip-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-              inputEl.value = btn.dataset.text;
-              sendCounter();
-            });
-          });
-        }
-
-        // Render Cognitive stream
-        cogStreamEl.innerHTML = '';
-        sc.cognitive.forEach((item, i) => {
-          setTimeout(() => {
-            const stepEl = document.createElement('div');
-            stepEl.className = 'cognitive-step';
-            stepEl.innerHTML = `
-              <span class="cog-step-tag">[${item.tag}]</span>
-              <span class="cog-step-text">${item.text}</span>
-            `;
-            cogStreamEl.appendChild(stepEl);
-            cogStreamEl.scrollTop = cogStreamEl.scrollHeight;
-          }, i * 200);
-        });
-
-        // Render Dialogue with realistic typewriter timing
-        streamEl.innerHTML = '';
-        playDialogue(sc.dialogue);
-      }
-
-      function playDialogue(dialogueList) {
-        let delay = 300;
-        dialogueList.forEach((msg, idx) => {
-          setTimeout(() => {
-            // show typing
-            typingEl.style.display = 'flex';
-            document.getElementById('typing-actor-label').textContent = 
-              msg.sender === 'ai' ? 'NexusProcure AI is formulating response...' : 'Supplier is responding...';
-
-            setTimeout(() => {
-              typingEl.style.display = 'none';
-              const msgEl = document.createElement('div');
-              msgEl.className = `sim-msg ${msg.sender === 'ai' ? 'ai' : 'user'}`;
-              
-              let badgeHtml = msg.badge ? `<div class="msg-erp-badge">${msg.badge}</div>` : '';
-              msgEl.innerHTML = `
-                <div class="msg-bubble">${msg.text.replace(/\n/g, '<br>')}</div>
-                ${badgeHtml}
-                <div class="msg-meta">${msg.sender === 'ai' ? 'NexusProcure Agent #042' : scenarios[activeScenarioKey].vendorName} • ${msg.time}</div>
-              `;
-              streamEl.appendChild(msgEl);
-              streamEl.scrollTop = streamEl.scrollHeight;
-            }, 600);
-          }, delay);
-          delay += 1400;
-        });
-      }
-
-      // Conversation history for Gemini multi-turn context
-      let geminiConversationHistory = [];
-
-      function sendCounter() {
-        const text = inputEl.value.trim();
-        if (!text) return;
-
-        // Add user msg to DOM
-        const userEl = document.createElement('div');
-        userEl.className = 'sim-msg user';
-        userEl.innerHTML = `
-          <div class="msg-bubble">${text}</div>
-          <div class="msg-meta">You (Supplier / Buyer Offer) • Just now</div>
-        `;
-        streamEl.appendChild(userEl);
-        streamEl.scrollTop = streamEl.scrollHeight;
-        inputEl.value = '';
-
-        // Track in conversation history
-        geminiConversationHistory.push({ sender: 'user', text: text });
-
-        // Add cognitive trace
-        const cogStep = document.createElement('div');
-        cogStep.className = 'cognitive-step';
-        cogStep.innerHTML = `<span class="cog-step-tag">[COUNTER-ANALYSIS]</span> <span class="cog-step-text">Evaluating user counter-proposal against BATNA curve and policy boundaries...</span>`;
-        cogStreamEl.appendChild(cogStep);
-        cogStreamEl.scrollTop = cogStreamEl.scrollHeight;
-
-        // Show typing
-        typingEl.style.display = 'flex';
-        sendBtn.disabled = true;
-
-        // ── Gemini API Path ──────────────────────────────────────
-        if (window.geminiService && window.geminiService.isConfigured()) {
-          document.getElementById('typing-actor-label').textContent = '✦ Gemini AI generating autonomous response...';
-
-          const sc = scenarios[activeScenarioKey];
-          window.geminiService.generateNegotiationReply({
-            scenarioTitle: sc.title,
-            poNumber: sc.po,
-            vendorName: sc.vendorName,
-            targetPrice: sc.targetVal,
-            batnaPrice: sc.batnaVal,
-            userOffer: text,
-            conversationHistory: geminiConversationHistory
-          }).then(result => {
-            typingEl.style.display = 'none';
-            sendBtn.disabled = false;
-
-            // Add cognitive trace from Gemini
-            const cogGemini = document.createElement('div');
-            cogGemini.className = 'cognitive-step';
-            cogGemini.innerHTML = `<span class="cog-step-tag" style="color:var(--purple-400)">[GEMINI-REASONING]</span> <span class="cog-step-text">${result.cognitiveStep}</span>`;
-            cogStreamEl.appendChild(cogGemini);
-            cogStreamEl.scrollTop = cogStreamEl.scrollHeight;
-
-            // Render AI reply
-            const aiEl = document.createElement('div');
-            aiEl.className = 'sim-msg ai';
-            aiEl.innerHTML = `
-              <div class="msg-bubble">${result.responseText}</div>
-              <div class="msg-erp-badge">${result.erpBadge}</div>
-              <div class="msg-meta">NexusProcure Agent #042 • <span class="ai-mode-pill gemini">✦ Gemini Live</span></div>
-            `;
-            streamEl.appendChild(aiEl);
-            streamEl.scrollTop = streamEl.scrollHeight;
-
-            // Track AI response
-            geminiConversationHistory.push({ sender: 'ai', text: result.responseText });
-
-            // Update ERP badge
-            const erpFooterBadge = document.getElementById('metric-erp-badge');
-            if (erpFooterBadge) erpFooterBadge.textContent = result.erpBadge;
-            const erpSyncBadge = document.getElementById('erp-sync-status');
-            if (erpSyncBadge) erpSyncBadge.textContent = 'LIVE SYNC';
-
-          }).catch(err => {
-            typingEl.style.display = 'none';
-            sendBtn.disabled = false;
-            console.error('Gemini API error, falling back to scripted:', err);
-            sendCounterScripted(text);
-          });
-
-        } else {
-          // ── Scripted Fallback Path ─────────────────────────────
-          document.getElementById('typing-actor-label').textContent = 'NexusProcure AI calculating Nash equilibrium...';
-          sendCounterScripted(text);
-        }
-      }
-
-      function sendCounterScripted(text) {
-        setTimeout(() => {
-          typingEl.style.display = 'none';
-          sendBtn.disabled = false;
-          const aiEl = document.createElement('div');
-          aiEl.className = 'sim-msg ai';
-
-          let reply = "Thank you for the proposal. We evaluated your counter-offer against our volume runway. We can accept this structure provided delivery is guaranteed within 14 business days under standard SLA terms.";
-          let badge = "✓ Counter-Offer Accepted • Staged for ERP Commit";
-
-          if (text.toLowerCase().includes('spike') || text.toLowerCase().includes('increase') || text.toLowerCase().includes('firm')) {
-            reply = "We acknowledge the raw material index volatility you noted. However, our contractual framework limits price adjustments to verified index movements. We can agree to a temporary indexed surcharge of 3.4% rather than a permanent base price revision. Can you confirm this compromise?";
-            badge = "Indexed Surcharge Compromise Applied";
-          } else if (text.toLowerCase().includes('double') || text.toLowerCase().includes('volume')) {
-            reply = "Doubling the volume allocation allows us to unlock our maximum tier discount. We confirm a 8.5% price concession across the expanded 20,000-unit lot. Purchase Order revision has been queued for immediate authorization.";
-            badge = "Volume Tier Unlocked • $41,200 Savings Captured";
-          }
-
-          aiEl.innerHTML = `
-            <div class="msg-bubble">${reply}</div>
-            <div class="msg-erp-badge">${badge}</div>
-            <div class="msg-meta">NexusProcure Agent #042 • <span class="ai-mode-pill scripted">Scripted</span></div>
-          `;
-          streamEl.appendChild(aiEl);
-          streamEl.scrollTop = streamEl.scrollHeight;
-
-          geminiConversationHistory.push({ sender: 'ai', text: reply });
-
-          // Update ERP badge in footer
-          const erpFooterBadge = document.getElementById('metric-erp-badge');
-          if (erpFooterBadge) {
-            erpFooterBadge.textContent = "✓ ERP Synchronized";
-          }
-        }, 1100);
-      }
-
-      sendBtn.addEventListener('click', sendCounter);
-      inputEl.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendCounter();
-      });
-
-      if (restartBtn) {
-        restartBtn.addEventListener('click', () => {
-          loadScenario(activeScenarioKey);
-        });
-      }
-
-      // Filter tabs in header
-      const tabs = document.querySelectorAll('#scenario-tabs .filter-tab-btn');
-      tabs.forEach(btn => {
-        btn.addEventListener('click', () => {
-          tabs.forEach(t => t.classList.remove('active'));
-          btn.classList.add('active');
-          loadScenario(btn.dataset.scenario);
-        });
-      });
-
-      // Export JSON log
-      const exportBtn = document.getElementById('btn-export-log');
-      if (exportBtn) {
-        exportBtn.addEventListener('click', () => {
-          const sc = scenarios[activeScenarioKey];
-          const exportData = {
-            exportTimestamp: new Date().toISOString(),
-            scenario: sc.title,
-            poReference: sc.po,
-            vendor: sc.vendorName,
-            settlement: sc.settled,
-            savings: sc.discount,
-            auditHash: "sha256:" + Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2),
-            cognitiveTrace: sc.cognitive,
-            fullTranscript: sc.dialogue
-          };
-          const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `nexusprocure-${sc.po}-${Date.now()}.json`;
-          a.click();
-          URL.revokeObjectURL(url);
-        });
-      }
-
-      // Sound toggle
-      const soundBtn = document.getElementById('btn-sound-toggle');
-      let soundOn = true;
-      if (soundBtn) {
-        soundBtn.addEventListener('click', () => {
-          soundOn = !soundOn;
-          soundBtn.textContent = soundOn ? '🔊 Audio: ON' : '🔇 Audio: OFF';
-        });
-      }
-
-      // Initial scenario load
-      loadScenario('rfq_negotiation');
-    });
-  </script>
-
-  <!-- Gemini AI Integration -->
-  <script src="js/gemini-service.js"></script>
-  <script src="js/gemini-ui.js"></script>
+ <!-- Navigation -->
+ <nav class="site-nav" id="site-nav">
+ <div class="container nav-content">
+ <a href="index.html" class="nav-brand">
+ <div class="brand-icon-wrapper">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+ </svg>
+ </div>
+ <span>NexusProcure AI</span>
+ </a>
+
+ <ul class="nav-links">
+ <li><a href="index.html" class="nav-link">Home</a></li>
+ <li><a href="simulator.html" class="nav-link active-page">Negotiation Simulator <span class="nav-badge-live">Live</span></a></li>
+ <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
+ <li><a href="calculator.html" class="nav-link">Savings Calculator</a></li>
+ </ul>
+
+ <div class="nav-right">
+ <div class="status-pill">
+ <span class="radar-dot"></span>
+ <span>Groq AI Active</span>
+ </div>
+ <a href="portal.html" class="btn btn-secondary btn-sm">
+ <span>Supplier Portal</span>
+ </a>
+ </div>
+ </div>
+ </nav>
+
+ <!-- Page Hero -->
+ <header class="page-hero">
+ <div class="container page-hero-inner">
+ <div class="page-badge">
+ <span>Interactive AI Negotiation Console</span>
+ </div>
+ <h1 class="page-hero-title">
+ Live Supplier Negotiation Simulator
+ </h1>
+ <p class="page-hero-subtitle">
+ Pick a scenario below or type your own counter-offer. Watch how NexusProcure AI negotiates lower prices and favorable terms in real time.
+ </p>
+
+ <!-- Scenario Switcher Pills -->
+ <div class="filter-tabs" id="scenario-tabs">
+ <button class="filter-tab-btn active" data-scenario="rfq">
+ Scenario 1: Microchips Price Discount
+ </button>
+ <button class="filter-tab-btn" data-scenario="delay">
+ Scenario 2: Shipping Delay & Air Freight
+ </button>
+ <button class="filter-tab-btn" data-scenario="volume">
+ Scenario 3: Bulk Order Volume Discount
+ </button>
+ </div>
+ </div>
+ </header>
+
+ <!-- Simulator Main Console -->
+ <main class="subpage-section" style="padding-top: 0;">
+ <div class="container">
+ <div class="simulator-wrapper">
+ 
+ <!-- Header -->
+ <div class="sim-header">
+ <div class="sim-header-left">
+ <div class="sim-status-indicator">
+ <span class="pulse-dot"></span>
+ <span id="sim-title-header">PO #94022: Microcontroller RFQ Negotiation</span>
+ </div>
+ <div class="sim-badge" id="sim-engine-badge">Engine: Groq AI (Active)</div>
+ </div>
+ <div class="sim-header-right">
+ <button class="btn btn-secondary btn-sm" id="btn-replay">
+ ↺ Restart Scenario
+ </button>
+ </div>
+ </div>
+
+ <!-- Body Grid -->
+ <div class="sim-body-grid">
+ 
+ <!-- Left Column: Deal Target & Strategy Summary -->
+ <div class="sim-sidebar">
+ <div>
+ <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px;">
+ Deal Summary
+ </div>
+ <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 4px;" id="side-item-title">10,000 Microcontrollers (MCU-902)</h3>
+ <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;" id="side-vendor-name">Supplier: Apex Micro-Electronics GmbH</p>
+ </div>
+
+ <!-- Price Comparison Card -->
+ <div style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-sm); padding: 14px;">
+ <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem;">
+ <span style="color: var(--text-muted);">Supplier's Initial Quote:</span>
+ <strong style="color: #ef4444;" id="side-initial-quote">$68.50 / unit</strong>
+ </div>
+ <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem;">
+ <span style="color: var(--text-muted);">Our Target Budget:</span>
+ <strong style="color: #60a5fa;" id="side-target-budget">$54.00 / unit</strong>
+ </div>
+ <div style="display: flex; justify-content: space-between; font-size: 0.85rem; border-top: 1px solid var(--border-subtle); padding-top: 8px;">
+ <span style="color: var(--text-muted);">Current Negotiated:</span>
+ <strong style="color: #10b981;" id="side-current-price">$54.80 / unit</strong>
+ </div>
+ </div>
+
+ <!-- Total Savings -->
+ <div style="background: #064e3b; border: 1px solid #059669; border-radius: var(--radius-sm); padding: 14px; text-align: center;">
+ <div style="font-size: 0.75rem; text-transform: uppercase; color: #6ee7b7; font-weight: 700;">
+ Negotiated Cost Savings
+ </div>
+ <div style="font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-top: 2px;" id="side-savings-total">
+ $137,000 Saved
+ </div>
+ </div>
+
+ <!-- Quick Counter Options -->
+ <div>
+ <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; margin-bottom: 10px;">
+ Quick Response Suggestions
+ </div>
+ <div style="display: flex; flex-direction: column; gap: 8px;" id="quick-replies-list">
+ <button class="btn btn-secondary btn-sm" style="text-align: left; justify-content: flex-start;" data-reply="We can offer 2% 10 Net 30 payment terms if you meet our $54.20 price target.">
+ Offer 10-day payment for $54.20
+ </button>
+ <button class="btn btn-secondary btn-sm" style="text-align: left; justify-content: flex-start;" data-reply="If we increase the order commitment to 25,000 units across Q3/Q4, can you meet $54.00?">
+ Offer 25,000 unit volume commitment
+ </button>
+ <button class="btn btn-secondary btn-sm" style="text-align: left; justify-content: flex-start;" data-reply="We accept $54.80/unit. Please proceed with PO execution.">
+ Accept $54.80 compromise and close deal
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- Right Column: Conversation Stream -->
+ <div class="sim-main-view">
+ 
+ <!-- Message Scroll Area -->
+ <div class="chat-messages-container" id="chat-messages-container">
+ <!-- Dynamically populated -->
+ </div>
+
+ <!-- Plain English AI Reasoning Box -->
+ <div class="sim-cognitive-panel">
+ <div class="cognitive-header">
+ <span>AI Strategy & Tactic (Explained in Plain English)</span>
+ <span id="cog-status-pill" style="color: #10b981;">Active Reasoning</span>
+ </div>
+ <div class="cognitive-step" id="sim-cognitive-text">
+ <strong>Current Tactic:</strong> The AI offered accelerated payment terms (Net-15) and consolidated annual volume to convince the supplier to lower their price from $68.50 to $54.80.
+ </div>
+ </div>
+
+ <!-- Message Input Area -->
+ <div class="sim-input-box">
+ <input type="text" id="sim-user-input" class="form-control" style="flex: 1;" placeholder="Type your own counter-offer or question (e.g. 'Can we do $53.50 if we pay upfront?')...">
+ <button class="btn btn-primary" id="sim-btn-send">
+ <span>Send to AI</span>
+ </button>
+ </div>
+
+ </div>
+
+ </div>
+
+ </div>
+ </div>
+ </main>
+
+ <!-- Footer -->
+ <footer class="site-footer">
+ <div class="container">
+ <div class="footer-content">
+ <div>
+ <div style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-bottom: 6px;">NexusProcure AI</div>
+ <p style="font-size: 0.85rem; margin: 0;">Autonomous Supplier Negotiation Console</p>
+ </div>
+ <div style="display: flex; gap: 20px; font-size: 0.9rem;">
+ <a href="index.html">Home</a>
+ <a href="simulator.html">Simulator</a>
+ <a href="portal.html">Supplier Portal</a>
+ <a href="calculator.html">Savings Calculator</a>
+ </div>
+ </div>
+ <div class="footer-bottom">
+ <div>Flexi Credit CA-3 Project</div>
+ <div>Groq API Integration (openai/gpt-oss-120b)</div>
+ </div>
+ </div>
+ </footer>
+
+ <!-- Scripts -->
+ <script src="js/auth.js"></script>
+ <script src="js/gemini-service.js"></script>
+ <script src="js/gemini-ui.js"></script>
+ <script>
+ (function() {
+ 'use strict';
+
+ // Scenarios configuration
+ const SCENARIOS = {
+ rfq: {
+ title: "PO #94022: Microcontroller RFQ Negotiation",
+ item: "10,000 Microcontrollers (MCU-902)",
+ vendor: "Apex Micro-Electronics GmbH (VP Klaus Richter)",
+ initialQuote: "$68.50 / unit",
+ targetBudget: "$54.00 / unit",
+ currentPrice: "$54.80 / unit",
+ savings: "$137,000 Saved",
+ tactic: "Offered accelerated 10-day payment terms (Net-15) and consolidated annual volume to bridge the $13.70 gap toward target budget.",
+ messages: [
+ {
+ sender: 'vendor',
+ time: '10:14 AM',
+ text: "Hello Procurement Team. Following your RFQ #RFQ-2026-881 for 10,000 units of MCU-902x, our standard quote is $68.50/unit with 8 weeks lead time due to component allocations."
+ },
+ {
+ sender: 'ai',
+ time: '10:14 AM',
+ text: "Dear Klaus, thank you for the quote. We reviewed our annual demand forecast: we can commit to 25,000 units consolidated across Q3 and Q4. Based on current market benchmarks, our target price is $54.20/unit.\n\nTo support your working capital, we can offer accelerated 2% 10 Net 30 payment terms via ACH. Can Apex confirm allocation at $54.20?",
+ erpBadge: "Counter-Offer Staged: Net-15 Terms Offered"
+ },
+ {
+ sender: 'vendor',
+ time: '10:15 AM',
+ text: "Thank you for the consolidated volume guarantee. $54.20 is tight on our margins, but with the 25,000 unit commitment and 10-day payment terms, we can accept $54.80/unit with immediate production slot confirmation."
+ },
+ {
+ sender: 'ai',
+ time: '10:15 AM',
+ text: "We accept $54.80/unit for the 25,000 unit blanket order under 2% 10 Net 30 terms. Purchase Order #PO-94022 has been executed and sent to your vendor portal for electronic signature.",
+ erpBadge: "PO Executed • Total Savings: $137,000"
+ }
+ ],
+ quickReplies: [
+ "We can offer 2% 10 Net 30 payment terms if you meet our $54.20 price target.",
+ "If we increase the order commitment to 25,000 units across Q3/Q4, can you meet $54.00?",
+ "We accept $54.80/unit. Please proceed with PO execution."
+ ]
+ },
+
+ delay: {
+ title: "Critical Shipment Disruption & Cost Negotiation",
+ item: "3,000 Hydraulic Valves (Shipment PO-8492)",
+ vendor: "TransOcean Logistics (Marcus Vance)",
+ initialQuote: "11-Day Port Delay (No Air Split)",
+ targetBudget: "50/50 Air Freight Cost Share",
+ currentPrice: "400 Units Air Expedited",
+ savings: "$180,000 Avoidance",
+ tactic: "Invoked SLA contingency freight clause and negotiated a 50/50 cost split for 400 air-freighted units to prevent factory shutdown.",
+ messages: [
+ {
+ sender: 'vendor',
+ time: '08:42 AM',
+ text: "URGENT UPDATE: Vessel carrying Container #MSCU881029 (PO #8492, 3,000 hydraulic valves) has encountered congestion at Rotterdam. Berthing delayed by 11 days. Earliest discharge is Oct 14."
+ },
+ {
+ sender: 'ai',
+ time: '08:42 AM',
+ text: "Marcus, this shipment is critical to our Frankfurt assembly line. With an 11-day delay, our factory safety stock will be breached by Day 7.\n\nPer SLA Article 14.2 on contingency freight, we require 400 units to be de-consolidated and air-freighted immediately. We propose sharing the air freight cost 50/50. Can TransOcean arrange air pickup by tomorrow morning?",
+ erpBadge: "SLA Clause 14.2 Invoked • Air Split Proposed"
+ },
+ {
+ sender: 'vendor',
+ time: '08:43 AM',
+ text: "Understood the urgency. We have freight priority in Rotterdam. We can extract pallet #4 (400 units) today for a cargo flight tomorrow. 50/50 split agreed."
+ },
+ {
+ sender: 'ai',
+ time: '08:43 AM',
+ text: "Authorized. Airway bill #AWB-991204 has been generated in our system. Frankfurt intake team alerted for arrival Oct 4 at 11:00 CEST. Thank you Marcus for the swift turnaround.",
+ erpBadge: "Airway Bill Attached • Factory Stoppage Prevented"
+ }
+ ],
+ quickReplies: [
+ "Can we de-consolidate 500 units by air and split the freight differential 50/50?",
+ "What is the earliest air arrival date if we authorize pickup today?",
+ "Authorized. Please book the air cargo immediately."
+ ]
+ },
+
+ volume: {
+ title: "Annual Bulk Packaging Procurement",
+ item: "50,000 Custom Corrugated Boxes",
+ vendor: "EcoPack Containers Inc. (Sales Team)",
+ initialQuote: "$14.50 / unit ($725,000 total)",
+ targetBudget: "$11.00 / unit ($550,000 total)",
+ currentPrice: "$11.60 / unit ($580,000 total)",
+ savings: "$145,000 Saved",
+ tactic: "Offered a multi-year master agreement and standardized pallet dimensions in exchange for a 20% bulk discount.",
+ messages: [
+ {
+ sender: 'vendor',
+ time: '02:15 PM',
+ text: "Thank you for the annual packaging RFQ. For 50,000 corrugated boxes, our unit price is $14.50 due to rising pulp and paper board costs."
+ },
+ {
+ sender: 'ai',
+ time: '02:15 PM',
+ text: "Thank you for the quote. To help optimize production efficiency at your facility, we can standardize our dimensions across all 4 distribution centers and sign a 2-year Master Service Agreement. With these efficiencies, our target price is $11.00/unit. Can EcoPack meet us at $11.00?",
+ erpBadge: "2-Year Agreement Proposed • Standardized Specs"
+ },
+ {
+ sender: 'vendor',
+ time: '02:16 PM',
+ text: "The standardized dimensions across all 4 hubs will reduce our setup and die-cutting costs significantly. With the 2-year commitment, the lowest we can do is $11.60/unit."
+ },
+ {
+ sender: 'ai',
+ time: '02:16 PM',
+ text: "We accept $11.60/unit under the 2-year Master Agreement. Total annual savings will be $145,000. Master agreement draft #MSA-408 has been dispatched to your portal.",
+ erpBadge: "MSA-408 Finalized • $145,000 Annual Savings"
+ }
+ ],
+ quickReplies: [
+ "Can we standardize box sizes to lower your manufacturing setup costs?",
+ "Would a 2-year agreement help lower the price to $11.20?",
+ "We agree to $11.60. Please send the contract draft."
+ ]
+ }
+ };
+
+ let currentKey = 'rfq';
+ let conversationHistory = [];
+
+ const messagesContainer = document.getElementById('chat-messages-container');
+ const cogText = document.getElementById('sim-cognitive-text');
+ const userInput = document.getElementById('sim-user-input');
+ const sendBtn = document.getElementById('sim-btn-send');
+ const quickList = document.getElementById('quick-replies-list');
+ const tabs = document.querySelectorAll('.filter-tab-btn');
+
+ function renderScenario(key) {
+ currentKey = key;
+ const sc = SCENARIOS[key];
+ conversationHistory = [];
+
+ // Update headers and sidebar
+ document.getElementById('sim-title-header').textContent = sc.title;
+ document.getElementById('side-item-title').textContent = sc.item;
+ document.getElementById('side-vendor-name').textContent = sc.vendor;
+ document.getElementById('side-initial-quote').textContent = sc.initialQuote;
+ document.getElementById('side-target-budget').textContent = sc.targetBudget;
+ document.getElementById('side-current-price').textContent = sc.currentPrice;
+ document.getElementById('side-savings-total').textContent = sc.savings;
+ cogText.innerHTML = `<strong>Current Tactic:</strong> ${sc.tactic}`;
+
+ // Render Quick buttons
+ quickList.innerHTML = '';
+ sc.quickReplies.forEach(qr => {
+ const btn = document.createElement('button');
+ btn.className = 'btn btn-secondary btn-sm';
+ btn.style.textAlign = 'left';
+ btn.style.justifyContent = 'flex-start';
+ btn.textContent = ` ${qr}`;
+ btn.addEventListener('click', () => {
+ userInput.value = qr;
+ handleUserSend();
+ });
+ quickList.appendChild(btn);
+ });
+
+ // Render Messages
+ messagesContainer.innerHTML = '';
+ sc.messages.forEach(m => {
+ appendMessage(m);
+ });
+ }
+
+ function appendMessage(msg) {
+ conversationHistory.push(msg);
+
+ const el = document.createElement('div');
+ el.className = `sim-msg ${msg.sender === 'ai' ? 'ai' : 'vendor'}`;
+
+ const erp = msg.erpBadge ? `<div class="msg-erp-badge">${msg.erpBadge}</div>` : '';
+ const senderLabel = msg.sender === 'ai' ? 'NexusProcure AI' : 'Supplier Representative';
+
+ el.innerHTML = `
+ <div class="msg-bubble">
+ <div style="font-size:0.75rem;font-weight:700;color:${msg.sender === 'ai' ? '#60a5fa' : '#94a3b8'};margin-bottom:4px;">
+ ${senderLabel} • ${msg.time || 'Just now'}
+ </div>
+ <div>${msg.text.replace(/\n/g, '<br>')}</div>
+ ${erp}
+ </div>
+ `;
+ messagesContainer.appendChild(el);
+ messagesContainer.scrollTop = messagesContainer.scrollHeight;
+ }
+
+ async function handleUserSend() {
+ const text = userInput.value.trim();
+ if (!text) return;
+
+ userInput.value = '';
+
+ // Add user/supplier message
+ appendMessage({
+ sender: 'vendor',
+ time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+ text: text
+ });
+
+ // Show thinking in cog box
+ cogText.innerHTML = `<strong>AI Thinking:</strong> Evaluating counter-offer "${text.substring(0, 40)}..." against budget target and policy parameters using Groq LLM...`;
+ sendBtn.disabled = true;
+ sendBtn.textContent = ' Negotiating...';
+
+ try {
+ const sc = SCENARIOS[currentKey];
+ if (window.aiService && window.aiService.isConfigured()) {
+ const result = await window.aiService.generateNegotiationReply({
+ scenarioTitle: sc.title,
+ vendorName: sc.vendor,
+ targetPrice: sc.targetBudget,
+ batnaPrice: sc.initialQuote,
+ userOffer: text,
+ conversationHistory: conversationHistory
+ });
+
+ cogText.innerHTML = `<strong>AI Tactic (Groq):</strong> ${result.cognitiveStep}`;
+ appendMessage({
+ sender: 'ai',
+ time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+ text: result.responseText,
+ erpBadge: result.erpBadge || " Counter-Offer Active"
+ });
+ } else {
+ // Heuristic fallback
+ setTimeout(() => {
+ cogText.innerHTML = `<strong>AI Tactic:</strong> Balanced concession based on payment acceleration and order volume.`;
+ appendMessage({
+ sender: 'ai',
+ time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+ text: `Thank you for your proposal. Based on our target budget of ${sc.targetBudget}, we can proceed if we finalize payment terms on Net-15. Please confirm if this structure works for your operations.`,
+ erpBadge: " Counter-Offer Staged"
+ });
+ }, 800);
+ }
+ } catch (err) {
+ cogText.innerHTML = `<strong>Strategy:</strong> Formulating counter-offer to protect working capital.`;
+ appendMessage({
+ sender: 'ai',
+ time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+ text: `Thank you for the proposal. We can commit to this schedule provided our target price threshold of ${SCENARIOS[currentKey].targetBudget} is honored under 15-day payment terms.`,
+ erpBadge: " Counter-Offer Staged"
+ });
+ } finally {
+ sendBtn.disabled = false;
+ sendBtn.textContent = 'Send to AI';
+ }
+ }
+
+ // Event Listeners
+ sendBtn.addEventListener('click', handleUserSend);
+ userInput.addEventListener('keydown', (e) => {
+ if (e.key === 'Enter') handleUserSend();
+ });
+
+ document.getElementById('btn-replay').addEventListener('click', () => {
+ renderScenario(currentKey);
+ });
+
+ tabs.forEach(tab => {
+ tab.addEventListener('click', () => {
+ tabs.forEach(t => t.classList.remove('active'));
+ tab.classList.add('active');
+ renderScenario(tab.getAttribute('data-scenario'));
+ });
+ });
+
+ // Initial render
+ renderScenario('rfq');
+ })();
+ </script>
 </body>
 </html>

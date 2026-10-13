@@ -1,1038 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NexusProcure AI — Autonomous AI Agent for Global Supplier Communication & Negotiation</title>
-  <meta name="description" content="Empower your enterprise procurement with NexusProcure AI. Autonomous AI agents that negotiate RFQs, resolve delivery disruptions, audit invoice discrepancies, and coordinate suppliers 24/7 across 40+ languages.">
-  <meta name="keywords" content="AI procurement agent, autonomous supplier communication, RFQ negotiation AI, 3-way match automation, supply chain AI, SAP ERP integration, vendor portal AI">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="NexusProcure AI — Autonomous AI Agent for Supplier Communication">
-  <meta property="og:description" content="Negotiate RFQs, resolve logistics delays, and reconcile invoices 24/7 with autonomous enterprise AI agents.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/hero-visual.jpg">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2fe' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles/main.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>NexusProcure AI - Autonomous Supplier Negotiation & Procurement Assistant</title>
+ <meta name="description" content="AI that automatically reviews supplier quotes, negotiates better prices, and answers vendor questions 24/7.">
+ <link rel="stylesheet" href="styles/main.css">
+ <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
 </head>
 <body>
 
-  <!-- Ambient Glowing Background Elements -->
-  <div class="bg-ambient-orb ambient-orb-1"></div>
-  <div class="bg-ambient-orb ambient-orb-2"></div>
-  <div class="bg-ambient-orb ambient-orb-3"></div>
-  <div class="bg-grid-overlay"></div>
-
-  <!-- ==========================================================================
-       Navigation Bar
-       ========================================================================== -->
-  <nav class="site-nav" id="site-nav">
-    <div class="container nav-content">
-      <a href="index.html" class="nav-brand">
-        <div class="brand-icon-wrapper">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-        </div>
-        <span>Nexus<span class="text-gradient">Procure</span> AI</span>
-      </a>
-
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="nav-link active-page">Home</a></li>
-        <li><a href="simulator.html" class="nav-link has-badge">Live Simulator <span class="nav-badge-live">Live</span></a></li>
-        <li><a href="capabilities.html" class="nav-link">Capabilities</a></li>
-        <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
-        <li><a href="calculator.html" class="nav-link">ROI Calculator</a></li>
-        <li><a href="integrations.html" class="nav-link">Integrations</a></li>
-        <li><a href="security.html" class="nav-link">Security & Trust</a></li>
-      </ul>
-
-      <div class="nav-right">
-        <div class="status-pill">
-          <div class="radar-dot"></div>
-          <span>1,842 Active Agents</span>
-        </div>
-        <a href="demo.html" class="btn btn-primary btn-sm" id="nav-book-demo">
-          <span>Book Demo</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ==========================================================================
-       Hero Section
-       ========================================================================== -->
-  <header class="hero-section" id="hero">
-    <div class="container hero-content-grid">
-      <div class="hero-text-col">
-        <div class="hero-badge-pill">
-          <span class="badge-sparkle">✨</span>
-          <span>Next-Gen Enterprise Procurement Agent v3.4</span>
-        </div>
-
-        <h1 class="hero-title">
-          Autonomous AI Agent for <span class="text-gradient">Global Supplier</span> Communications
-        </h1>
-
-        <p class="hero-description">
-          Eliminate manual email chasing, tedious RFQ negotiations, and billing disputes. NexusProcure AI autonomously engages suppliers across Email, EDI, WhatsApp, and Portals — negotiating terms, resolving delays, and synchronizing with your ERP in real time.
-        </p>
-
-        <div class="hero-cta-group">
-          <a href="simulator.html" class="btn btn-primary" id="hero-btn-simulator">
-            <span>Test Live Agent Simulator</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-          </a>
-          <a href="calculator.html" class="btn btn-secondary" id="hero-btn-calc">
-            <span>Calculate ROI</span>
-          </a>
-          <a href="demo.html" class="btn btn-glow-purple" id="hero-btn-demo">
-            <span>Schedule Demo</span>
-          </a>
-        </div>
-
-        <div class="hero-kpis">
-          <div class="kpi-item">
-            <h4 class="stat-counter text-gradient-cyan" data-target="4.2" data-prefix="$" data-suffix="M+">$4.2M+</h4>
-            <p>Avg. Annual Direct Spend Savings</p>
-          </div>
-          <div class="kpi-item">
-            <h4 class="stat-counter text-gradient-purple" data-target="72" data-prefix="-" data-suffix="%">-72%</h4>
-            <p>PO & RFQ Cycle Time Reduction</p>
-          </div>
-          <div class="kpi-item">
-            <h4 class="stat-counter text-gradient-emerald" data-target="40" data-prefix="" data-suffix="+">40+</h4>
-            <p>Native Languages & Nuances Supported</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-media-wrapper">
-        <div class="hero-card-container">
-          <img src="assets/hero-visual.jpg" alt="Autonomous AI Supplier Communication Network visualization showing global factories, live logistics telemetry, and automated price negotiations" class="hero-image" id="hero-main-img">
-
-          <!-- Floating HUD Pills -->
-          <div class="hud-chip hud-top-right">
-            <div class="hud-icon-box emerald">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <div>
-              <div class="hud-text-sm">Autonomous Resolution</div>
-              <div class="hud-text-bold">$4.8M Saved This Qtr</div>
-            </div>
-          </div>
-
-          <div class="hud-chip hud-bottom-left">
-            <div class="hud-text-sm">Response Telemetry</div>
-            <div class="hud-text-bold">1.4s Avg • 99.4% Match</div>
-            <div style="font-size: 0.75rem; color: var(--emerald-400); margin-top: 4px;">● SAP S/4HANA Synced</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ==========================================================================
-       Enterprise Client Logos Bar
-       ========================================================================== -->
-  <section class="clients-bar">
-    <div class="container">
-      <p>Trusted by Global Procurement & Supply Chain Leaders</p>
-      <div class="logos-slider">
-        <div class="client-brand">⚡ SIEMENS SCM</div>
-        <div class="client-brand">🌐 MAERSK LOGISTICS</div>
-        <div class="client-brand">⚙️ BOSCH MOBILITY</div>
-        <div class="client-brand">📦 SCHNEIDER GLOBAL</div>
-        <div class="client-brand">🔬 PFIZER HEALTHCARE</div>
-        <div class="client-brand">🏭 FOXCONN TECH</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Interactive AI Agent Simulator (The Centerpiece)
-       ========================================================================== -->
-  <section class="simulator-section section-spacing" id="simulator">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Interactive Demo Engine</span>
-        <h2 class="section-title">Experience the AI Agent in Action</h2>
-        <p class="section-subtitle">
-          Observe how NexusProcure AI evaluates commercial terms, checks internal ERP policies, and conducts multi-turn supplier negotiations in real time. Switch scenarios or type your own counter-response!
-        </p>
-      </div>
-
-      <div class="simulator-wrapper">
-        <!-- Simulator Top Telemetry Bar -->
-        <div class="sim-topbar">
-          <div class="sim-topbar-left">
-            <div class="window-dots">
-              <div class="window-dot dot-red"></div>
-              <div class="window-dot dot-yellow"></div>
-              <div class="window-dot dot-green"></div>
-            </div>
-            <div class="sim-title-group">
-              <span style="font-weight: 700; font-size: 0.95rem;">Nexus Agent Console</span>
-              <span class="sim-badge">v3.4 Production Neural Node</span>
-            </div>
-          </div>
-
-          <div class="sim-topbar-right">
-            <div class="telemetry-item">
-              <span>ERP Sync:</span>
-              <span class="telemetry-val text-gradient-cyan">SAP S/4HANA Connected</span>
-            </div>
-            <div class="telemetry-item">
-              <span>Model Latency:</span>
-              <span class="telemetry-val">180ms</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Scenario Selector Tabs -->
-        <div class="scenario-selector" id="scenario-tabs">
-          <button class="scenario-tab active" data-scenario="rfq" id="tab-rfq">
-            <span class="scenario-icon">💰</span>
-            <span>1. Price & Volume RFQ</span>
-          </button>
-          <button class="scenario-tab" data-scenario="delay" id="tab-delay">
-            <span class="scenario-icon">🚢</span>
-            <span>2. Critical Delay Mitigation</span>
-          </button>
-          <button class="scenario-tab" data-scenario="discrepancy" id="tab-discrepancy">
-            <span class="scenario-icon">⚖️</span>
-            <span>3. 3-Way Match Dispute</span>
-          </button>
-          <button class="scenario-tab" data-scenario="multilingual" id="tab-multilingual">
-            <span class="scenario-icon">🌐</span>
-            <span>4. Cross-Border (Japanese)</span>
-          </button>
-        </div>
-
-        <!-- Simulator Viewport: Split Screen (Cognitive Thought Stream vs Live Chat) -->
-        <div class="sim-viewport">
-          
-          <!-- Left Pane: AI Cognitive Reasoning & Guardrails -->
-          <div class="sim-cognitive-pane">
-            <div class="pane-heading">
-              <h4>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2a10 10 0 1 0 10 10H12V2z"></path>
-                  <path d="M12 2a10 10 0 0 1 10 10h-10V2z"></path>
-                </svg>
-                <span>AI Cognitive Stream</span>
-              </h4>
-              <span class="nav-badge-live">Real-time</span>
-            </div>
-
-            <!-- Confidence Bar -->
-            <div class="confidence-meter-box">
-              <div class="confidence-header">
-                <span>Model Decision Confidence</span>
-                <span id="sim-confidence-val" style="color: var(--cyan-400); font-weight: 700;">98.4%</span>
-              </div>
-              <div class="confidence-bar">
-                <div class="confidence-progress" id="sim-confidence-progress"></div>
-              </div>
-            </div>
-
-            <!-- Scrollable Cognitive Thought Logs -->
-            <div class="cognitive-stream" id="sim-cognitive-stream">
-              <!-- Dynamically populated by agent-simulator.js -->
-            </div>
-
-            <!-- Autonomy Level Controller -->
-            <div class="autonomy-control-box">
-              <div class="autonomy-header">
-                <span>Autonomy Guardrail:</span>
-                <span class="autonomy-badge" id="autonomy-badge">Level 4: Full Autonomous Execution</span>
-              </div>
-              <input type="range" min="1" max="4" value="4" class="autonomy-slider" id="autonomy-slider">
-              <div class="autonomy-desc">
-                Adjusts agent authority: from human co-pilot approval to zero-touch autonomous contract binding.
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Pane: Live Supplier Communication Window -->
-          <div class="sim-chat-pane">
-            <!-- Channel Header -->
-            <div class="chat-channel-bar">
-              <div class="vendor-info">
-                <div class="vendor-avatar" id="sim-vendor-avatar">AM</div>
-                <div>
-                  <div class="vendor-name" id="sim-vendor-name">Apex Micro-Electronics GmbH</div>
-                  <div class="vendor-context" id="sim-vendor-context">Klaus Richter • Channel: Email / Coupa API</div>
-                </div>
-              </div>
-              <div class="channel-tag" id="sim-channel-tag">
-                <span>✉️</span>
-                <span>Email Thread</span>
-              </div>
-            </div>
-
-            <!-- Message Thread Scroll -->
-            <div class="chat-messages-scroll" id="sim-chat-messages">
-              <!-- Dynamically populated by agent-simulator.js -->
-            </div>
-
-            <!-- Typing indicator -->
-            <div class="typing-bubble" id="sim-typing-indicator">
-              <div class="typing-dot"></div>
-              <div class="typing-dot"></div>
-              <div class="typing-dot"></div>
-            </div>
-
-            <!-- Simulator Input Area -->
-            <div class="sim-chat-input-bar">
-              <div class="quick-prompts-bar" id="quick-prompts-bar">
-                <!-- Dynamically populated chips -->
-              </div>
-              <div class="input-form-wrapper">
-                <input 
-                  type="text" 
-                  class="sim-input-field" 
-                  id="sim-input-field" 
-                  placeholder="Type a supplier counter-offer (e.g. 'Can you offer Net 15 terms?', 'We agree to $54.50')..."
-                  autocomplete="off"
-                >
-                <button type="button" class="btn-send-sim" id="sim-send-btn">
-                  <span>Send</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       How It Works (Autonomous 4-Step Pipeline)
-       ========================================================================== -->
-  <section class="pipeline-section section-spacing" id="pipeline">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag purple">Engine Architecture</span>
-        <h2 class="section-title">How the Autonomous Agent Operates</h2>
-        <p class="section-subtitle">
-          Built on enterprise-grade LLM architectures, fine-tuned on multi-million commercial contracts, and anchored by deterministic policy guardrails.
-        </p>
-      </div>
-
-      <div class="pipeline-grid">
-        <div class="pipeline-card">
-          <div class="step-num-pill">01</div>
-          <h3>Omnichannel Ingestion</h3>
-          <p>
-            Ingests inbound inquiries, RFQ responses, and shipping notices across Email, EDI 850/810, WhatsApp Business, and Supplier Web Portals.
-          </p>
-          <div class="pipeline-meta-tag">OCR • PDF Extraction • EDI Parsing</div>
-        </div>
-
-        <div class="pipeline-card">
-          <div class="step-num-pill">02</div>
-          <h3>Contract & Policy Audit</h3>
-          <p>
-            Cross-references master service agreements (MSAs), historical spot pricing in SAP, spend authority matrices, and commodity indices in milliseconds.
-          </p>
-          <div class="pipeline-meta-tag">BATNA Matrix • Surcharge Caps • Tariffs</div>
-        </div>
-
-        <div class="pipeline-card">
-          <div class="step-num-pill">03</div>
-          <h3>Semantic Multi-Turn Negotiation</h3>
-          <p>
-            Formulates context-aware counter-offers, trade credit terms, volume commitments, and delivery schedules tailored to each vendor's cultural context.
-          </p>
-          <div class="pipeline-meta-tag">40+ Languages • Tone Calibration</div>
-        </div>
-
-        <div class="pipeline-card">
-          <div class="step-num-pill">04</div>
-          <h3>ERP Sync & Execution</h3>
-          <p>
-            Once consensus is reached, the agent writes directly to SAP, Coupa, or NetSuite, generating signed PO addendums and releasing payment holds.
-          </p>
-          <div class="pipeline-meta-tag">Automated PO Dispatch • 100% Audit Log</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Capabilities Bento Grid
-       ========================================================================== */
-  -->
-  <section class="capabilities-section section-spacing" id="capabilities">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Core Capabilities</span>
-        <h2 class="section-title">Engineered for High-Stakes Supply Chains</h2>
-        <p class="section-subtitle">
-          From micro-discrepancies in freight bills to million-dollar annual contract renewals, NexusProcure AI handles the full supplier communication lifecycle.
-        </p>
-      </div>
-
-      <div class="bento-grid">
-        <!-- Card 1: Autonomous Negotiation (Span 2) -->
-        <div class="bento-card col-span-2">
-          <div class="bento-icon-wrapper cyan">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-          </div>
-          <h3>Autonomous RFQ & Price Negotiation Engine</h3>
-          <p>
-            Replaces back-and-forth email games with algorithmic BATNA (Best Alternative to a Negotiated Agreement) optimization. Dynamically trades early payment discounts, volume packaging, and multi-quarter commitments to secure optimal margins.
-          </p>
-          <div class="visual-chip-list">
-            <span class="visual-chip">Dynamic Discount Optimization</span>
-            <span class="visual-chip">Multi-Tier Volume Commitments</span>
-            <span class="visual-chip">Spot-to-Contract Indexing</span>
-            <span class="visual-chip">Vendor Scorecard Calibration</span>
-          </div>
-        </div>
-
-        <!-- Card 2: 3-Way Match Dispute Shield -->
-        <div class="bento-card">
-          <div class="bento-icon-wrapper emerald">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-              <polyline points="10 9 9 9 8 9"></polyline>
-            </svg>
-          </div>
-          <h3>3-Way Match & Discrepancy Shield</h3>
-          <p>
-            Flags price crept lines, phantom freight surcharges, and quantity mismatches between PO, receiving dock slip, and invoice before payments leave your treasury.
-          </p>
-          <div class="mini-audit-box">
-            <div class="audit-row"><span>PO Unit Price:</span><span>$54.20</span></div>
-            <div class="audit-row"><span>Billed Price:</span><span class="audit-flag">$62.10 (+$7.90)</span></div>
-            <div class="audit-row"><span>Agent Resolution:</span><span class="audit-match">Credit Memo Issued ($15,800)</span></div>
-          </div>
-        </div>
-
-        <!-- Card 3: Proactive Delay Forecaster -->
-        <div class="bento-card">
-          <div class="bento-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 14 14"></polyline>
-            </svg>
-          </div>
-          <h3>Proactive Disruption Shield</h3>
-          <p>
-            Monitors real-time port telemetry, geopolitical trade bottlenecks, and AIS vessel tracking to predict shipment delays before suppliers even send an email.
-          </p>
-          <div class="visual-chip-list">
-            <span class="visual-chip">Port Congestion Alerts</span>
-            <span class="visual-chip">Automated Split-Shipment</span>
-            <span class="visual-chip">Buffer Stock Drawdown</span>
-          </div>
-        </div>
-
-        <!-- Card 4: Multi-Lingual Cultural Etiquette (Span 2) -->
-        <div class="bento-card col-span-2">
-          <div class="bento-icon-wrapper cyan">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-          </div>
-          <h3>Native Multi-Lingual & Cross-Cultural Negotiation</h3>
-          <p>
-            Communicate naturally with suppliers in Tokyo, Stuttgart, Shenzhen, or Querétaro. NexusProcure preserves deep cultural business etiquette (e.g. Japanese Keigo, German formal industrial protocols) while maintaining English telemetry in your ERP.
-          </p>
-          <div class="visual-chip-list">
-            <span class="visual-chip">40+ Languages Supported</span>
-            <span class="visual-chip">Dual-Language ERP Sync</span>
-            <span class="visual-chip">Culturally Nuanced Politeness</span>
-            <span class="visual-chip">Jurisdiction Contract Translation</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Dual Perspective Switcher: Buyer Dashboard vs Supplier Experience
-       ========================================================================== -->
-  <section class="perspective-section section-spacing" id="dual-experience">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag emerald">Unified Ecosystem</span>
-        <h2 class="section-title">Built for Buyers. Loved by Suppliers.</h2>
-        <p class="section-subtitle">
-          Most supplier portals suffer from 80% vendor abandonment because of complex logins and clunky software. See how NexusProcure delivers a zero-friction experience for both sides.
-        </p>
-      </div>
-
-      <div class="perspective-toggle-wrapper">
-        <button class="perspective-pill active" data-view="buyer" id="toggle-buyer-view">
-          💼 Buyer Operations Center
-        </button>
-        <button class="perspective-pill" data-view="supplier" id="toggle-supplier-view">
-          🚀 Zero-Friction Supplier Experience
-        </button>
-      </div>
-
-      <div class="perspective-display-frame">
-        <!-- View 1: Buyer Dashboard -->
-        <div class="perspective-view active" id="view-buyer">
-          <div class="dashboard-mockup-grid">
-            <div class="dash-sidebar">
-              <div class="dash-nav-item active">📊 Autonomous Cockpit</div>
-              <div class="dash-nav-item">💬 Active Negotiations (28)</div>
-              <div class="dash-nav-item">⚠️ Pending Human Approvals (2)</div>
-              <div class="dash-nav-item">📑 3-Way Match Audits</div>
-              <div class="dash-nav-item">⚙️ Agent Guardrail Config</div>
-            </div>
-
-            <div class="dash-main-pane">
-              <div class="dash-metric-cards">
-                <div class="dash-metric-box">
-                  <span>Direct Savings MTD</span>
-                  <h4 class="text-gradient-cyan">$842,900</h4>
-                  <div class="trend">↑ +14.2% vs target</div>
-                </div>
-                <div class="dash-metric-box">
-                  <span>Auto-Negotiated POs</span>
-                  <h4 class="text-gradient-purple">1,492</h4>
-                  <div class="trend">94.8% without human escalation</div>
-                </div>
-                <div class="dash-metric-box">
-                  <span>Disputes Resolved</span>
-                  <h4 class="text-gradient-emerald">184</h4>
-                  <div class="trend">Avg. resolution: 24 mins</div>
-                </div>
-              </div>
-
-              <div class="dash-table-box">
-                <div class="dash-table-header">
-                  <span>Live Autonomous Communications</span>
-                  <span class="nav-badge-live">Live ERP Feed</span>
-                </div>
-                <div class="dash-table-row">
-                  <div><strong>PO #84920</strong> • Apex Micro</div>
-                  <div>Price RFQ ($54.20/ea)</div>
-                  <div><span class="status-badge completed">Consensus Locked</span></div>
-                  <div style="font-family: var(--font-mono); color: var(--emerald-400);">+$42,100 Saved</div>
-                </div>
-                <div class="dash-table-row">
-                  <div><strong>PO #77102</strong> • TransOcean Freight</div>
-                  <div>Rotterdam Port Congestion</div>
-                  <div><span class="status-badge in-progress">Split-Air Transit</span></div>
-                  <div style="font-family: var(--font-mono); color: var(--cyan-400);">Buffer Intact</div>
-                </div>
-                <div class="dash-table-row">
-                  <div><strong>INV #9921</strong> • Krupp Bearings</div>
-                  <div>Alloy Surcharge S-Cap</div>
-                  <div><span class="status-badge completed">Credit Memo Issued</span></div>
-                  <div style="font-family: var(--font-mono); color: var(--emerald-400);">$10,342 Reclaimed</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- View 2: Supplier Experience -->
-        <div class="perspective-view" id="view-supplier">
-          <div class="supplier-portal-preview">
-            <div class="vendor-magic-banner">
-              <span>✨</span>
-              <span><strong>Zero Friction:</strong> No password required. Suppliers reply directly via Email, WhatsApp, or instant Magic-Link.</span>
-            </div>
-
-            <div class="portal-action-card">
-              <div class="portal-action-header">
-                <div>
-                  <h4 style="font-size: 1.05rem;">Request for Quotation #RFQ-2026-881</h4>
-                  <p style="font-size: 0.8rem; color: var(--text-muted);">From: Global Manufacturing Corp (via NexusProcure Agent)</p>
-                </div>
-                <span class="status-badge in-progress">Action Requested</span>
-              </div>
-              <p style="font-size: 0.88rem; margin-bottom: 14px; color: var(--text-main);">
-                "Hello Klaus. We can commit to 25,000 units across Q3/Q4 with 2% 10 Net 30 accelerated payment terms if target price of $54.20/unit is confirmed."
-              </p>
-              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <button class="btn btn-primary btn-sm">Accept & Generate PO</button>
-                <button class="btn btn-secondary btn-sm">Counter-Offer Terms</button>
-                <button class="btn btn-secondary btn-sm">Upload Spec Sheet</button>
-              </div>
-            </div>
-
-            <div class="portal-action-card" style="margin-bottom: 0;">
-              <div class="portal-action-header">
-                <div>
-                  <h4 style="font-size: 1.05rem;">Invoice 3-Way Match Reconciliation</h4>
-                  <p style="font-size: 0.8rem; color: var(--text-muted);">Invoice #INV-9821 vs PO-4401</p>
-                </div>
-                <span class="status-badge completed">Audited</span>
-              </div>
-              <p style="font-size: 0.84rem; color: var(--text-muted);">
-                "Discrepancy of $10,342 detected based on contracted MSA alloy cap. Upload credit memo here to release $132,458 disbursement within 24 hours."
-              </p>
-              <button class="btn btn-glow-purple btn-sm" style="margin-top: 10px;">Drop Credit Memo PDF</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Interactive ROI Calculator
-       ========================================================================== -->
-  <section class="roi-section section-spacing" id="calculator">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag purple">Business Value</span>
-        <h2 class="section-title">Calculate Your Procurement Savings</h2>
-        <p class="section-subtitle">
-          Estimate the direct spend savings, reclaimed buyer hours, and payback velocity when deploying NexusProcure AI across your supplier base.
-        </p>
-      </div>
-
-      <div class="roi-card-wrapper">
-        <!-- Sliders Pane -->
-        <div class="roi-inputs-pane">
-          <div class="slider-group">
-            <div class="slider-header">
-              <span class="slider-label">Annual Direct Procurement Spend</span>
-              <span class="slider-value-display" id="calc-spend-val">$50M</span>
-            </div>
-            <input type="range" min="10" max="500" step="5" value="50" class="styled-range" id="calc-spend">
-            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim);">
-              <span>$10M</span>
-              <span>$250M</span>
-              <span>$500M+</span>
-            </div>
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-header">
-              <span class="slider-label">Active Suppliers Managed</span>
-              <span class="slider-value-display" id="calc-suppliers-val">450 Vendors</span>
-            </div>
-            <input type="range" min="50" max="2500" step="25" value="450" class="styled-range" id="calc-suppliers">
-            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim);">
-              <span>50</span>
-              <span>1,250</span>
-              <span>2,500+</span>
-            </div>
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-header">
-              <span class="slider-label">Procurement & Sourcing FTEs</span>
-              <span class="slider-value-display" id="calc-team-val">15 FTEs</span>
-            </div>
-            <input type="range" min="3" max="100" step="1" value="15" class="styled-range" id="calc-team">
-            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim);">
-              <span>3</span>
-              <span>50</span>
-              <span>100 FTEs</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Calculated Results Pane -->
-        <div class="roi-results-pane">
-          <div class="savings-highlight">
-            <span class="savings-label">Estimated Annual Value Delivered</span>
-            <div class="savings-large-number" id="calc-out-savings">$2.36M / yr</div>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">
-              Calculated via autonomous BATNA negotiation concessions, surcharge leak prevention, and reclaimed administrative capacity.
-            </p>
-          </div>
-
-          <div class="results-metrics-grid">
-            <div class="result-metric-card">
-              <div class="result-metric-val" id="calc-out-hours">20,400 hrs</div>
-              <div class="result-metric-label">Buyer Hours Reclaimed / yr</div>
-            </div>
-            <div class="result-metric-card">
-              <div class="result-metric-val" id="calc-out-cycle">-74%</div>
-              <div class="result-metric-label">RFQ-to-PO Cycle Time</div>
-            </div>
-            <div class="result-metric-card">
-              <div class="result-metric-val" id="calc-out-payback">38 Days</div>
-              <div class="result-metric-label">Estimated Payback Period</div>
-            </div>
-            <div class="result-metric-card">
-              <div class="result-metric-val">100%</div>
-              <div class="result-metric-label">Audit-Proof Compliance</div>
-            </div>
-          </div>
-
-          <button class="btn btn-primary trigger-demo-modal" style="width: 100%;">
-            <span>Unlock Your Enterprise Business Case</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Integrations Ecosystem
-       ========================================================================== -->
-  <section class="integrations-section section-spacing" id="integrations">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Seamless Architecture</span>
-        <h2 class="section-title">Plugs Directly Into Your Existing Stack</h2>
-        <p class="section-subtitle">
-          No painful migrations. NexusProcure AI functions as an intelligent autonomous layer on top of your existing ERPs, communication tools, and EDI gateways.
-        </p>
-      </div>
-
-      <div class="integrations-grid">
-        <div class="integration-card">
-          <div class="integration-logo-badge">SAP</div>
-          <div class="integration-details">
-            <h4>SAP S/4HANA & ECC</h4>
-            <p>BAPI / OData two-way PO sync</p>
-          </div>
-        </div>
-
-        <div class="integration-card">
-          <div class="integration-logo-badge">COUPA</div>
-          <div class="integration-details">
-            <h4>Coupa Procurement</h4>
-            <p>Automated RFQ & 3-way match</p>
-          </div>
-        </div>
-
-        <div class="integration-card">
-          <div class="integration-logo-badge">ORCL</div>
-          <div class="integration-details">
-            <h4>Oracle Cloud SCM</h4>
-            <p>Real-time order line tracking</p>
-          </div>
-        </div>
-
-        <div class="integration-card">
-          <div class="integration-logo-badge">NET</div>
-          <div class="integration-details">
-            <h4>NetSuite ERP</h4>
-            <p>Vendor bill & item fulfillment</p>
-          </div>
-        </div>
-
-        <div class="integration-card">
-          <div class="integration-logo-badge">EDI</div>
-          <div class="integration-details">
-            <h4>EDI 850 / 810 / 855</h4>
-            <p>Automated ANSI X12 & EDIFACT</p>
-          </div>
-        </div>
-
-        <div class="integration-card">
-          <div class="integration-logo-badge">MAIL</div>
-          <div class="integration-details">
-            <h4>Gmail & MS Outlook</h4>
-            <p>Autonomous inbox agent handling</p>
-          </div>
-        </div>
-
-        <div class="integration-card">
-          <div class="integration-logo-badge">WA</div>
-          <div class="integration-details">
-            <h4>WhatsApp Business</h4>
-            <p>Mobile vendor messaging bot</p>
-          </div>
-        </div>
-
-        <div class="integration-card">
-          <div class="integration-logo-badge">SLACK</div>
-          <div class="integration-details">
-            <h4>Slack & MS Teams</h4>
-            <p>Human-in-the-loop escalation</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Customer Case Studies
-       ========================================================================== -->
-  <section class="cases-section section-spacing" id="case-studies">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag emerald">Proven Outcomes</span>
-        <h2 class="section-title">Trusted by Global Supply Chains</h2>
-        <p class="section-subtitle">
-          Real metrics from enterprise deployments handling thousands of supplier interactions daily.
-        </p>
-      </div>
-
-      <div class="case-studies-grid">
-        <div class="case-card">
-          <div>
-            <div class="case-sector-tag">Automotive Tier-1 Supplier</div>
-            <h3 class="case-headline">Saved $8.4M in Direct Raw Material Spend</h3>
-            <p class="case-quote">
-              "Our buyers used to drown in 4,000 weekly quotation emails. NexusProcure took over 78% of standard component RFQs autonomously, shaving 9 days off our procurement cycle while improving vendor satisfaction."
-            </p>
-          </div>
-          <div class="case-author">
-            <div class="author-avatar">DV</div>
-            <div class="author-info">
-              <h5>Dr. Viktor Lindqvist</h5>
-              <p>VP Global Sourcing, AutoDrive International</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-card">
-          <div>
-            <div class="case-sector-tag">Consumer Electronics Hardware</div>
-            <h3 class="case-headline">99.8% Zero-Touch Invoice Discrepancy Reconciliation</h3>
-            <p class="case-quote">
-              "We process over 18,000 supplier invoices monthly. NexusProcure caught over $3.2M in unauthorized surcharges and reconciled credit memos with suppliers in under 30 minutes without human intervention."
-            </p>
-          </div>
-          <div class="case-author">
-            <div class="author-avatar">MC</div>
-            <div class="author-info">
-              <h5>Mei-Ling Chen</h5>
-              <p>Head of Supply Operations, Lumina Devices</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-card">
-          <div>
-            <div class="case-sector-tag">Industrial Robotics</div>
-            <h3 class="case-headline">Eliminated Assembly Line Halts Across 4 Plants</h3>
-            <p class="case-quote">
-              "When Red Sea shipping disruptions hit, the agent renegotiated 120 critical component shipments, split air freight with logistics partners, and rerouted buffers before our plant managers noticed a risk."
-            </p>
-          </div>
-          <div class="case-author">
-            <div class="author-avatar">TB</div>
-            <div class="author-info">
-              <h5>Thomas Brauer</h5>
-              <p>Chief Supply Chain Officer, Kinetix Robotics</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Bottom CTA Banner
-       ========================================================================== -->
-  <section class="cta-banner-section section-spacing">
-    <div class="container">
-      <div class="cta-banner">
-        <h2>Ready to Automate Your Supplier Communications?</h2>
-        <p>
-          Deploy your first autonomous procurement agent in under 2 weeks. Connect your ERP sandbox and run parallel shadow negotiations today.
-        </p>
-        <div class="cta-actions">
-          <a href="demo.html" class="btn btn-primary">
-            <span>Schedule Enterprise Demo</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="simulator.html" class="btn btn-secondary">
-            <span>Launch Live Simulator</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Footer
-       ========================================================================== -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-brand">
-            <div class="brand-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <span>Nexus<span class="text-gradient">Procure</span> AI</span>
-          </a>
-          <p>
-            Autonomous intelligence platform for enterprise supplier communications, algorithmic negotiation, and continuous supply risk mitigation.
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h5>Platform</h5>
-          <ul class="footer-links">
-            <li><a href="simulator.html">Agent Simulator</a></li>
-            <li><a href="capabilities.html">Capabilities & Architecture</a></li>
-            <li><a href="portal.html">Supplier Experience Portal</a></li>
-            <li><a href="calculator.html">ROI & Savings Calculator</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Integrations</h5>
-          <ul class="footer-links">
-            <li><a href="integrations.html#sap">SAP S/4HANA</a></li>
-            <li><a href="integrations.html#coupa">Coupa Procurement</a></li>
-            <li><a href="integrations.html#oracle">Oracle Cloud SCM</a></li>
-            <li><a href="integrations.html#edi">ANSI X12 EDI Gateway</a></li>
-            <li><a href="integrations.html#whatsapp">WhatsApp Enterprise</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Security & Trust</h5>
-          <ul class="footer-links">
-            <li><a href="security.html#soc2">SOC 2 Type II Report</a></li>
-            <li><a href="security.html#iso27001">ISO 27001 Certified</a></li>
-            <li><a href="security.html#gdpr">GDPR Data Privacy</a></li>
-            <li><a href="security.html#audit-logs">Audit-Grade Logging</a></li>
-            <li><a href="security.html#guardrails">Responsible AI Guardrails</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>
-          © 2026 NexusProcure AI Inc. All rights reserved. Built for autonomous enterprise procurement.
-        </div>
-        <div class="security-cert-badges">
-          <span class="cert-badge">SOC2 TYPE II</span>
-          <span class="cert-badge">ISO 27001</span>
-          <span class="cert-badge">GDPR COMPLIANT</span>
-          <span class="cert-badge">SAP CERTIFIED</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ==========================================================================
-       Interactive Demo / Sandbox Request Modal
-       ========================================================================== -->
-  <div class="modal-backdrop" id="demo-modal">
-    <div class="modal-container">
-      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
-
-      <div id="modal-form-content">
-        <div class="modal-header">
-          <h3>Schedule an Enterprise Sandbox Demo</h3>
-          <p>See NexusProcure AI run live autonomous negotiations against your anonymized PO data.</p>
-        </div>
-
-        <form id="demo-schedule-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="demo-first-name">First Name</label>
-              <input type="text" class="form-control" id="demo-first-name" required placeholder="Jane">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="demo-last-name">Last Name</label>
-              <input type="text" class="form-control" id="demo-last-name" required placeholder="Doe">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="demo-work-email">Corporate Work Email</label>
-            <input type="email" class="form-control" id="demo-work-email" required placeholder="jane@enterprise.com">
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="demo-company">Company Name</label>
-              <input type="text" class="form-control" id="demo-company" required placeholder="Acme Corp">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="demo-erp">Primary ERP</label>
-              <select class="form-control" id="demo-erp" style="background: #1e293b; color: #fff;">
-                <option value="sap">SAP S/4HANA / ECC</option>
-                <option value="coupa">Coupa Procurement</option>
-                <option value="oracle">Oracle Cloud SCM / NetSuite</option>
-                <option value="workday">Workday / Microsoft Dynamics</option>
-                <option value="other">Other / Custom In-House ERP</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="demo-suppliers">Annual Direct Spend</label>
-            <select class="form-control" id="demo-suppliers" style="background: #1e293b; color: #fff;">
-              <option value="10-50m">$10M – $50M</option>
-              <option value="50-250m" selected>$50M – $250M</option>
-              <option value="250m+">$250M+</option>
-            </select>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
-            <span>Request Personalized Sandbox Access</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </button>
-        </form>
-      </div>
-
-      <!-- Success State -->
-      <div id="modal-success-state" style="display: none; text-align: center; padding: 30px 10px;">
-        <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); color: var(--emerald-400); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem;">
-          ✓
-        </div>
-        <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Sandbox Invitation Dispatched</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">
-          We've sent an encrypted invitation token to your email along with an automated test tenant pre-connected to our mock SAP S/4HANA RFQ sandbox.
-        </p>
-        <button type="button" class="btn btn-secondary" onclick="document.getElementById('demo-modal').classList.remove('open')">
-          Close Window
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="js/agent-simulator.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/gemini-service.js"></script>
-  <script src="js/gemini-ui.js"></script>
+ <!-- Navigation Bar -->
+ <nav class="site-nav" id="site-nav">
+ <div class="container nav-content">
+ <a href="index.html" class="nav-brand">
+ <div class="brand-icon-wrapper">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+ </svg>
+ </div>
+ <span>NexusProcure AI</span>
+ </a>
+
+ <ul class="nav-links">
+ <li><a href="index.html" class="nav-link active-page">Home</a></li>
+ <li><a href="simulator.html" class="nav-link">Negotiation Simulator <span class="nav-badge-live">Live</span></a></li>
+ <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
+ <li><a href="calculator.html" class="nav-link">Savings Calculator</a></li>
+ </ul>
+
+ <div class="nav-right">
+ <div class="status-pill">
+ <span class="radar-dot"></span>
+ <span>Groq AI Active</span>
+ </div>
+ <a href="simulator.html" class="btn btn-primary btn-sm">
+ <span>Try Simulator</span>
+ </a>
+ </div>
+ </div>
+ </nav>
+
+ <!-- Hero Section -->
+ <header class="hero-section">
+ <div class="container">
+ <div class="hero-badge-pill">
+ <span>Autonomous Procurement Assistant</span>
+ </div>
+
+ <h1 class="hero-title">
+ AI That Negotiates With Suppliers and Cuts Purchasing Costs
+ </h1>
+
+ <p class="hero-description">
+ NexusProcure automatically reviews vendor quotes, drafts smart counter-offers within your budget, and handles supplier inquiries in clear, plain English. No more waiting days on back-and-forth emails.
+ </p>
+
+ <div class="hero-cta-group">
+ <a href="simulator.html" class="btn btn-primary btn-lg">
+ <span>Try Negotiation Simulator</span>
+ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <polyline points="9 18 15 12 9 6"></polyline>
+ </svg>
+ </a>
+ <a href="portal.html" class="btn btn-secondary btn-lg">
+ <span>Open Supplier Portal</span>
+ </a>
+ <a href="calculator.html" class="btn btn-secondary btn-lg">
+ <span>Calculate ROI</span>
+ </a>
+ </div>
+
+ <div class="hero-kpis">
+ <div class="kpi-item">
+ <h4>12.4%</h4>
+ <p>Average price discount secured on quotes</p>
+ </div>
+ <div class="kpi-item">
+ <h4>3x Faster</h4>
+ <p>Quote negotiation and turnaround time</p>
+ </div>
+ <div class="kpi-item">
+ <h4>24/7</h4>
+ <p>Instant answers to vendor inquiries & invoices</p>
+ </div>
+ </div>
+ </div>
+ </header>
+
+ <!-- How It Works in 3 Simple Steps -->
+ <section class="section-spacing" style="background: #0d1322; border-bottom: 1px solid var(--border-subtle);">
+ <div class="container">
+ <div class="section-header">
+ <span class="section-tag">Simple 3-Step Process</span>
+ <h2 class="section-title">How NexusProcure Works</h2>
+ <p class="section-subtitle">
+ From quote receipt to agreed terms, the AI works alongside your team to save money without damaging supplier relationships.
+ </p>
+ </div>
+
+ <div class="bento-grid">
+ <div class="bento-card">
+ <div class="bento-icon">1</div>
+ <h3 class="bento-title">1. Set Target Budget</h3>
+ <p class="bento-desc">
+ Enter the supplier's initial quote and define your target price and walk-away budget. You remain in complete control of the guardrails.
+ </p>
+ </div>
+
+ <div class="bento-card">
+ <div class="bento-icon">2</div>
+ <h3 class="bento-title">2. AI Evaluates & Counters</h3>
+ <p class="bento-desc">
+ Powered by Groq LLM reasoning, the AI identifies trade-offs (like volume discounts or 10-day payment terms) and emails a polite, firm counter-offer.
+ </p>
+ </div>
+
+ <div class="bento-card">
+ <div class="bento-icon">3</div>
+ <h3 class="bento-title">3. 1-Click Approval</h3>
+ <p class="bento-desc">
+ When the supplier accepts or compromises, review the final agreed price and approve with one click to generate the official Purchase Order.
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Interactive Live Playground (Groq AI Powered) -->
+ <section class="section-spacing" style="border-bottom: 1px solid var(--border-subtle);">
+ <div class="container">
+ <div class="section-header">
+ <span class="section-tag">Interactive Preview</span>
+ <h2 class="section-title">Test the AI Live Right Now</h2>
+ <p class="section-subtitle">
+ See how NexusProcure analyzes a real quote and writes a smart counter-offer in seconds using the active Groq AI engine.
+ </p>
+ </div>
+
+ <div style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-md); padding: 32px; max-width: 860px; margin: 0 auto;">
+ <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+ <div>
+ <label style="font-size: 0.85rem; font-weight: 600; color: #fff; margin-bottom: 6px; display: block;">Supplier Initial Offer</label>
+ <input type="text" id="home-supplier-quote" class="form-control" style="width: 100%;" value="10,000 Microcontrollers at $68.50 each (8 weeks lead time)">
+ </div>
+ <div>
+ <label style="font-size: 0.85rem; font-weight: 600; color: #fff; margin-bottom: 6px; display: block;">Your Target Budget</label>
+ <input type="text" id="home-target-budget" class="form-control" style="width: 100%;" value="$54.00 per unit (Max walk-away: $58.00)">
+ </div>
+ </div>
+
+ <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+ <button class="btn btn-primary" id="home-btn-test-ai">
+ <span>Generate AI Counter-Offer</span>
+ </button>
+ <span style="font-size: 0.82rem; color: var(--text-dim); align-self: center;">Connected to Groq API (openai/gpt-oss-120b)
+ </span>
+ </div>
+
+ <!-- AI Output Box -->
+ <div id="home-ai-result-box" style="background: #111a2d; border: 1px solid var(--border-card); border-radius: var(--radius-sm); padding: 20px;">
+ <div style="font-size: 0.8rem; font-weight: 700; color: #60a5fa; text-transform: uppercase; margin-bottom: 8px;">
+ AI Strategy & Plain English Tactic:
+ </div>
+ <div id="home-ai-tactic" style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 16px;">
+ Click the button above to run live autonomous negotiation reasoning.
+ </div>
+
+ <div style="font-size: 0.8rem; font-weight: 700; color: #10b981; text-transform: uppercase; margin-bottom: 8px;">
+ Generated Counter-Offer Email:
+ </div>
+ <div id="home-ai-email" style="color: #f8fafc; font-size: 0.92rem; line-height: 1.6; background: #16243d; padding: 16px; border-radius: 6px; border: 1px solid #233a61;">
+ "Dear Supplier, thank you for the quote. Based on our volume commitment and current market benchmarks, our target price is $54.20 per unit. In exchange, we can offer accelerated Net-15 payment terms. Please let us know if we can proceed on this basis."
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Core Modules -->
+ <section class="section-spacing" style="background: #0d1322; border-bottom: 1px solid var(--border-subtle);">
+ <div class="container">
+ <div class="section-header">
+ <span class="section-tag">Platform Modules</span>
+ <h2 class="section-title">Built for Real Enterprise Workflows</h2>
+ <p class="section-subtitle">
+ Everything your procurement team needs to manage vendors and reduce spend without complexity.
+ </p>
+ </div>
+
+ <div class="bento-grid">
+ <div class="bento-card">
+ <div class="bento-icon">01</div>
+ <h3 class="bento-title">Negotiation Simulator</h3>
+ <p class="bento-desc">
+ Test multi-round bargaining scenarios in a live sandbox. Watch the AI negotiate price, shipping delays, and bulk discounts.
+ </p>
+ <div style="margin-top: 20px;">
+ <a href="simulator.html" class="btn btn-secondary btn-sm">Open Simulator -></a>
+ </div>
+ </div>
+
+ <div class="bento-card">
+ <div class="bento-icon">02</div>
+ <h3 class="bento-title">Supplier Portal</h3>
+ <p class="bento-desc">
+ A self-service vendor hub where suppliers check purchase order statuses, inquire about invoice payments, and chat with the AI assistant.
+ </p>
+ <div style="margin-top: 20px;">
+ <a href="portal.html" class="btn btn-secondary btn-sm">Open Portal -></a>
+ </div>
+ </div>
+
+ <div class="bento-card">
+ <div class="bento-icon">03</div>
+ <h3 class="bento-title">Savings Calculator</h3>
+ <p class="bento-desc">
+ Adjust your annual spend and purchase order volume to see projected annual cost savings and labor hours saved.
+ </p>
+ <div style="margin-top: 20px;">
+ <a href="calculator.html" class="btn btn-secondary btn-sm">Calculate Savings -></a>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Plain English Comparison: Manual vs AI -->
+ <section class="section-spacing">
+ <div class="container">
+ <div class="section-header">
+ <span class="section-tag">Why It Matters</span>
+ <h2 class="section-title">Traditional Sourcing vs. NexusProcure</h2>
+ <p class="section-subtitle">
+ Stop losing hours to routine email threads. Let AI handle the first 3 rounds of negotiations.
+ </p>
+ </div>
+
+ <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto;">
+ <div style="background: #1c1917; border: 1px solid #44403c; border-radius: var(--radius-md); padding: 28px;">
+ <h3 style="color: #ef4444; font-size: 1.15rem; margin-bottom: 16px;">Without NexusProcure</h3>
+ <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #a8a29e;">
+ <li>• 12 to 18 emails back and forth per supplier quote</li>
+ <li>• Takes 2 to 3 weeks to finalize basic pricing terms</li>
+ <li>• Smaller purchase orders are rarely negotiated due to lack of staff</li>
+ <li>• Supplier inquiries get buried in crowded buyer inboxes</li>
+ </ul>
+ </div>
+
+ <div style="background: #14231b; border: 1px solid #166534; border-radius: var(--radius-md); padding: 28px;">
+ <h3 style="color: #22c55e; font-size: 1.15rem; margin-bottom: 16px;">With NexusProcure</h3>
+ <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #bbf7d0;">
+ <li>• AI drafts diplomatic counter-offers within minutes</li>
+ <li>• Deals reach mutual agreement in hours instead of weeks</li>
+ <li>• Every single purchase order is evaluated for savings</li>
+ <li>• Vendors get instant 24/7 answers to invoice and delivery queries</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Footer -->
+ <footer class="site-footer">
+ <div class="container">
+ <div class="footer-content">
+ <div>
+ <div style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-bottom: 6px;">NexusProcure AI</div>
+ <p style="font-size: 0.85rem; margin: 0;">Autonomous Supplier Negotiation & Procurement Platform</p>
+ </div>
+ <div style="display: flex; gap: 20px; font-size: 0.9rem;">
+ <a href="index.html">Home</a>
+ <a href="simulator.html">Simulator</a>
+ <a href="portal.html">Supplier Portal</a>
+ <a href="calculator.html">Savings Calculator</a>
+ </div>
+ </div>
+ <div class="footer-bottom">
+ <div>Flexi Credit CA-3: Agentic AI & Automation Project</div>
+ <div>Powered by Groq API (openai/gpt-oss-120b)</div>
+ </div>
+ </div>
+ </footer>
+
+ <!-- Scripts -->
+ <script src="js/auth.js"></script>
+ <script src="js/gemini-service.js"></script>
+ <script src="js/gemini-ui.js"></script>
+ <script>
+ // Live Homepage Groq AI Demo
+ document.addEventListener('DOMContentLoaded', () => {
+ const testBtn = document.getElementById('home-btn-test-ai');
+ const quoteInput = document.getElementById('home-supplier-quote');
+ const targetInput = document.getElementById('home-target-budget');
+ const tacticEl = document.getElementById('home-ai-tactic');
+ const emailEl = document.getElementById('home-ai-email');
+
+ testBtn.addEventListener('click', async () => {
+ const quote = quoteInput.value.trim();
+ const target = targetInput.value.trim();
+
+ testBtn.disabled = true;
+ testBtn.textContent = ' Negotiating with Groq AI...';
+ tacticEl.textContent = 'Analyzing supplier quote against budget and formulating negotiation trade-offs...';
+ emailEl.textContent = 'Generating diplomatic counter-offer...';
+
+ try {
+ if (window.aiService && window.aiService.isConfigured()) {
+ const res = await window.aiService.generateNegotiationReply({
+ scenarioTitle: "Hardware Component Order",
+ vendorName: "Hardware Vendor",
+ targetPrice: target,
+ batnaPrice: "$58.00",
+ userOffer: quote
+ });
+
+ tacticEl.textContent = res.cognitiveStep || "Calculated volume discount curve and trade-credit acceleration.";
+ emailEl.textContent = res.responseText || "Thank you for the proposal. Based on our budget parameters, we can accept $54.20 per unit with 15-day payment terms.";
+ } else {
+ // Heuristic fallback
+ tacticEl.textContent = "Strategy: Offer accelerated 10-day payment terms in exchange for dropping unit cost toward target $54.00.";
+ emailEl.textContent = `Thank you for your proposal of ${quote}. In exchange for immediate PO execution and 10-day accelerated payment terms, our target price is ${target}. Please let us know if we can proceed.`;
+ }
+ } catch (err) {
+ tacticEl.textContent = "Strategy: Trade payment terms for lower unit cost.";
+ emailEl.textContent = `Thank you for the quote of ${quote}. Based on our volume commitment and accelerated Net-15 payment terms, we would like to counter at ${target}.`;
+ } finally {
+ testBtn.disabled = false;
+ testBtn.textContent = ' Generate AI Counter-Offer';
+ }
+ });
+ });
+ </script>
 </body>
 </html>

@@ -1,15 +1,39 @@
 /**
- * NexusProcure AI - Google Gemini API Integration Service
- * Provides direct, client-side connectivity to Google's Gemini Models
- * (e.g. gemini-2.5-flash, gemini-2.5-pro, gemini-flash-latest, gemini-pro-latest)
- * for autonomous supplier bargaining, cognitive reasoning generation, and vendor concierge queries.
+ * NexusProcure AI - Groq LLM API Service
+ * Single unified AI engine using Groq API (openai/gpt-oss-120b)
+ * Provides autonomous procurement negotiation and supplier concierge intelligence.
+ * API keys are loaded safely from localStorage or local .env (never committed to repository).
  */
 
-class GeminiService {
+class GroqService {
   constructor() {
-    this.storageKey = 'nexusprocure_gemini_api_key';
-    this.modelKey = 'nexusprocure_gemini_model';
-    this.defaultModel = 'gemini-2.5-flash';
+    this.storageKey = 'nexusprocure_groq_api_key';
+    this.modelKey = 'nexusprocure_groq_model';
+    this.defaultModel = 'openai/gpt-oss-120b';
+    this.apiUrl = 'https://api.groq.com/openai/v1/chat/completions';
+
+    if (!localStorage.getItem(this.modelKey)) {
+      localStorage.setItem(this.modelKey, this.defaultModel);
+    }
+
+    // Attempt to auto-populate from local .env if available
+    this.loadEnvKey();
+  }
+
+  async loadEnvKey() {
+    if (localStorage.getItem(this.storageKey)) return;
+    try {
+      const res = await fetch('/.env');
+      if (res.ok) {
+        const text = await res.text();
+        const match = text.match(/GROQ_API_KEY\s*=\s*([^\r\n]+)/);
+        if (match && match[1]) {
+          this.setApiKey(match[1].trim());
+        }
+      }
+    } catch (e) {
+      // Running statically without local server
+    }
   }
 
   getApiKey() {
@@ -40,216 +64,191 @@ class GeminiService {
 
   isConfigured() {
     const key = this.getApiKey();
-    return Boolean(key && key.length > 10);
+    return Boolean(key && key.startsWith('gsk_'));
   }
 
   /**
-   * Fetch all models that support generateContent for the given API key
+   * Test connection to Groq API
    */
-  async listAvailableModels(apiKey) {
+  async testConnection(apiKey, preferredModel) {
     const key = apiKey || this.getApiKey();
-    if (!key) throw new Error("No API key provided");
+    const model = preferredModel || this.getModel();
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${key}`;
-    const response = await fetch(url);
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.error?.message || `HTTP ${response.status}: Failed to fetch models list`);
-    }
+    if (!key) return { success: false, error: "No Groq API key entered." };
 
-    const data = await response.json();
-    const models = (data.models || [])
-      .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
-      .map(m => m.name.replace(/^models\//, ''));
+    try {
+      const res = await fetch(this.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${key}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: model,
+          messages: [{ role: 'user', content: 'Reply with OK.' }],
+          max_tokens: 10
+        })
+      });
 
-    return models;
-  }
-
-  /**
-   * Validate API Key and auto-detect best working model
-   */
-  async testConnection(apiKey, preferredModel = 'gemini-2.5-flash') {
-    const candidateModels = [
-      preferredModel,
-      'gemini-2.5-flash',
-      'gemini-flash-latest',
-      'gemini-2.5-pro',
-      'gemini-pro-latest',
-      'gemini-3.5-flash',
-      'gemini-3.7-flash',
-      'gemini-2.0-flash'
-    ];
-
-    // Remove duplicates while preserving order
-    const uniqueModels = [...new Set(candidateModels.filter(Boolean))];
-
-    let lastError = null;
-
-    for (const model of uniqueModels) {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: "Hello! Reply with 'OK: NexusProcure connected'." }] }]
-          })
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-          return { success: true, workingModel: model, reply };
-        } else {
-          const errorData = await response.json().catch(() => ({}));
-          lastError = errorData.error?.message || `HTTP ${response.status}`;
-        }
-      } catch (err) {
-        lastError = err.message;
+      if (res.ok) {
+        this.setApiKey(key);
+        this.setModel(model);
+        return {
+          success: true,
+          workingModel: model,
+          provider: 'Groq AI',
+          reply: 'Connected successfully to Groq API.'
+        };
+      } else {
+        const err = await res.json().catch(() => ({}));
+        return { success: false, error: err.error?.message || `HTTP ${res.status}` };
       }
+    } catch (e) {
+      return { success: false, error: e.message };
     }
-
-    return { success: false, error: lastError || "Failed to connect to any Gemini model." };
   }
 
   /**
-   * Autonomous Procurement Bargaining with Gemini
+   * Autonomous Procurement Bargaining with Groq LLM
    */
   async generateNegotiationReply(params) {
     const {
-      scenarioTitle,
-      poNumber,
-      vendorName,
-      targetPrice,
-      batnaPrice,
-      userOffer,
+      scenarioTitle = "Supplier RFQ Negotiation",
+      vendorName = "Supplier Representative",
+      targetPrice = "$54.00",
+      batnaPrice = "$58.00",
+      userOffer = "",
       conversationHistory = []
     } = params;
 
-    const apiKey = this.getApiKey();
-    if (!apiKey) throw new Error("Gemini API key not configured");
-
+    const key = this.getApiKey();
     const model = this.getModel();
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
-    const systemInstruction = `You are NexusProcure AI Agent #042, an autonomous enterprise procurement agent negotiating directly with suppliers.
-Your core mission is to protect working capital, secure competitive pricing, ensure SLA delivery integrity, and adhere strictly to enterprise policy guardrails.
+    if (!key) {
+      throw new Error("Groq API key not configured. Please add in settings or .env.");
+    }
 
-CURRENT NEGOTIATION PARAMETERS:
-- Contract Scenario: ${scenarioTitle}
-- Target Document: ${poNumber}
-- Vendor / Counterparty: ${vendorName}
-- Target Benchmark Price: ${targetPrice}
-- BATNA (Walk-Away Threshold): ${batnaPrice}
-- Guardrails: Never accept offers above BATNA without trading payment terms (e.g. Net-15 for discount) or volume MOQ commitments.
+    const systemPrompt = `You are NexusProcure AI, an enterprise procurement assistant negotiating with ${vendorName} for ${scenarioTitle}.
+Target budget: ${targetPrice}. Maximum walk-away price: ${batnaPrice}.
+You must be polite, firm, diplomatic, and trade commercial value (like 10-day payment terms or order volume) to lower prices.
+Keep your response concise (2-3 sentences max).
 
-INSTRUCTIONS FOR OUTPUT FORMAT:
-You MUST respond in valid JSON format with three exact keys:
+Return ONLY valid JSON with this exact structure:
 {
-  "cognitive_step": "A concise, highly professional internal reasoning log (1-2 sentences) showing your BATNA calculation, market comparison, and tactical decision.",
-  "response_text": "Your professional, diplomatic, and firm negotiation response to the supplier.",
-  "erp_badge": "A short status badge tag (e.g. 'SAP PO Updated • Net-15 Agreed' or 'Counter-Offer Staged' or 'BATNA Compromise Reached')"
-}
-Do NOT include markdown backticks around the JSON. Return only the raw JSON object.`;
+  "cognitive_step": "A 1-sentence plain English explanation of your strategy.",
+  "response_text": "Your polite and firm negotiation message to the vendor.",
+  "erp_badge": "Short 3-5 word status (e.g. 'Counter-Offer: $54.80' or 'Terms Agreed: Net-15')"
+}`;
 
-    // Format chat history
-    const contents = [
-      { role: "user", parts: [{ text: systemInstruction }] },
-      { role: "model", parts: [{ text: "{\"cognitive_step\":\"Initialized autonomous bargaining model. Ready to negotiate within BATNA guardrails.\",\"response_text\":\"NexusProcure Agent standing by.\",\"erp_badge\":\"Agent Primed\"}" }] }
+    const messages = [
+      { role: 'system', content: systemPrompt }
     ];
 
-    conversationHistory.forEach(msg => {
-      contents.push({
-        role: msg.sender === 'ai' ? 'model' : 'user',
-        parts: [{ text: msg.text }]
+    // Add recent context
+    conversationHistory.slice(-4).forEach(m => {
+      messages.push({
+        role: m.sender === 'ai' ? 'assistant' : 'user',
+        content: m.text
       });
     });
 
-    contents.push({
+    messages.push({
       role: 'user',
-      parts: [{ text: `The counterparty (supplier or buyer) just proposed: "${userOffer}". Analyze this against your BATNA (${batnaPrice}) and generate your response and internal cognitive trace.` }]
+      content: `The supplier just proposed: "${userOffer}". Analyze against budget target (${targetPrice}) and generate counter-offer.`
     });
 
-    const response = await fetch(url, {
+    const response = await fetch(this.apiUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Authorization': `Bearer ${key}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        contents,
-        generationConfig: {
-          temperature: 0.3,
-          maxOutputTokens: 600
-        }
+        model: model,
+        messages: messages,
+        response_format: { type: 'json_object' },
+        temperature: 0.3,
+        max_tokens: 350
       })
     });
 
     if (!response.ok) {
       const err = await response.json().catch(() => ({}));
-      throw new Error(err.error?.message || `HTTP ${response.status} from Gemini API`);
+      throw new Error(err.error?.message || `Groq HTTP ${response.status}`);
     }
 
     const data = await response.json();
-    let rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    
-    // Clean potential markdown fencing
+    let rawText = data.choices?.[0]?.message?.content || '{}';
     rawText = rawText.replace(/```json/gi, '').replace(/```/g, '').trim();
 
     try {
       const parsed = JSON.parse(rawText);
       return {
-        cognitiveStep: parsed.cognitive_step || "Analyzed counter-offer against BATNA and ERP constraints.",
+        cognitiveStep: parsed.cognitive_step || "Analyzed supplier proposal against target budget.",
         responseText: parsed.response_text || rawText,
-        erpBadge: parsed.erp_badge || "✓ Term Negotiated"
+        erpBadge: parsed.erp_badge || "Counter-Offer Active"
       };
-    } catch (parseErr) {
+    } catch (e) {
       return {
-        cognitiveStep: "Evaluating supplier counter-proposal against spot indexes and contract terms.",
+        cognitiveStep: "Calculated concession curve to reach target budget.",
         responseText: rawText,
-        erpBadge: "✓ Staged for ERP Authorization"
+        erpBadge: "Counter-Offer Active"
       };
     }
   }
 
   /**
-   * Supplier Concierge Assistant with Gemini
+   * Supplier Concierge Assistant with Groq LLM
    */
   async generateConciergeReply(supplierQuery, supplierContext = {}) {
-    const apiKey = this.getApiKey();
-    if (!apiKey) throw new Error("Gemini API key not configured");
-
+    const key = this.getApiKey();
     const model = this.getModel();
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
-    const prompt = `You are the NexusProcure Supplier AI Concierge for an enterprise buyer.
-You assist verified vendors with payment dates, invoice statuses, Early Payment Discounts (Dynamic Discounting), packaging specs, and logistics inquiries.
-Vendor Profile: ${supplierContext.name || "Apex Precision Components"} (Tier 1 Verified).
-Active Open Orders: PO-44102 ($162,000.00, scheduled Oct 2), PO-44108 ($105,000.00, in transit), PO-44115 ($24,000.00, goods received).
-Policy: Dynamic Discounting offers Net-1 payment for a 1.5% discount. Receiving warehouse hours: 06:00 to 18:00 EST at Dock 4.
+    if (!key) {
+      throw new Error("Groq API key not configured. Please add in settings or .env.");
+    }
+
+    const systemPrompt = `You are the NexusProcure Supplier AI Concierge for an enterprise buyer.
+You help verified suppliers with payment dates, invoice statuses, warehouse receiving hours, and purchase orders.
+Current supplier: ${supplierContext.name || "Apex Precision Components"} (Tier 1 Verified).
+Active Orders:
+- PO-44102: $162,000, Scheduled payment Oct 2, Status: Approved.
+- PO-44108: $105,000, Status: In Transit, Delivery due Oct 8.
+- PO-44115: $24,000, Goods received at Dock 4, Payment pending invoice matching.
+Policy: Accelerated Net-15 payment is available for a 1.5% discount. Receiving warehouse hours: Mon-Fri 06:00 to 18:00 EST at Dock 4.
 
 Supplier Question: "${supplierQuery}"
 
-Provide a direct, helpful, and courteous answer based on the vendor profile and buyer policies. Keep it under 3 sentences.`;
+Answer directly, clearly, politely, and in simple English (1 to 3 sentences maximum). No robotic jargon.`;
 
-    const response = await fetch(url, {
+    const res = await fetch(this.apiUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Authorization': `Bearer ${key}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: {
-          temperature: 0.2,
-          maxOutputTokens: 250
-        }
+        model: model,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: supplierQuery }
+        ],
+        temperature: 0.2,
+        max_tokens: 200
       })
     });
 
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      throw new Error(err.error?.message || `HTTP ${response.status}`);
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error?.message || `Groq HTTP ${res.status}`);
     }
 
-    const data = await response.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "Thank you for reaching out. Our AP records have verified your inquiry.";
+    const data = await res.json();
+    return data.choices?.[0]?.message?.content?.trim() || "Thank you. Your request has been verified in our procurement system.";
   }
 }
 
-// Global instance
-window.geminiService = new GeminiService();
+// Global instance & backward-compatible aliases
+window.groqService = new GroqService();
+window.aiService = window.groqService;
+window.geminiService = window.groqService;

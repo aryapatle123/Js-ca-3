@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - NexusProcure AI</title>
+  <meta name="description" content="Sign in to your NexusProcure AI enterprise account using JWT authentication.">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="site-nav" id="site-nav">
+    <div class="container nav-content">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <span>NexusProcure AI</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="simulator.html" class="nav-link">Negotiation Simulator</a></li>
+        <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
+        <li><a href="calculator.html" class="nav-link">Savings Calculator</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <a href="index.html" class="btn btn-secondary btn-sm">
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login Main Container -->
+  <main style="min-height: calc(100vh - 160px); display: flex; align-items: center; justify-content: center; padding: 120px 20px 60px;">
+    <div style="width: 100%; max-width: 520px;">
+      
+      <!-- Card -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-md); padding: 36px; box-shadow: var(--shadow-lg);">
+        
+        <!-- Header -->
+        <div style="margin-bottom: 24px; text-align: center;">
+          <div class="hero-badge-pill" style="margin-bottom: 12px;">
+            <span>JWT Secure Authentication</span>
+          </div>
+          <h1 style="font-size: 1.6rem; color: #fff; margin-bottom: 8px;">Enterprise Sign In</h1>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">
+            Sign in to access autonomous procurement negotiation tools and live telemetry.
+          </p>
+        </div>
+
+        <!-- Feedback Alert Message -->
+        <div id="login-alert" style="display: none; padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 20px;"></div>
+
+        <!-- Quick Demo Profiles Selector -->
+        <div style="background: #111a2d; border: 1px solid var(--border-card); border-radius: var(--radius-sm); padding: 14px; margin-bottom: 22px;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px;">
+            Quick Fill Demo Accounts:
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-demo-buyer" style="padding: 5px 10px; font-size: 0.78rem;">
+              Buyer (Alex Morgan)
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-demo-supplier" style="padding: 5px 10px; font-size: 0.78rem;">
+              Supplier (Klaus Richter)
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-demo-admin" style="padding: 5px 10px; font-size: 0.78rem;">
+              Admin (Elena Rostova)
+            </button>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="login-form">
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label" for="login-email" style="font-size: 0.85rem; font-weight: 600; color: #fff; margin-bottom: 6px; display: block;">
+              Corporate Email Address
+            </label>
+            <input type="email" id="login-email" class="form-control" style="width: 100%;" placeholder="name@company.com" required value="buyer@nexusprocure.ai">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label class="form-label" for="login-password" style="font-size: 0.85rem; font-weight: 600; color: #fff; margin: 0;">
+                Password
+              </label>
+              <span style="font-size: 0.75rem; color: var(--text-dim);">Demo: buyer123</span>
+            </div>
+            <input type="password" id="login-password" class="form-control" style="width: 100%;" placeholder="Enter your password" required value="buyer123">
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="btn-submit-login" style="width: 100%; padding: 12px; font-size: 0.95rem;">
+            <span>Sign In with JWT</span>
+          </button>
+        </form>
+
+        <!-- Live JWT Inspector Box (For Evaluation & Proof) -->
+        <div id="jwt-inspector" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-subtle); display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: #10b981; text-transform: uppercase;">Active JWT Token Generated</span>
+            <span style="font-size: 0.75rem; color: var(--text-dim);">Algorithm: HMAC-SHA256</span>
+          </div>
+          
+          <!-- Raw JWT String -->
+          <div style="background: #090d16; border: 1px solid #1e293b; border-radius: 4px; padding: 10px; font-family: monospace; font-size: 0.72rem; word-break: break-all; color: #93c5fd; margin-bottom: 12px;" id="raw-jwt-display"></div>
+
+          <!-- Decoded Claims Summary -->
+          <div style="background: #111a2d; border: 1px solid var(--border-card); border-radius: 4px; padding: 10px; font-family: monospace; font-size: 0.78rem; color: #cbd5e1;">
+            <div><strong>Subject (User):</strong> <span id="jwt-sub">-</span></div>
+            <div><strong>Role:</strong> <span id="jwt-role">-</span></div>
+            <div><strong>Expires In:</strong> <span id="jwt-exp">72 Hours</span></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-bottom: 6px;">NexusProcure AI</div>
+          <p style="font-size: 0.85rem; margin: 0;">Autonomous Supplier Negotiation Platform</p>
+        </div>
+        <div style="display: flex; gap: 20px; font-size: 0.9rem;">
+          <a href="index.html">Home</a>
+          <a href="simulator.html">Simulator</a>
+          <a href="portal.html">Supplier Portal</a>
+          <a href="calculator.html">Savings Calculator</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>Flexi Credit CA-3 Project</div>
+        <div>JWT Authentication Standard</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('login-form');
+      const emailInput = document.getElementById('login-email');
+      const passInput = document.getElementById('login-password');
+      const alertBox = document.getElementById('login-alert');
+      const submitBtn = document.getElementById('btn-submit-login');
+      const inspector = document.getElementById('jwt-inspector');
+      const rawJwtDisplay = document.getElementById('raw-jwt-display');
+      const jwtSub = document.getElementById('jwt-sub');
+      const jwtRole = document.getElementById('jwt-role');
+
+      // Demo auto-fill buttons
+      document.getElementById('btn-demo-buyer').addEventListener('click', () => {
+        emailInput.value = 'buyer@nexusprocure.ai';
+        passInput.value = 'buyer123';
+      });
+
+      document.getElementById('btn-demo-supplier').addEventListener('click', () => {
+        emailInput.value = 'supplier@apexprecision.com';
+        passInput.value = 'vendor123';
+      });
+
+      document.getElementById('btn-demo-admin').addEventListener('click', () => {
+        emailInput.value = 'admin@nexusprocure.ai';
+        passInput.value = 'admin123';
+      });
+
+      // Check if already authenticated
+      if (window.authService && window.authService.isAuthenticated()) {
+        const user = window.authService.getUser();
+        const token = window.authService.getToken();
+        showAlert(`Signed in as ${user.name} (${user.role}). Redirecting...`, 'success');
+        showInspector(token, user);
+        setTimeout(() => {
+          const params = new URLSearchParams(window.location.search);
+          const returnUrl = params.get('returnUrl') || 'simulator.html';
+          window.location.href = decodeURIComponent(returnUrl);
+        }, 1500);
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        const password = passInput.value.trim();
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Authenticating JWT...';
+
+        try {
+          const result = await window.authService.login(email, password);
+          if (result.success) {
+            showAlert(`Authentication successful! Welcome, ${result.user.name}.`, 'success');
+            showInspector(result.token, result.user);
+
+            // Redirect after brief visual confirmation
+            setTimeout(() => {
+              const params = new URLSearchParams(window.location.search);
+              const returnUrl = params.get('returnUrl') || 'simulator.html';
+              window.location.href = decodeURIComponent(returnUrl);
+            }, 1200);
+          } else {
+            showAlert(result.error || 'Invalid credentials.', 'error');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Sign In with JWT';
+          }
+        } catch (err) {
+          showAlert(`Error: ${err.message}`, 'error');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Sign In with JWT';
+        }
+      });
+
+      function showAlert(msg, type) {
+        alertBox.style.display = 'block';
+        alertBox.textContent = msg;
+        if (type === 'success') {
+          alertBox.style.background = '#064e3b';
+          alertBox.style.color = '#6ee7b7';
+          alertBox.style.border = '1px solid #059669';
+        } else {
+          alertBox.style.background = '#450a0a';
+          alertBox.style.color = '#fca5a5';
+          alertBox.style.border = '1px solid #dc2626';
+        }
+      }
+
+      function showInspector(token, user) {
+        inspector.style.display = 'block';
+        rawJwtDisplay.textContent = token;
+        jwtSub.textContent = user.name + ' (' + user.email + ')';
+        jwtRole.textContent = user.role;
+      }
+    });
+  </script>
+</body>
+</html>

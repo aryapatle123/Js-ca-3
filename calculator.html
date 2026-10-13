@@ -1,443 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Procurement ROI & Savings Calculator — NexusProcure AI</title>
-  <meta name="description" content="Calculate enterprise direct spend savings, dispute recovery, and operational FTE capacity unlocked by NexusProcure AI autonomous agents.">
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2fe' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Procurement Savings Calculator - NexusProcure AI</title>
+ <meta name="description" content="Calculate estimated procurement savings, labor hours saved, and payback period with NexusProcure AI.">
+ <link rel="stylesheet" href="styles/main.css">
+ <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
 </head>
 <body>
 
-  <div class="bg-ambient-orb ambient-orb-1"></div>
-  <div class="bg-ambient-orb ambient-orb-3"></div>
-  <div class="bg-grid-overlay"></div>
+ <!-- Navigation -->
+ <nav class="site-nav" id="site-nav">
+ <div class="container nav-content">
+ <a href="index.html" class="nav-brand">
+ <div class="brand-icon-wrapper">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+ </svg>
+ </div>
+ <span>NexusProcure AI</span>
+ </a>
 
-  <!-- Navigation -->
-  <nav class="site-nav" id="site-nav">
-    <div class="container nav-content">
-      <a href="index.html" class="nav-brand">
-        <div class="brand-icon-wrapper">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-        </div>
-        <span>Nexus<span class="text-gradient">Procure</span> AI</span>
-      </a>
+ <ul class="nav-links">
+ <li><a href="index.html" class="nav-link">Home</a></li>
+ <li><a href="simulator.html" class="nav-link">Negotiation Simulator</a></li>
+ <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
+ <li><a href="calculator.html" class="nav-link active-page">Savings Calculator</a></li>
+ </ul>
 
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="simulator.html" class="nav-link">Live Simulator</a></li>
-        <li><a href="capabilities.html" class="nav-link">Capabilities</a></li>
-        <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
-        <li><a href="calculator.html" class="nav-link active-page">ROI Calculator</a></li>
-        <li><a href="integrations.html" class="nav-link">Integrations</a></li>
-        <li><a href="security.html" class="nav-link">Security & Trust</a></li>
-      </ul>
+ <div class="nav-right">
+ <div class="status-pill">
+ <span class="radar-dot"></span>
+ <span>ROI Model: Active</span>
+ </div>
+ <a href="simulator.html" class="btn btn-primary btn-sm">
+ <span>Try Simulator</span>
+ </a>
+ </div>
+ </div>
+ </nav>
 
-      <div class="nav-right">
-        <div class="status-pill">
-          <div class="radar-dot"></div>
-          <span>Model: Algorithmic ROI</span>
-        </div>
-        <a href="demo.html" class="btn btn-primary btn-sm">
-          <span>Schedule Demo</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </nav>
+ <!-- Page Hero -->
+ <header class="page-hero">
+ <div class="container page-hero-inner">
+ <div class="page-badge">
+ <span>Financial Savings Estimator</span>
+ </div>
+ <h1 class="page-hero-title">
+ Procurement ROI & Savings Calculator
+ </h1>
+ <p class="page-hero-subtitle">
+ Estimate how much your business can save each year on supplier purchases, quote turnaround, and dispute resolution.
+ </p>
+ </div>
+ </header>
 
-  <!-- Page Hero -->
-  <header class="page-hero">
-    <div class="container page-hero-inner">
-      <div class="page-badge cyan">
-        <span>📈 Enterprise Financial Impact Model</span>
-      </div>
-      <h1 class="page-hero-title">
-        Procurement ROI & <span class="text-gradient">Working Capital Calculator</span>
-      </h1>
-      <p class="page-hero-subtitle">
-        Quantify the bottom-line financial return of deploying autonomous AI agents across your supplier communications, RFQ bargaining, and invoice discrepancy auditing.
-      </p>
-    </div>
-  </header>
+ <!-- Main Calculator -->
+ <main class="subpage-section" style="padding-top: 0;">
+ <div class="container">
+ 
+ <div class="roi-card-wrapper">
+ 
+ <!-- Left Column: Sliders -->
+ <div class="roi-calculator-form">
+ <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px;">
+ <h3 style="font-size: 1.1rem; color: #fff; margin: 0;">Company Parameters</h3>
+ <button class="btn btn-secondary btn-sm" id="btn-reset-roi">Reset Defaults</button>
+ </div>
 
-  <!-- Main Calculator Content -->
-  <main class="subpage-section" style="padding-top: 0;">
-    <div class="container">
-      
-      <div class="roi-card-wrapper" style="margin-bottom: 48px;">
-        
-        <!-- Input Form Sliders -->
-        <div class="roi-calculator-form">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-            <h3 style="color: #fff; font-size: 1.25rem;">Enterprise Parameters</h3>
-            <button class="btn btn-secondary btn-sm" id="btn-reset-roi">Reset Defaults</button>
-          </div>
+ <!-- Slider 1: Annual Spend -->
+ <div class="slider-group">
+ <div class="slider-header">
+ <span class="slider-label">Annual Spend on Suppliers ($)</span>
+ <span class="slider-value" id="val-spend">$50,000,000</span>
+ </div>
+ <input type="range" class="custom-range" id="input-spend" min="5000000" max="250000000" step="2500000" value="50000000">
+ <div class="slider-hints">
+ <span>$5 Million</span>
+ <span>$125M</span>
+ <span>$250 Million+</span>
+ </div>
+ </div>
 
-          <!-- Slider 1: Direct Spend -->
-          <div class="slider-group">
-            <div class="slider-header">
-              <span class="slider-label">Annual Direct Spend ($ USD)</span>
-              <span class="slider-value" id="val-spend">$85,000,000</span>
-            </div>
-            <input type="range" class="custom-range" id="input-spend" min="10000000" max="500000000" step="5000000" value="85000000">
-            <div class="slider-hints">
-              <span>$10M (Mid-Market)</span>
-              <span>$250M</span>
-              <span>$500M+ (Global 2000)</span>
-            </div>
-          </div>
+ <!-- Slider 2: Annual PO Count -->
+ <div class="slider-group">
+ <div class="slider-header">
+ <span class="slider-label">Annual Purchase Orders Issued</span>
+ <span class="slider-value" id="val-pos">12,000 POs</span>
+ </div>
+ <input type="range" class="custom-range" id="input-pos" min="1000" max="60000" step="1000" value="12000">
+ <div class="slider-hints">
+ <span>1,000 POs</span>
+ <span>30,000</span>
+ <span>60,000+ POs</span>
+ </div>
+ </div>
 
-          <!-- Slider 2: Annual PO Count -->
-          <div class="slider-group">
-            <div class="slider-header">
-              <span class="slider-label">Annual Purchase Orders Issued</span>
-              <span class="slider-value" id="val-pos">18,500 POs</span>
-            </div>
-            <input type="range" class="custom-range" id="input-pos" min="1000" max="100000" step="1000" value="18500">
-            <div class="slider-hints">
-              <span>1,000</span>
-              <span>50,000</span>
-              <span>100,000+</span>
-            </div>
-          </div>
+ <!-- Slider 3: Dispute Rate -->
+ <div class="slider-group">
+ <div class="slider-header">
+ <span class="slider-label">Invoice Discrepancy Rate</span>
+ <span class="slider-value" id="val-dispute">9.0%</span>
+ </div>
+ <input type="range" class="custom-range" id="input-dispute" min="2" max="20" step="0.5" value="9">
+ <div class="slider-hints">
+ <span>2% (Low friction)</span>
+ <span>9% (Average)</span>
+ <span>20% (High friction)</span>
+ </div>
+ </div>
 
-          <!-- Slider 3: Discrepancy Rate -->
-          <div class="slider-group">
-            <div class="slider-header">
-              <span class="slider-label">Invoice & PO Discrepancy Rate</span>
-              <span class="slider-value" id="val-dispute">11.0%</span>
-            </div>
-            <input type="range" class="custom-range" id="input-dispute" min="2" max="25" step="0.5" value="11">
-            <div class="slider-hints">
-              <span>2% (Low)</span>
-              <span>11% (Industry Avg)</span>
-              <span>25% (High Friction)</span>
-            </div>
-          </div>
+ <!-- Slider 4: Team Size -->
+ <div class="slider-group">
+ <div class="slider-header">
+ <span class="slider-label">Procurement & AP Team Size</span>
+ <span class="slider-value" id="val-fte">10 People</span>
+ </div>
+ <input type="range" class="custom-range" id="input-fte" min="2" max="50" step="1" value="10">
+ <div class="slider-hints">
+ <span>2 People</span>
+ <span>25 People</span>
+ <span>50+ People</span>
+ </div>
+ </div>
+ </div>
 
-          <!-- Slider 4: Procurement Team Size -->
-          <div class="slider-group">
-            <div class="slider-header">
-              <span class="slider-label">Procurement & AP Team Size (FTEs)</span>
-              <span class="slider-value" id="val-fte">16 FTEs</span>
-            </div>
-            <input type="range" class="custom-range" id="input-fte" min="2" max="80" step="1" value="16">
-            <div class="slider-hints">
-              <span>2 FTEs</span>
-              <span>40 FTEs</span>
-              <span>80+ FTEs</span>
-            </div>
-          </div>
+ <!-- Right Column: Results Display -->
+ <div class="roi-results-card">
+ <div>
+ <div class="roi-stat-highlight">
+ <div style="font-size: 0.8rem; font-weight: 700; color: #94a3b8; text-transform: uppercase;">
+ Projected Annual Savings
+ </div>
+ <div class="roi-stat-value" id="out-total-savings">
+ $2,140,000
+ </div>
+ <div style="font-size: 0.85rem; color: #a7f3d0; margin-top: 4px;">
+ Estimated Return: <strong id="out-roi-multiplier">11.8x ROI</strong>
+ </div>
+ </div>
 
-          <!-- Slider 5: Average Fully Loaded FTE Cost -->
-          <div class="slider-group">
-            <div class="slider-header">
-              <span class="slider-label">Fully Loaded Cost per FTE ($/Yr)</span>
-              <span class="slider-value" id="val-fte-cost">$110,000</span>
-            </div>
-            <input type="range" class="custom-range" id="input-fte-cost" min="60000" max="200000" step="5000" value="110000">
-            <div class="slider-hints">
-              <span>$60,000</span>
-              <span>$110,000</span>
-              <span>$200,000</span>
-            </div>
-          </div>
+ <!-- Breakdown -->
+ <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;">
+ <div style="background: #16243d; padding: 14px; border-radius: var(--radius-sm); border: 1px solid #283e65;">
+ <div style="font-size: 0.75rem; color: #93c5fd; text-transform: uppercase; font-weight: 600;">Direct Price Savings</div>
+ <div style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 2px;" id="out-direct-savings">$1,600,000</div>
+ <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Avg 3.2% discount on negotiated quotes</div>
+ </div>
 
-        </div>
+ <div style="background: #16243d; padding: 14px; border-radius: var(--radius-sm); border: 1px solid #283e65;">
+ <div style="font-size: 0.75rem; color: #6ee7b7; text-transform: uppercase; font-weight: 600;">Dispute Recovery</div>
+ <div style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 2px;" id="out-leakage-savings">$270,000</div>
+ <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Automated 3-way match invoice audits</div>
+ </div>
 
-        <!-- Real-Time Output Summary Display -->
-        <div class="roi-summary-display">
-          <div class="roi-summary-header">
-            <div>
-              <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Projected Annual Financial Impact</div>
-              <div class="roi-highlight-number text-gradient" id="out-total-savings">$3,745,000</div>
-            </div>
-            <span class="badge badge-emerald" id="out-roi-multiplier">14.2x Est. ROI</span>
-          </div>
+ <div style="background: #16243d; padding: 14px; border-radius: var(--radius-sm); border: 1px solid #283e65;">
+ <div style="font-size: 0.75rem; color: #cbd5e1; text-transform: uppercase; font-weight: 600;">Work Hours Saved</div>
+ <div style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 2px;" id="out-hours-saved">6,200 hrs/yr</div>
+ <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Eliminates routine vendor email chasing</div>
+ </div>
 
-          <!-- Key Financial Breakdown Grid -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px;">
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Direct Spend Savings</div>
-              <div style="font-size: 1.3rem; font-weight: 700; color: var(--cyan-400); margin-top: 4px;" id="out-direct-savings">$2,720,000</div>
-              <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;">Avg 3.2% discount via BATNA engine</div>
-            </div>
+ <div style="background: #16243d; padding: 14px; border-radius: var(--radius-sm); border: 1px solid #283e65;">
+ <div style="font-size: 0.75rem; color: #fcd34d; text-transform: uppercase; font-weight: 600;">Payback Period</div>
+ <div style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-top: 2px;" id="out-payback">2.6 Months</div>
+ <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Full investment recovered in ~10 weeks</div>
+ </div>
+ </div>
+ </div>
 
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Dispute Leakage Recovered</div>
-              <div style="font-size: 1.3rem; font-weight: 700; color: var(--emerald-400); margin-top: 4px;" id="out-leakage-savings">$498,500</div>
-              <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;">Automated 3-way match credit memos</div>
-            </div>
+ <div>
+ <a href="simulator.html" class="btn btn-primary" style="width: 100%; text-align: center;">
+ <span>Test Negotiation Simulator Live</span>
+ </a>
+ </div>
+ </div>
 
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">FTE Capacity Reclaimed</div>
-              <div style="font-size: 1.3rem; font-weight: 700; color: var(--purple-400); margin-top: 4px;" id="out-fte-savings">$526,500</div>
-              <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;" id="out-hours-saved">9,600 labor hrs redirected</div>
-            </div>
+ </div>
 
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Cycle Time Reduction</div>
-              <div style="font-size: 1.3rem; font-weight: 700; color: var(--amber-400); margin-top: 4px;">-73%</div>
-              <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;">14.5 days down to 3.1 days</div>
-            </div>
-          </div>
+ </div>
+ </main>
 
-          <!-- Payback Horizon -->
-          <div style="background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: var(--radius-md); padding: 16px; margin-bottom: 24px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <span style="font-size: 0.85rem; color: #fff; font-weight: 600;">Estimated Payback Period</span>
-              <span style="font-size: 1rem; font-weight: 700; color: var(--cyan-400);" id="out-payback">2.4 Months</span>
-            </div>
-            <div class="cog-progress-bar">
-              <div class="cog-progress-fill" style="width: 88%;"></div>
-            </div>
-            <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 6px;">
-              Based on standard 60-day enterprise SAP / Coupa integration and immediate direct spend capture.
-            </div>
-          </div>
+ <!-- Footer -->
+ <footer class="site-footer">
+ <div class="container">
+ <div class="footer-content">
+ <div>
+ <div style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-bottom: 6px;">NexusProcure AI</div>
+ <p style="font-size: 0.85rem; margin: 0;">Autonomous Supplier Negotiation & Procurement Platform</p>
+ </div>
+ <div style="display: flex; gap: 20px; font-size: 0.9rem;">
+ <a href="index.html">Home</a>
+ <a href="simulator.html">Simulator</a>
+ <a href="portal.html">Supplier Portal</a>
+ <a href="calculator.html">Savings Calculator</a>
+ </div>
+ </div>
+ <div class="footer-bottom">
+ <div>Flexi Credit CA-3 Project</div>
+ <div>Groq AI Integration</div>
+ </div>
+ </div>
+ </footer>
 
-          <!-- Print / PDF Action Button -->
-          <div style="display: flex; gap: 12px;">
-            <button class="btn btn-primary" style="flex: 1;" id="btn-print-roi">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-                <rect x="6" y="14" width="12" height="8"></rect>
-              </svg>
-              <span>Print / Export Executive PDF</span>
-            </button>
-            <a href="demo.html" class="btn btn-secondary">
-              <span>Book Review</span>
-            </a>
-          </div>
+ <!-- Scripts -->
+ <script src="js/auth.js"></script>
+ <script src="js/gemini-service.js"></script>
+ <script src="js/gemini-ui.js"></script>
+ <script>
+ document.addEventListener('DOMContentLoaded', () => {
+ const inSpend = document.getElementById('input-spend');
+ const inPos = document.getElementById('input-pos');
+ const inDispute = document.getElementById('input-dispute');
+ const inFte = document.getElementById('input-fte');
 
-        </div>
+ const valSpend = document.getElementById('val-spend');
+ const valPos = document.getElementById('val-pos');
+ const valDispute = document.getElementById('val-dispute');
+ const valFte = document.getElementById('val-fte');
 
-      </div>
+ const outTotal = document.getElementById('out-total-savings');
+ const outDirect = document.getElementById('out-direct-savings');
+ const outLeakage = document.getElementById('out-leakage-savings');
+ const outHours = document.getElementById('out-hours-saved');
+ const outRoi = document.getElementById('out-roi-multiplier');
+ const outPayback = document.getElementById('out-payback');
 
-      <!-- Comparative Analysis Table -->
-      <div class="data-table-card">
-        <div style="padding: 24px; border-bottom: 1px solid var(--border-subtle);">
-          <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 6px;">Side-by-Side Operational Comparison</h3>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">How NexusProcure AI benchmarks against traditional manual buyer and AP workflows.</p>
-        </div>
+ function formatMoney(num) {
+ return '$' + Math.round(num).toLocaleString();
+ }
 
-        <div class="table-responsive">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Procurement Metric</th>
-                <th>Traditional Manual Workflow</th>
-                <th>NexusProcure Autonomous AI</th>
-                <th>Operational Impact</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>RFQ Cycle Turnaround</strong></td>
-                <td>12 to 18 business days of manual emails</td>
-                <td><span class="badge badge-emerald">1.4 hours average</span></td>
-                <td>92% reduction in buyer administrative drag</td>
-              </tr>
-              <tr>
-                <td><strong>BATNA Market Spot Indexing</strong></td>
-                <td>Sporadic / Ad-hoc Excel spreadsheets</td>
-                <td><span class="badge badge-cyan">Real-time dynamic game-theoretic solver</span></td>
-                <td>Guaranteed optimal price concession curve</td>
-              </tr>
-              <tr>
-                <td><strong>3-Way Match Invoice Audit</strong></td>
-                <td>Manual AP review; disputes take 2-4 weeks</td>
-                <td><span class="badge badge-emerald">Instant OCR & line-item reconciliation</span></td>
-                <td>Zero cash leakage, automated debit memos</td>
-              </tr>
-              <tr>
-                <td><strong>Global Language & Time Zones</strong></td>
-                <td>Single shift, English only; timezone lag</td>
-                <td><span class="badge badge-purple">40+ native languages, 24/7/365 active</span></td>
-                <td>Zero overnight delays with Asian/EU suppliers</td>
-              </tr>
-              <tr>
-                <td><strong>ERP System Writeback</strong></td>
-                <td>Manual re-keying into SAP/Coupa; high error rate</td>
-                <td><span class="badge badge-cyan">Sub-second bi-directional BAPI/OData sync</span></td>
-                <td>Audit-grade logging, SOC2 Type II compliance</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+ function updateCalc() {
+ const spend = parseFloat(inSpend.value);
+ const pos = parseFloat(inPos.value);
+ const dispute = parseFloat(inDispute.value);
+ const fte = parseFloat(inFte.value);
 
-    </div>
-  </main>
+ valSpend.textContent = formatMoney(spend);
+ valPos.textContent = pos.toLocaleString() + ' POs';
+ valDispute.textContent = dispute.toFixed(1) + '%';
+ valFte.textContent = fte + ' People';
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-brand">
-            <div class="brand-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <span>Nexus<span class="text-gradient">Procure</span> AI</span>
-          </a>
-          <p>Autonomous intelligence platform for enterprise supplier communications, algorithmic negotiation, and continuous supply risk mitigation.</p>
-        </div>
+ // Calculation Model
+ const directSavings = spend * 0.032; // 3.2% avg price cut
+ const leakageSavings = (pos * (dispute / 100)) * 250; // $250 avg recovery per dispute
+ const hoursSaved = fte * 620; // 620 hrs saved per team member
+ const laborSavings = hoursSaved * 45; // $45/hr fully loaded
+ const totalSavings = directSavings + leakageSavings + laborSavings;
 
-        <div class="footer-col">
-          <h5>Platform</h5>
-          <ul class="footer-links">
-            <li><a href="simulator.html">Agent Simulator</a></li>
-            <li><a href="capabilities.html">Architecture & Capabilities</a></li>
-            <li><a href="portal.html">Supplier Experience Portal</a></li>
-            <li><a href="calculator.html">ROI & Savings Calculator</a></li>
-          </ul>
-        </div>
+ const platformCost = 90000 + (spend * 0.001);
+ const roiMult = (totalSavings / platformCost).toFixed(1);
+ const paybackMonths = Math.max(1.2, (platformCost / (totalSavings / 12))).toFixed(1);
 
-        <div class="footer-col">
-          <h5>Integrations</h5>
-          <ul class="footer-links">
-            <li><a href="integrations.html#sap">SAP S/4HANA</a></li>
-            <li><a href="integrations.html#coupa">Coupa Procurement</a></li>
-            <li><a href="integrations.html#oracle">Oracle Cloud SCM</a></li>
-            <li><a href="integrations.html#edi">ANSI X12 EDI Gateway</a></li>
-            <li><a href="integrations.html#whatsapp">WhatsApp Enterprise</a></li>
-          </ul>
-        </div>
+ outDirect.textContent = formatMoney(directSavings);
+ outLeakage.textContent = formatMoney(leakageSavings);
+ outHours.textContent = Math.round(hoursSaved).toLocaleString() + ' hrs/yr';
+ outTotal.textContent = formatMoney(totalSavings);
+ outRoi.textContent = `${roiMult}x Est. ROI`;
+ outPayback.textContent = `${paybackMonths} Months`;
+ }
 
-        <div class="footer-col">
-          <h5>Security & Trust</h5>
-          <ul class="footer-links">
-            <li><a href="security.html#soc2">SOC 2 Type II Report</a></li>
-            <li><a href="security.html#iso27001">ISO 27001 Certified</a></li>
-            <li><a href="security.html#gdpr">GDPR Data Privacy</a></li>
-            <li><a href="security.html#audit-logs">Audit-Grade Logging</a></li>
-            <li><a href="security.html#guardrails">Responsible AI Guardrails</a></li>
-          </ul>
-        </div>
-      </div>
+ [inSpend, inPos, inDispute, inFte].forEach(input => {
+ input.addEventListener('input', updateCalc);
+ });
 
-      <div class="footer-bottom">
-        <div>© 2026 NexusProcure AI Inc. All rights reserved. Built for autonomous enterprise procurement.</div>
-        <div class="security-cert-badges">
-          <span class="cert-badge">SOC2 TYPE II</span>
-          <span class="cert-badge">ISO 27001</span>
-          <span class="cert-badge">GDPR COMPLIANT</span>
-          <span class="cert-badge">SAP CERTIFIED</span>
-        </div>
-      </div>
-    </div>
-  </footer>
+ document.getElementById('btn-reset-roi').addEventListener('click', () => {
+ inSpend.value = 50000000;
+ inPos.value = 12000;
+ inDispute.value = 9;
+ inFte.value = 10;
+ updateCalc();
+ });
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const inputSpend = document.getElementById('input-spend');
-      const inputPos = document.getElementById('input-pos');
-      const inputDispute = document.getElementById('input-dispute');
-      const inputFte = document.getElementById('input-fte');
-      const inputFteCost = document.getElementById('input-fte-cost');
-      const btnReset = document.getElementById('btn-reset-roi');
-      const btnPrint = document.getElementById('btn-print-roi');
-
-      const valSpend = document.getElementById('val-spend');
-      const valPos = document.getElementById('val-pos');
-      const valDispute = document.getElementById('val-dispute');
-      const valFte = document.getElementById('val-fte');
-      const valFteCost = document.getElementById('val-fte-cost');
-
-      const outTotal = document.getElementById('out-total-savings');
-      const outDirect = document.getElementById('out-direct-savings');
-      const outLeakage = document.getElementById('out-leakage-savings');
-      const outFte = document.getElementById('out-fte-savings');
-      const outHours = document.getElementById('out-hours-saved');
-      const outPayback = document.getElementById('out-payback');
-      const outRoiMultiplier = document.getElementById('out-roi-multiplier');
-
-      function formatCurrency(val) {
-        return '$' + Math.round(val).toLocaleString('en-US');
-      }
-
-      function recalculate() {
-        const spend = parseFloat(inputSpend.value);
-        const pos = parseFloat(inputPos.value);
-        const disputeRate = parseFloat(inputDispute.value) / 100;
-        const fte = parseFloat(inputFte.value);
-        const fteCost = parseFloat(inputFteCost.value);
-
-        // Update labels
-        valSpend.textContent = formatCurrency(spend);
-        valPos.textContent = Math.round(pos).toLocaleString('en-US') + ' POs';
-        valDispute.textContent = (disputeRate * 100).toFixed(1) + '%';
-        valFte.textContent = fte + ' FTEs';
-        valFteCost.textContent = formatCurrency(fteCost);
-
-        // Calculations
-        // 1. Direct spend savings: 3.2% of spend
-        const directSavings = spend * 0.032;
-        
-        // 2. Dispute leakage recovered: 35% of disputed PO value recovered (assume avg PO value = spend / pos)
-        const avgPoValue = spend / pos;
-        const disputedPoCount = pos * disputeRate;
-        const leakageSavings = disputedPoCount * (avgPoValue * 0.08) * 0.45; // average overbilling recovered
-
-        // 3. FTE Operational Capacity: 30% of FTE time reclaimed
-        const fteSavings = fte * fteCost * 0.30;
-        const hoursSaved = Math.round(fte * 1920 * 0.30);
-
-        // Total
-        const total = directSavings + leakageSavings + fteSavings;
-
-        // Estimated cost of NexusProcure based on spend tier: ~$180k - $350k
-        const estimatedPlatformCost = 150000 + (spend * 0.0008);
-        const multiplier = (total / estimatedPlatformCost).toFixed(1);
-        const paybackMonths = ((estimatedPlatformCost / total) * 12).toFixed(1);
-
-        // Update UI
-        outTotal.textContent = formatCurrency(total);
-        outDirect.textContent = formatCurrency(directSavings);
-        outLeakage.textContent = formatCurrency(leakageSavings);
-        outFte.textContent = formatCurrency(fteSavings);
-        outHours.textContent = hoursSaved.toLocaleString('en-US') + ' labor hrs redirected';
-        outPayback.textContent = paybackMonths + ' Months';
-        outRoiMultiplier.textContent = multiplier + 'x Est. ROI';
-      }
-
-      [inputSpend, inputPos, inputDispute, inputFte, inputFteCost].forEach(el => {
-        el.addEventListener('input', recalculate);
-      });
-
-      if (btnReset) {
-        btnReset.addEventListener('click', () => {
-          inputSpend.value = 85000000;
-          inputPos.value = 18500;
-          inputDispute.value = 11;
-          inputFte.value = 16;
-          inputFteCost.value = 110000;
-          recalculate();
-        });
-      }
-
-      if (btnPrint) {
-        btnPrint.addEventListener('click', () => {
-          window.print();
-        });
-      }
-
-      recalculate();
-    });
-  </script>
-
-  <!-- Gemini AI Integration -->
-  <script src="js/gemini-service.js"></script>
-  <script src="js/gemini-ui.js"></script>
+ updateCalc();
+ });
+ </script>
 </body>
 </html>

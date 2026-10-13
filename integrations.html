@@ -1,464 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise Integrations & Developer API — NexusProcure AI</title>
-  <meta name="description" content="Connect NexusProcure AI seamlessly into SAP S/4HANA, Coupa, Oracle Cloud SCM, ANSI X12 EDI, and WhatsApp Business API. Live interactive API playground.">
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2fe' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Enterprise Integrations & Developer API - NexusProcure AI</title>
+ <meta name="description" content="Connect NexusProcure AI seamlessly into SAP S/4HANA, Coupa, Oracle Cloud SCM, ANSI X12 EDI, and WhatsApp Business API. Live interactive API playground.">
+ <link rel="stylesheet" href="styles/main.css">
+ <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2fe' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
 </head>
 <body>
 
-  <div class="bg-ambient-orb ambient-orb-1"></div>
-  <div class="bg-ambient-orb ambient-orb-2"></div>
-  <div class="bg-grid-overlay"></div>
+ <div class="bg-ambient-orb ambient-orb-1"></div>
+ <div class="bg-ambient-orb ambient-orb-2"></div>
+ <div class="bg-grid-overlay"></div>
 
-  <!-- Navigation -->
-  <nav class="site-nav" id="site-nav">
-    <div class="container nav-content">
-      <a href="index.html" class="nav-brand">
-        <div class="brand-icon-wrapper">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-        </div>
-        <span>Nexus<span class="text-gradient">Procure</span> AI</span>
-      </a>
+ <!-- Navigation -->
+ <nav class="site-nav" id="site-nav">
+ <div class="container nav-content">
+ <a href="index.html" class="nav-brand">
+ <div class="brand-icon-wrapper">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+ </svg>
+ </div>
+ <span>Nexus<span class="text-gradient">Procure</span> AI</span>
+ </a>
 
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="simulator.html" class="nav-link">Live Simulator</a></li>
-        <li><a href="capabilities.html" class="nav-link">Capabilities</a></li>
-        <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
-        <li><a href="calculator.html" class="nav-link">ROI Calculator</a></li>
-        <li><a href="integrations.html" class="nav-link active-page">Integrations</a></li>
-        <li><a href="security.html" class="nav-link">Security & Trust</a></li>
-      </ul>
+ <ul class="nav-links">
+ <li><a href="index.html" class="nav-link">Home</a></li>
+ <li><a href="simulator.html" class="nav-link">Negotiation Simulator</a></li>
+ <li><a href="portal.html" class="nav-link">Supplier Portal</a></li>
+ <li><a href="calculator.html" class="nav-link">Savings Calculator</a></li>
+ </ul>
 
-      <div class="nav-right">
-        <div class="status-pill">
-          <div class="radar-dot"></div>
-          <span>API Gateway: v1.8 (Healthy)</span>
-        </div>
-        <a href="demo.html" class="btn btn-primary btn-sm">
-          <span>Sandbox Access</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </nav>
+ <div class="nav-right">
+ <div class="status-pill">
+ <div class="radar-dot"></div>
+ <span>API Gateway: v1.8 (Healthy)</span>
+ </div>
+ <a href="demo.html" class="btn btn-primary btn-sm">
+ <span>Sandbox Access</span>
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <path d="M5 12h14M12 5l7 7-7 7"/>
+ </svg>
+ </a>
+ </div>
+ </div>
+ </nav>
 
-  <!-- Page Hero -->
-  <header class="page-hero">
-    <div class="container page-hero-inner">
-      <div class="page-badge purple">
-        <span>🔌 Enterprise Mesh & Ecosystem</span>
-      </div>
-      <h1 class="page-hero-title">
-        Pre-Built Connectors & <span class="text-gradient">Developer API</span>
-      </h1>
-      <p class="page-hero-subtitle">
-        Zero rip-and-replace. NexusProcure AI sits natively alongside your existing ERP, EDI gateways, and procurement suites with turnkey bidirectional connectors.
-      </p>
+ <!-- Page Hero -->
+ <header class="page-hero">
+ <div class="container page-hero-inner">
+ <div class="page-badge purple">
+ <span>Enterprise Mesh & Ecosystem</span>
+ </div>
+ <h1 class="page-hero-title">
+ Pre-Built Connectors & <span class="text-gradient">Developer API</span>
+ </h1>
+ <p class="page-hero-subtitle">
+ Zero rip-and-replace. NexusProcure AI sits natively alongside your existing ERP, EDI gateways, and procurement suites with turnkey bidirectional connectors.
+ </p>
 
-      <!-- Category Tabs -->
-      <div class="filter-tabs" style="justify-content: center;" id="category-tabs">
-        <button class="filter-tab-btn active" data-filter="all">All Connectors (24)</button>
-        <button class="filter-tab-btn" data-filter="erp">ERPs & Financials</button>
-        <button class="filter-tab-btn" data-filter="procure">Procure-to-Pay</button>
-        <button class="filter-tab-btn" data-filter="edi">EDI & Logistics</button>
-        <button class="filter-tab-btn" data-filter="messaging">Vendor Messaging</button>
-      </div>
-    </div>
-  </header>
+ <!-- Category Tabs -->
+ <div class="filter-tabs" style="justify-content: center;" id="category-tabs">
+ <button class="filter-tab-btn active" data-filter="all">All Connectors (24)</button>
+ <button class="filter-tab-btn" data-filter="erp">ERPs & Financials</button>
+ <button class="filter-tab-btn" data-filter="procure">Procure-to-Pay</button>
+ <button class="filter-tab-btn" data-filter="edi">EDI & Logistics</button>
+ <button class="filter-tab-btn" data-filter="messaging">Vendor Messaging</button>
+ </div>
+ </div>
+ </header>
 
-  <!-- Connector Grid -->
-  <main class="subpage-section" style="padding-top: 0;">
-    <div class="container">
-      
-      <div class="integrations-grid" id="connector-cards-grid" style="margin-bottom: 60px;">
-        
-        <!-- SAP S/4HANA -->
-        <div class="bento-card" data-category="erp" id="sap">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-            <div class="bento-icon-box cyan">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                <line x1="6" y1="18" x2="6.01" y2="18"></line>
-              </svg>
-            </div>
-            <span class="badge badge-emerald">Certified Partner</span>
-          </div>
-          <h3 class="bento-title">SAP S/4HANA & ECC 6.0</h3>
-          <p class="bento-desc">
-            Direct bi-directional sync via BAPI and OData APIs. Ingests purchase requisitions, validates master data, writes agreed purchase orders, and reconciles invoice receipts.
-          </p>
-          <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
-            Protocols: OData v4 • IDoc • RFC • NetWeaver Gateway
-          </div>
-        </div>
+ <!-- Connector Grid -->
+ <main class="subpage-section" style="padding-top: 0;">
+ <div class="container">
+ 
+ <div class="integrations-grid" id="connector-cards-grid" style="margin-bottom: 60px;">
+ 
+ <!-- SAP S/4HANA -->
+ <div class="bento-card" data-category="erp" id="sap">
+ <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+ <div class="bento-icon-box cyan">
+ <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+ <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+ <line x1="6" y1="6" x2="6.01" y2="6"></line>
+ <line x1="6" y1="18" x2="6.01" y2="18"></line>
+ </svg>
+ </div>
+ <span class="badge badge-emerald">Certified Partner</span>
+ </div>
+ <h3 class="bento-title">SAP S/4HANA & ECC 6.0</h3>
+ <p class="bento-desc">
+ Direct bi-directional sync via BAPI and OData APIs. Ingests purchase requisitions, validates master data, writes agreed purchase orders, and reconciles invoice receipts.
+ </p>
+ <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
+ Protocols: OData v4 • IDoc • RFC • NetWeaver Gateway
+ </div>
+ </div>
 
-        <!-- Coupa -->
-        <div class="bento-card" data-category="procure" id="coupa">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-            <div class="bento-icon-box purple">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-            </div>
-            <span class="badge badge-emerald">REST & cXML</span>
-          </div>
-          <h3 class="bento-title">Coupa Procurement</h3>
-          <p class="bento-desc">
-            Autonomous agent ingests pending Coupa POs, executes automated price challenges with suppliers, and writes back updated contractual terms into Coupa Contracts and Invoicing.
-          </p>
-          <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
-            Protocols: Coupa REST API v34 • cXML 1.2.050 • Webhooks
-          </div>
-        </div>
+ <!-- Coupa -->
+ <div class="bento-card" data-category="procure" id="coupa">
+ <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+ <div class="bento-icon-box purple">
+ <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <circle cx="9" cy="21" r="1"></circle>
+ <circle cx="20" cy="21" r="1"></circle>
+ <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+ </svg>
+ </div>
+ <span class="badge badge-emerald">REST & cXML</span>
+ </div>
+ <h3 class="bento-title">Coupa Procurement</h3>
+ <p class="bento-desc">
+ Autonomous agent ingests pending Coupa POs, executes automated price challenges with suppliers, and writes back updated contractual terms into Coupa Contracts and Invoicing.
+ </p>
+ <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
+ Protocols: Coupa REST API v34 • cXML 1.2.050 • Webhooks
+ </div>
+ </div>
 
-        <!-- Oracle Cloud SCM -->
-        <div class="bento-card" data-category="erp" id="oracle">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-            <div class="bento-icon-box emerald">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                <polyline points="2 17 12 22 22 17"></polyline>
-                <polyline points="2 12 12 17 22 12"></polyline>
-              </svg>
-            </div>
-            <span class="badge badge-cyan">Fusion ERP</span>
-          </div>
-          <h3 class="bento-title">Oracle Cloud SCM & NetSuite</h3>
-          <p class="bento-desc">
-            Seamlessly feeds order revisions, line-item adjustments, and advance shipping notifications into Oracle Fusion Procurement and NetSuite SuiteTalk REST web services.
-          </p>
-          <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
-            Protocols: Oracle REST APIs • SuiteTalk SOAP/REST • OIC
-          </div>
-        </div>
+ <!-- Oracle Cloud SCM -->
+ <div class="bento-card" data-category="erp" id="oracle">
+ <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+ <div class="bento-icon-box emerald">
+ <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+ <polyline points="2 17 12 22 22 17"></polyline>
+ <polyline points="2 12 12 17 22 12"></polyline>
+ </svg>
+ </div>
+ <span class="badge badge-cyan">Fusion ERP</span>
+ </div>
+ <h3 class="bento-title">Oracle Cloud SCM & NetSuite</h3>
+ <p class="bento-desc">
+ Seamlessly feeds order revisions, line-item adjustments, and advance shipping notifications into Oracle Fusion Procurement and NetSuite SuiteTalk REST web services.
+ </p>
+ <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
+ Protocols: Oracle REST APIs • SuiteTalk SOAP/REST • OIC
+ </div>
+ </div>
 
-        <!-- ANSI X12 EDI -->
-        <div class="bento-card" data-category="edi" id="edi">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-            <div class="bento-icon-box amber">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-              </svg>
-            </div>
-            <span class="badge badge-amber">AS2 / SFTP</span>
-          </div>
-          <h3 class="bento-title">ANSI X12 & EDIFACT Gateway</h3>
-          <p class="bento-desc">
-            Autonomous ingestion and generation of standard EDI messages: 850 (Purchase Order), 855 (PO Acknowledgment), 856 (Ship Notice/ASN), and 810 (Invoice).
-          </p>
-          <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
-            Standards: ANSI X12 5010 • EDIFACT D96A • AS2 Encrypted
-          </div>
-        </div>
+ <!-- ANSI X12 EDI -->
+ <div class="bento-card" data-category="edi" id="edi">
+ <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+ <div class="bento-icon-box amber">
+ <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <polyline points="16 18 22 12 16 6"></polyline>
+ <polyline points="8 6 2 12 8 18"></polyline>
+ </svg>
+ </div>
+ <span class="badge badge-amber">AS2 / SFTP</span>
+ </div>
+ <h3 class="bento-title">ANSI X12 & EDIFACT Gateway</h3>
+ <p class="bento-desc">
+ Autonomous ingestion and generation of standard EDI messages: 850 (Purchase Order), 855 (PO Acknowledgment), 856 (Ship Notice/ASN), and 810 (Invoice).
+ </p>
+ <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
+ Standards: ANSI X12 5010 • EDIFACT D96A • AS2 Encrypted
+ </div>
+ </div>
 
-        <!-- WhatsApp Business API -->
-        <div class="bento-card" data-category="messaging" id="whatsapp">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-            <div class="bento-icon-box emerald">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-              </svg>
-            </div>
-            <span class="badge badge-emerald">Meta Verified</span>
-          </div>
-          <h3 class="bento-title">WhatsApp Business & WeChat</h3>
-          <p class="bento-desc">
-            Engage Tier-1 and Tier-2 factory owners across Asia and Latin America who conduct procurement over messaging apps. Complete with automated translation and audit transcripts.
-          </p>
-          <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
-            Endpoints: Meta Cloud API • WeChat Work Open API
-          </div>
-        </div>
+ <!-- WhatsApp Business API -->
+ <div class="bento-card" data-category="messaging" id="whatsapp">
+ <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+ <div class="bento-icon-box emerald">
+ <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+ </svg>
+ </div>
+ <span class="badge badge-emerald">Meta Verified</span>
+ </div>
+ <h3 class="bento-title">WhatsApp Business & WeChat</h3>
+ <p class="bento-desc">
+ Engage Tier-1 and Tier-2 factory owners across Asia and Latin America who conduct procurement over messaging apps. Complete with automated translation and audit transcripts.
+ </p>
+ <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
+ Endpoints: Meta Cloud API • WeChat Work Open API
+ </div>
+ </div>
 
-        <!-- Slack & Teams -->
-        <div class="bento-card" data-category="messaging">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-            <div class="bento-icon-box cyan">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-              </svg>
-            </div>
-            <span class="badge badge-purple">Ops Notifications</span>
-          </div>
-          <h3 class="bento-title">Microsoft Teams & Slack Ops Hub</h3>
-          <p class="bento-desc">
-            Delivers high-priority human escalation cards (e.g. over-budget exception approvals) straight to your category manager channels with 1-click interactive approve/reject buttons.
-          </p>
-          <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
-            Integrations: Adaptive Cards • Slack Block Kit • Webhooks
-          </div>
-        </div>
+ <!-- Slack & Teams -->
+ <div class="bento-card" data-category="messaging">
+ <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+ <div class="bento-icon-box cyan">
+ <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+ </svg>
+ </div>
+ <span class="badge badge-purple">Ops Notifications</span>
+ </div>
+ <h3 class="bento-title">Microsoft Teams & Slack Ops Hub</h3>
+ <p class="bento-desc">
+ Delivers high-priority human escalation cards (e.g. over-budget exception approvals) straight to your category manager channels with 1-click interactive approve/reject buttons.
+ </p>
+ <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 14px; font-family: var(--font-mono);">
+ Integrations: Adaptive Cards • Slack Block Kit • Webhooks
+ </div>
+ </div>
 
-      </div>
+ </div>
 
-      <!-- Live Interactive API Console Playground -->
-      <div class="section-heading text-center" style="margin-bottom: 30px;">
-        <div class="page-badge cyan"><span>Developer Tools</span></div>
-        <h2 class="section-title">Interactive <span class="text-gradient">API Playground</span></h2>
-        <p class="section-subtitle">Test autonomous agent endpoints directly from your browser with live synthetic execution.</p>
-      </div>
+ <!-- Live Interactive API Console Playground -->
+ <div class="section-heading text-center" style="margin-bottom: 30px;">
+ <div class="page-badge cyan"><span>Developer Tools</span></div>
+ <h2 class="section-title">Interactive <span class="text-gradient">API Playground</span></h2>
+ <p class="section-subtitle">Test autonomous agent endpoints directly from your browser with live synthetic execution.</p>
+ </div>
 
-      <div class="api-console-box" style="max-width: 1000px; margin: 0 auto 60px;">
-        <div class="api-console-header">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span class="api-method-badge api-method-post" id="api-active-method">POST</span>
-            <select id="api-endpoint-select" class="form-control" style="background: transparent; color: #fff; border: none; font-weight: 700; font-family: var(--font-mono); width: auto; font-size: 0.95rem; cursor: pointer;">
-              <option value="negotiate">/v1/rfq/negotiate</option>
-              <option value="reconcile">/v1/discrepancies/reconcile</option>
-              <option value="supplier_risk">/v1/suppliers/evaluate-risk</option>
-            </select>
-          </div>
-          <div style="display: flex; gap: 10px;">
-            <button class="btn btn-secondary btn-sm" id="btn-copy-curl">Copy cURL</button>
-            <button class="btn btn-primary btn-sm" id="btn-execute-api">
-              <span>Execute Request</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </button>
-          </div>
-        </div>
+ <div class="api-console-box" style="max-width: 1000px; margin: 0 auto 60px;">
+ <div class="api-console-header">
+ <div style="display: flex; align-items: center; gap: 12px;">
+ <span class="api-method-badge api-method-post" id="api-active-method">POST</span>
+ <select id="api-endpoint-select" class="form-control" style="background: transparent; color: #fff; border: none; font-weight: 700; font-family: var(--font-mono); width: auto; font-size: 0.95rem; cursor: pointer;">
+ <option value="negotiate">/v1/rfq/negotiate</option>
+ <option value="reconcile">/v1/discrepancies/reconcile</option>
+ <option value="supplier_risk">/v1/suppliers/evaluate-risk</option>
+ </select>
+ </div>
+ <div style="display: flex; gap: 10px;">
+ <button class="btn btn-secondary btn-sm" id="btn-copy-curl">Copy cURL</button>
+ <button class="btn btn-primary btn-sm" id="btn-execute-api">
+ <span>Execute Request</span>
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <polygon points="5 3 19 12 5 21 5 3"></polygon>
+ </svg>
+ </button>
+ </div>
+ </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border-subtle);">
-          <!-- Request Body -->
-          <div style="padding: 20px; border-right: 1px solid var(--border-subtle); background: #03060f;">
-            <div style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700; margin-bottom: 8px;">JSON Request Body:</div>
-            <pre style="color: var(--cyan-400); font-family: var(--font-mono); font-size: 0.8rem; overflow-x: auto; white-space: pre-wrap;" id="api-request-code">{
-  "po_reference": "PO-2026-94821",
-  "supplier_id": "VEND-8849-SHENZHEN",
-  "quoted_unit_price": 18.40,
-  "target_unit_price": 16.20,
-  "volume_units": 10000,
-  "currency": "USD",
-  "max_concession_pct": 0.12,
-  "allow_terms_tradeoff": true
+ <div style="display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border-subtle);">
+ <!-- Request Body -->
+ <div style="padding: 20px; border-right: 1px solid var(--border-subtle); background: #03060f;">
+ <div style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700; margin-bottom: 8px;">JSON Request Body:</div>
+ <pre style="color: var(--cyan-400); font-family: var(--font-mono); font-size: 0.8rem; overflow-x: auto; white-space: pre-wrap;" id="api-request-code">{
+ "po_reference": "PO-2026-94821",
+ "supplier_id": "VEND-8849-SHENZHEN",
+ "quoted_unit_price": 18.40,
+ "target_unit_price": 16.20,
+ "volume_units": 10000,
+ "currency": "USD",
+ "max_concession_pct": 0.12,
+ "allow_terms_tradeoff": true
 }</pre>
-          </div>
+ </div>
 
-          <!-- Response Body -->
-          <div style="padding: 20px; background: #070c18;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">HTTP Response:</span>
-              <span class="badge badge-emerald" id="api-response-status">200 OK (218ms)</span>
-            </div>
-            <pre style="color: #cbd5e1; font-family: var(--font-mono); font-size: 0.8rem; overflow-x: auto; white-space: pre-wrap;" id="api-response-code">{
-  "status": "COMPLETED",
-  "accord_reached": true,
-  "negotiated_price": 16.20,
-  "agreed_lead_days": 14,
-  "gross_savings_usd": 26400.00,
-  "batna_spread_captured": "100%",
-  "erp_transaction_id": "SAP-BAPI-9941029",
-  "audit_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+ <!-- Response Body -->
+ <div style="padding: 20px; background: #070c18;">
+ <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+ <span style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">HTTP Response:</span>
+ <span class="badge badge-emerald" id="api-response-status">200 OK (218ms)</span>
+ </div>
+ <pre style="color: #cbd5e1; font-family: var(--font-mono); font-size: 0.8rem; overflow-x: auto; white-space: pre-wrap;" id="api-response-code">{
+ "status": "COMPLETED",
+ "accord_reached": true,
+ "negotiated_price": 16.20,
+ "agreed_lead_days": 14,
+ "gross_savings_usd": 26400.00,
+ "batna_spread_captured": "100%",
+ "erp_transaction_id": "SAP-BAPI-9941029",
+ "audit_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 }</pre>
-          </div>
-        </div>
-      </div>
+ </div>
+ </div>
+ </div>
 
-    </div>
-  </main>
+ </div>
+ </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-brand">
-            <div class="brand-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <span>Nexus<span class="text-gradient">Procure</span> AI</span>
-          </a>
-          <p>Autonomous intelligence platform for enterprise supplier communications, algorithmic negotiation, and continuous supply risk mitigation.</p>
-        </div>
+ <!-- Footer -->
+ <footer class="site-footer">
+ <div class="container">
+ <div class="footer-grid">
+ <div class="footer-brand">
+ <a href="index.html" class="nav-brand">
+ <div class="brand-icon-wrapper">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+ <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+ </svg>
+ </div>
+ <span>Nexus<span class="text-gradient">Procure</span> AI</span>
+ </a>
+ <p>Autonomous intelligence platform for enterprise supplier communications, algorithmic negotiation, and continuous supply risk mitigation.</p>
+ </div>
 
-        <div class="footer-col">
-          <h5>Platform</h5>
-          <ul class="footer-links">
-            <li><a href="simulator.html">Agent Simulator</a></li>
-            <li><a href="capabilities.html">Architecture & Capabilities</a></li>
-            <li><a href="portal.html">Supplier Experience Portal</a></li>
-            <li><a href="calculator.html">ROI & Savings Calculator</a></li>
-          </ul>
-        </div>
+ <div class="footer-col">
+ <h5>Platform</h5>
+ <ul class="footer-links">
+ <li><a href="simulator.html">Agent Simulator</a></li>
+ <li><a href="capabilities.html">Architecture & Capabilities</a></li>
+ <li><a href="portal.html">Supplier Experience Portal</a></li>
+ <li><a href="calculator.html">ROI & Savings Calculator</a></li>
+ </ul>
+ </div>
 
-        <div class="footer-col">
-          <h5>Integrations</h5>
-          <ul class="footer-links">
-            <li><a href="integrations.html#sap">SAP S/4HANA</a></li>
-            <li><a href="integrations.html#coupa">Coupa Procurement</a></li>
-            <li><a href="integrations.html#oracle">Oracle Cloud SCM</a></li>
-            <li><a href="integrations.html#edi">ANSI X12 EDI Gateway</a></li>
-            <li><a href="integrations.html#whatsapp">WhatsApp Enterprise</a></li>
-          </ul>
-        </div>
+ <div class="footer-col">
+ <h5>Integrations</h5>
+ <ul class="footer-links">
+ <li><a href="integrations.html#sap">SAP S/4HANA</a></li>
+ <li><a href="integrations.html#coupa">Coupa Procurement</a></li>
+ <li><a href="integrations.html#oracle">Oracle Cloud SCM</a></li>
+ <li><a href="integrations.html#edi">ANSI X12 EDI Gateway</a></li>
+ <li><a href="integrations.html#whatsapp">WhatsApp Enterprise</a></li>
+ </ul>
+ </div>
 
-        <div class="footer-col">
-          <h5>Security & Trust</h5>
-          <ul class="footer-links">
-            <li><a href="security.html#soc2">SOC 2 Type II Report</a></li>
-            <li><a href="security.html#iso27001">ISO 27001 Certified</a></li>
-            <li><a href="security.html#gdpr">GDPR Data Privacy</a></li>
-            <li><a href="security.html#audit-logs">Audit-Grade Logging</a></li>
-            <li><a href="security.html#guardrails">Responsible AI Guardrails</a></li>
-          </ul>
-        </div>
-      </div>
+ <div class="footer-col">
+ <h5>Security & Trust</h5>
+ <ul class="footer-links">
+ <li><a href="security.html#soc2">SOC 2 Type II Report</a></li>
+ <li><a href="security.html#iso27001">ISO 27001 Certified</a></li>
+ <li><a href="security.html#gdpr">GDPR Data Privacy</a></li>
+ <li><a href="security.html#audit-logs">Audit-Grade Logging</a></li>
+ <li><a href="security.html#guardrails">Responsible AI Guardrails</a></li>
+ </ul>
+ </div>
+ </div>
 
-      <div class="footer-bottom">
-        <div>© 2026 NexusProcure AI Inc. All rights reserved. Built for autonomous enterprise procurement.</div>
-        <div class="security-cert-badges">
-          <span class="cert-badge">SOC2 TYPE II</span>
-          <span class="cert-badge">ISO 27001</span>
-          <span class="cert-badge">GDPR COMPLIANT</span>
-          <span class="cert-badge">SAP CERTIFIED</span>
-        </div>
-      </div>
-    </div>
-  </footer>
+ <div class="footer-bottom">
+ <div>© 2026 NexusProcure AI Inc. All rights reserved. Built for autonomous enterprise procurement.</div>
+ <div class="security-cert-badges">
+ <span class="cert-badge">SOC2 TYPE II</span>
+ <span class="cert-badge">ISO 27001</span>
+ <span class="cert-badge">GDPR COMPLIANT</span>
+ <span class="cert-badge">SAP CERTIFIED</span>
+ </div>
+ </div>
+ </div>
+ </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Category filter buttons
-      const filterBtns = document.querySelectorAll('#category-tabs .filter-tab-btn');
-      const cards = document.querySelectorAll('#connector-cards-grid .bento-card');
+ <script>
+ document.addEventListener('DOMContentLoaded', () => {
+ // Category filter buttons
+ const filterBtns = document.querySelectorAll('#category-tabs .filter-tab-btn');
+ const cards = document.querySelectorAll('#connector-cards-grid .bento-card');
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const cat = btn.dataset.filter;
+ filterBtns.forEach(btn => {
+ btn.addEventListener('click', () => {
+ filterBtns.forEach(b => b.classList.remove('active'));
+ btn.classList.add('active');
+ const cat = btn.dataset.filter;
 
-          cards.forEach(card => {
-            if (cat === 'all' || card.dataset.category === cat) {
-              card.style.display = 'block';
-            } else {
-              card.style.display = 'none';
-            }
-          });
-        });
-      });
+ cards.forEach(card => {
+ if (cat === 'all' || card.dataset.category === cat) {
+ card.style.display = 'block';
+ } else {
+ card.style.display = 'none';
+ }
+ });
+ });
+ });
 
-      // API Playground endpoints
-      const endpoints = {
-        negotiate: {
-          method: "POST",
-          req: `{
-  "po_reference": "PO-2026-94821",
-  "supplier_id": "VEND-8849-SHENZHEN",
-  "quoted_unit_price": 18.40,
-  "target_unit_price": 16.20,
-  "volume_units": 10000,
-  "currency": "USD",
-  "max_concession_pct": 0.12,
-  "allow_terms_tradeoff": true
+ // API Playground endpoints
+ const endpoints = {
+ negotiate: {
+ method: "POST",
+ req: `{
+ "po_reference": "PO-2026-94821",
+ "supplier_id": "VEND-8849-SHENZHEN",
+ "quoted_unit_price": 18.40,
+ "target_unit_price": 16.20,
+ "volume_units": 10000,
+ "currency": "USD",
+ "max_concession_pct": 0.12,
+ "allow_terms_tradeoff": true
 }`,
-          res: `{
-  "status": "COMPLETED",
-  "accord_reached": true,
-  "negotiated_price": 16.20,
-  "agreed_lead_days": 14,
-  "gross_savings_usd": 26400.00,
-  "batna_spread_captured": "100%",
-  "erp_transaction_id": "SAP-BAPI-9941029",
-  "audit_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+ res: `{
+ "status": "COMPLETED",
+ "accord_reached": true,
+ "negotiated_price": 16.20,
+ "agreed_lead_days": 14,
+ "gross_savings_usd": 26400.00,
+ "batna_spread_captured": "100%",
+ "erp_transaction_id": "SAP-BAPI-9941029",
+ "audit_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 }`
-        },
-        reconcile: {
-          method: "POST",
-          req: `{
-  "invoice_number": "INV-2026-8819",
-  "po_id": "PO-4500912",
-  "billed_amount": 42500.00,
-  "gr_verified_amount": 38000.00,
-  "auto_debit_memo": true
+ },
+ reconcile: {
+ method: "POST",
+ req: `{
+ "invoice_number": "INV-2026-8819",
+ "po_id": "PO-4500912",
+ "billed_amount": 42500.00,
+ "gr_verified_amount": 38000.00,
+ "auto_debit_memo": true
 }`,
-          res: `{
-  "reconciliation_status": "DISCREPANCY_RESOLVED",
-  "variance_detected": 4500.00,
-  "variance_reason": "UNAUTHORIZED_UNIT_PRICE_MARKUP",
-  "debit_memo_id": "DM-7712",
-  "net_payable_approved": 38000.00,
-  "payment_scheduled_date": "2026-10-15",
-  "vendor_notified": true
+ res: `{
+ "reconciliation_status": "DISCREPANCY_RESOLVED",
+ "variance_detected": 4500.00,
+ "variance_reason": "UNAUTHORIZED_UNIT_PRICE_MARKUP",
+ "debit_memo_id": "DM-7712",
+ "net_payable_approved": 38000.00,
+ "payment_scheduled_date": "2026-10-15",
+ "vendor_notified": true
 }`
-        },
-        supplier_risk: {
-          method: "POST",
-          req: `{
-  "supplier_tax_id": "DE-88491024",
-  "geography": "EU-Central",
-  "critical_part_skus": ["SKU-AERO-094", "SKU-AERO-098"]
+ },
+ supplier_risk: {
+ method: "POST",
+ req: `{
+ "supplier_tax_id": "DE-88491024",
+ "geography": "EU-Central",
+ "critical_part_skus": ["SKU-AERO-094", "SKU-AERO-098"]
 }`,
-          res: `{
-  "composite_risk_score": 14.2,
-  "risk_tier": "LOW",
-  "financial_solvency_index": 96.4,
-  "on_time_delivery_rate": "98.8%",
-  "esg_compliance_rating": "AAA",
-  "sanctions_check": "CLEARED"
+ res: `{
+ "composite_risk_score": 14.2,
+ "risk_tier": "LOW",
+ "financial_solvency_index": 96.4,
+ "on_time_delivery_rate": "98.8%",
+ "esg_compliance_rating": "AAA",
+ "sanctions_check": "CLEARED"
 }`
-        }
-      };
+ }
+ };
 
-      const selectEl = document.getElementById('api-endpoint-select');
-      const reqCode = document.getElementById('api-request-code');
-      const resCode = document.getElementById('api-response-code');
-      const statusEl = document.getElementById('api-response-status');
-      const methodEl = document.getElementById('api-active-method');
-      const execBtn = document.getElementById('btn-execute-api');
-      const copyBtn = document.getElementById('btn-copy-curl');
+ const selectEl = document.getElementById('api-endpoint-select');
+ const reqCode = document.getElementById('api-request-code');
+ const resCode = document.getElementById('api-response-code');
+ const statusEl = document.getElementById('api-response-status');
+ const methodEl = document.getElementById('api-active-method');
+ const execBtn = document.getElementById('btn-execute-api');
+ const copyBtn = document.getElementById('btn-copy-curl');
 
-      selectEl.addEventListener('change', () => {
-        const item = endpoints[selectEl.value];
-        reqCode.textContent = item.req;
-        resCode.textContent = item.res;
-        methodEl.textContent = item.method;
-        statusEl.textContent = "200 OK";
-      });
+ selectEl.addEventListener('change', () => {
+ const item = endpoints[selectEl.value];
+ reqCode.textContent = item.req;
+ resCode.textContent = item.res;
+ methodEl.textContent = item.method;
+ statusEl.textContent = "200 OK";
+ });
 
-      execBtn.addEventListener('click', () => {
-        statusEl.textContent = "EXECUTING...";
-        statusEl.className = "badge badge-cyan";
-        resCode.textContent = "Sending request payload to NexusProcure AI Gateway...";
-        
-        setTimeout(() => {
-          const item = endpoints[selectEl.value];
-          statusEl.textContent = "200 OK (" + (Math.floor(Math.random() * 80) + 180) + "ms)";
-          statusEl.className = "badge badge-emerald";
-          resCode.textContent = item.res;
-        }, 320);
-      });
+ execBtn.addEventListener('click', () => {
+ statusEl.textContent = "EXECUTING...";
+ statusEl.className = "badge badge-cyan";
+ resCode.textContent = "Sending request payload to NexusProcure AI Gateway...";
+ 
+ setTimeout(() => {
+ const item = endpoints[selectEl.value];
+ statusEl.textContent = "200 OK (" + (Math.floor(Math.random() * 80) + 180) + "ms)";
+ statusEl.className = "badge badge-emerald";
+ resCode.textContent = item.res;
+ }, 320);
+ });
 
-      copyBtn.addEventListener('click', () => {
-        const item = endpoints[selectEl.value];
-        const curl = `curl -X ${item.method} https://api.nexusprocure.ai/v1/${selectEl.value} \\\n  -H "Authorization: Bearer np_live_key_9941" \\\n  -H "Content-Type: application/json" \\\n  -d '${item.req.replace(/\n/g, '')}'`;
-        navigator.clipboard.writeText(curl).then(() => {
-          copyBtn.textContent = "Copied!";
-          setTimeout(() => copyBtn.textContent = "Copy cURL", 1800);
-        });
-      });
-    });
-  </script>
+ copyBtn.addEventListener('click', () => {
+ const item = endpoints[selectEl.value];
+ const curl = `curl -X ${item.method} https://api.nexusprocure.ai/v1/${selectEl.value} \\\n -H "Authorization: Bearer np_live_key_9941" \\\n -H "Content-Type: application/json" \\\n -d '${item.req.replace(/\n/g, '')}'`;
+ navigator.clipboard.writeText(curl).then(() => {
+ copyBtn.textContent = "Copied!";
+ setTimeout(() => copyBtn.textContent = "Copy cURL", 1800);
+ });
+ });
+ });
+ </script>
 
-  <!-- Gemini AI Integration -->
-  <script src="js/gemini-service.js"></script>
-  <script src="js/gemini-ui.js"></script>
+ <!-- Groq AI Integration -->
+ <script src="js/gemini-service.js"></script>
+ <script src="js/gemini-ui.js"></script>
 </body>
 </html>
